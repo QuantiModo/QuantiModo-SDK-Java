@@ -86,12 +86,17 @@ public class ConnectorsApi {
   
   /**
    * Obtain a token from 3rd party data source
-   * The `connect` method tells it to attempt to obtain a token from the data provider, store it in `connect`.`credentials`, allowing the connector to obtain user data.
-   * @param connector Lowercase system name of the source application or device
+   * Attempt to obtain a token from the data provider, store it in the database. With this, the connector to continue to obtain new user data until the token is revoked.
+   * @param connector Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint.
    * @return void
    */
   public void connectorsConnectorConnectGet (String connector) throws ApiException {
     Object postBody = null;
+    
+    // verify the required parameter 'connector' is set
+    if (connector == null) {
+       throw new ApiException(400, "Missing the required parameter 'connector' when calling connectorsConnectorConnectGet");
+    }
     
 
     // create path and map variables
@@ -137,12 +142,17 @@ public class ConnectorsApi {
   
   /**
    * Get connection parameters
-   * The `connectInstructions` method returns instructions that describe what parameters and endpoint to use to connect to the given data provider.
-   * @param connector Lowercase system name of the source application or device
+   * Returns instructions that describe what parameters and endpoint to use to connect to the given data provider.
+   * @param connector Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint.
    * @return void
    */
   public void connectorsConnectorConnectInstructionsGet (String connector) throws ApiException {
     Object postBody = null;
+    
+    // verify the required parameter 'connector' is set
+    if (connector == null) {
+       throw new ApiException(400, "Missing the required parameter 'connector' when calling connectorsConnectorConnectInstructionsGet");
+    }
     
 
     // create path and map variables
@@ -188,12 +198,17 @@ public class ConnectorsApi {
   
   /**
    * Delete stored connection info
-   * The `disconnect` method deletes any stored tokens or connection information from the `connectors` database.
-   * @param connector Lowercase system name of the source application or device
+   * The disconnect method deletes any stored tokens or connection information from the connectors database.
+   * @param connector Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint.
    * @return void
    */
   public void connectorsConnectorDisconnectGet (String connector) throws ApiException {
     Object postBody = null;
+    
+    // verify the required parameter 'connector' is set
+    if (connector == null) {
+       throw new ApiException(400, "Missing the required parameter 'connector' when calling connectorsConnectorDisconnectGet");
+    }
     
 
     // create path and map variables
@@ -239,12 +254,17 @@ public class ConnectorsApi {
   
   /**
    * Get connector info for user
-   * The `info` method returns information about the connector such as the connector id, whether or not is connected (i.e. we have a token in the `connector`.`credentials` table, and the update history from the `connector`.`updates` table.)
-   * @param connector Lowercase system name of the source application or device
+   * Returns information about the connector such as the connector id, whether or not is connected for this user (i.e. we have a token or credentials), and its update history for the user.
+   * @param connector Lowercase system name of the source application or device. Get a list of available connectors from the /connectors/list endpoint.
    * @return void
    */
   public void connectorsConnectorInfoGet (String connector) throws ApiException {
     Object postBody = null;
+    
+    // verify the required parameter 'connector' is set
+    if (connector == null) {
+       throw new ApiException(400, "Missing the required parameter 'connector' when calling connectorsConnectorInfoGet");
+    }
     
 
     // create path and map variables
@@ -290,12 +310,17 @@ public class ConnectorsApi {
   
   /**
    * Sync with data source
-   * The `update` method tells the QM Connector Framework to check with the data provider (such as Fitbit or MyFitnessPal) and put any new data in the `quantimodo`.`measurements` table.
+   * The update method tells the QM Connector Framework to check with the data provider (such as Fitbit or MyFitnessPal) and retrieve any new measurements available.
    * @param connector Lowercase system name of the source application or device
    * @return void
    */
   public void connectorsConnectorUpdateGet (String connector) throws ApiException {
     Object postBody = null;
+    
+    // verify the required parameter 'connector' is set
+    if (connector == null) {
+       throw new ApiException(400, "Missing the required parameter 'connector' when calling connectorsConnectorUpdateGet");
+    }
     
 
     // create path and map variables

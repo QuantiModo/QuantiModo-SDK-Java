@@ -7,10 +7,6 @@ import io.swagger.client.model.*;
 
 import java.util.*;
 
-import io.swagger.client.model.User;
-import io.swagger.client.model.UserTokenRequest;
-import io.swagger.client.model.UserTokenFailedResponse;
-import io.swagger.client.model.UserTokenSuccessfulResponse;
 
 import com.sun.jersey.multipart.FormDataMultiPart;
 import com.sun.jersey.multipart.file.FileDataBodyPart;
@@ -21,7 +17,7 @@ import java.io.File;
 import java.util.Map;
 import java.util.HashMap;
 
-public class UserApi {
+public class ConnectApi {
   String basePath = "https://localhost/api";
   ApiInvoker apiInvoker = ApiInvoker.getInstance();
 
@@ -39,22 +35,30 @@ public class UserApi {
 
   
   /**
-   * Get all available units for variableGet authenticated user
-   * Returns user info for the currently authenticated user.
+   * Get embeddable connect javascript
+   * Get embeddable connect javascript
+   * @param t User token
    * @return void
    */
-  public void userMeGet () throws ApiException {
+  public void v1ConnectJsGet (String t) throws ApiException {
     Object postBody = null;
+    
+    // verify the required parameter 't' is set
+    if (t == null) {
+       throw new ApiException(400, "Missing the required parameter 't' when calling v1ConnectJsGet");
+    }
     
 
     // create path and map variables
-    String path = "/user/me".replaceAll("\\{format\\}","json");
+    String path = "/v1/connect.js".replaceAll("\\{format\\}","json");
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
+    if (t != null)
+      queryParams.put("t", ApiInvoker.parameterToString(t));
     
     
     String[] contentTypes = {
@@ -88,35 +92,30 @@ public class UserApi {
   }
   
   /**
-   * Get user tokens for existing users, create new users
-   * Get user tokens for existing users, create new users
-   * @param organizationId Organization ID
-   * @param body Provides organization token and user ID
-   * @return UserTokenSuccessfulResponse
+   * Mobile connect page
+   * Mobile connect page
+   * @param t User token
+   * @return void
    */
-  public UserTokenSuccessfulResponse v1OrganizationsOrganizationIdUsersPost (Integer organizationId, UserTokenRequest body) throws ApiException {
-    Object postBody = body;
+  public void v1ConnectMobileGet (String t) throws ApiException {
+    Object postBody = null;
     
-    // verify the required parameter 'organizationId' is set
-    if (organizationId == null) {
-       throw new ApiException(400, "Missing the required parameter 'organizationId' when calling v1OrganizationsOrganizationIdUsersPost");
-    }
-    
-    // verify the required parameter 'body' is set
-    if (body == null) {
-       throw new ApiException(400, "Missing the required parameter 'body' when calling v1OrganizationsOrganizationIdUsersPost");
+    // verify the required parameter 't' is set
+    if (t == null) {
+       throw new ApiException(400, "Missing the required parameter 't' when calling v1ConnectMobileGet");
     }
     
 
     // create path and map variables
-    String path = "/v1/organizations/{organizationId}/users".replaceAll("\\{format\\}","json")
-      .replaceAll("\\{" + "organizationId" + "\\}", apiInvoker.escapeString(organizationId.toString()));
+    String path = "/v1/connect/mobile".replaceAll("\\{format\\}","json");
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
+    if (t != null)
+      queryParams.put("t", ApiInvoker.parameterToString(t));
     
     
     String[] contentTypes = {
@@ -137,12 +136,12 @@ public class UserApi {
     }
 
     try {
-      String response = apiInvoker.invokeAPI(basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType);
+      String response = apiInvoker.invokeAPI(basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType);
       if(response != null){
-        return (UserTokenSuccessfulResponse) ApiInvoker.deserialize(response, "", UserTokenSuccessfulResponse.class);
+        return ;
       }
       else {
-        return null;
+        return ;
       }
     } catch (ApiException ex) {
       throw ex;

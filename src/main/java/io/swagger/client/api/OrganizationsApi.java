@@ -47,6 +47,16 @@ public class OrganizationsApi {
   public UserTokenSuccessfulResponse v1OrganizationsOrganizationIdUsersPost (Integer organizationId, UserTokenRequest body) throws ApiException {
     Object postBody = body;
     
+    // verify the required parameter 'organizationId' is set
+    if (organizationId == null) {
+       throw new ApiException(400, "Missing the required parameter 'organizationId' when calling v1OrganizationsOrganizationIdUsersPost");
+    }
+    
+    // verify the required parameter 'body' is set
+    if (body == null) {
+       throw new ApiException(400, "Missing the required parameter 'body' when calling v1OrganizationsOrganizationIdUsersPost");
+    }
+    
 
     // create path and map variables
     String path = "/v1/organizations/{organizationId}/users".replaceAll("\\{format\\}","json")

@@ -13,6 +13,7 @@ public class Measurement  {
   private Long timestamp = null;
   private Double value = null;
   private String unit = null;
+  private String note = null;
 
   
   /**
@@ -80,6 +81,19 @@ public class Measurement  {
   }
 
   
+  /**
+   * Optional note supplied with the measurement. Can be up to 255 characters in length.
+   **/
+  @ApiModelProperty(value = "Optional note supplied with the measurement. Can be up to 255 characters in length.")
+  @JsonProperty("note")
+  public String getNote() {
+    return note;
+  }
+  public void setNote(String note) {
+    this.note = note;
+  }
+
+  
 
   @Override
   public String toString()  {
@@ -91,6 +105,7 @@ public class Measurement  {
     sb.append("  timestamp: ").append(timestamp).append("\n");
     sb.append("  value: ").append(value).append("\n");
     sb.append("  unit: ").append(unit).append("\n");
+    sb.append("  note: ").append(note).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

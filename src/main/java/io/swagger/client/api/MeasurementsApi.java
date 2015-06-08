@@ -40,7 +40,7 @@ public class MeasurementsApi {
   
   /**
    * Get measurement sources
-   * 
+   * Returns a list of all the apps from which measurement data is obtained.
    * @return void
    */
   public void measurementSourcesGet () throws ApiException {
@@ -88,13 +88,18 @@ public class MeasurementsApi {
   }
   
   /**
-   * Set measurement source
-   * Set measurement source
-   * @param measurements An array of measurements you want to insert
+   * Add a data source
+   * Add a life-tracking app or device to the QuantiModo list of data sources.
+   * @param name An array of names of data sources you want to add.
    * @return void
    */
-  public void measurementSourcesPost (List<MeasurementSource> measurements) throws ApiException {
-    Object postBody = measurements;
+  public void measurementSourcesPost (List<MeasurementSource> name) throws ApiException {
+    Object postBody = name;
+    
+    // verify the required parameter 'name' is set
+    if (name == null) {
+       throw new ApiException(400, "Missing the required parameter 'name' when calling measurementSourcesPost");
+    }
     
 
     // create path and map variables
@@ -139,7 +144,7 @@ public class MeasurementsApi {
   
   /**
    * Get measurements for this user
-   * Get measurements for this user
+   * Measurements are any value that can be recorded like daily steps, a mood rating, or apples eaten.
    * @param variableName Name of the variable you want measurements for
    * @param unit The unit your want the measurements in
    * @param startTime The lower limit of measurements returned (Epoch)
@@ -150,6 +155,11 @@ public class MeasurementsApi {
    */
   public void measurementsGet (String variableName, String unit, String startTime, String endTime, Integer groupingWidth, String groupingTimezone) throws ApiException {
     Object postBody = null;
+    
+    // verify the required parameter 'variableName' is set
+    if (variableName == null) {
+       throw new ApiException(400, "Missing the required parameter 'variableName' when calling measurementsGet");
+    }
     
 
     // create path and map variables
@@ -205,13 +215,18 @@ public class MeasurementsApi {
   }
   
   /**
-   * Set measurement
-   * Set measurement
-   * @param measurements An array of measurements you want to insert
+   * Post a new set of measurements to the database
+   * You can submit multiple measurements in a \&quot;measurements\&quot; sub-array.  If the variable these measurements correspond to does not already exist in the database, it will be automatically added.  The request body should look something like [{\&quot;measurements\&quot;:[{\&quot;timestamp\&quot;:1406419860,\&quot;value\&quot;:\&quot;1\&quot;,\&quot;note\&quot;:\&quot;I am a note about back pain.\&quot;},{\&quot;timestamp\&quot;:1406519865,\&quot;value\&quot;:\&quot;3\&quot;,\&quot;note\&quot;:\&quot;I am another note about back pain.\&quot;}],\&quot;name\&quot;:\&quot;Back Pain\&quot;,\&quot;source\&quot;:\&quot;QuantiModo\&quot;,\&quot;category\&quot;:\&quot;Symptoms\&quot;,\&quot;combinationOperation\&quot;:\&quot;MEAN\&quot;,\&quot;unit\&quot;:\&quot;/5\&quot;}]
+   * @param measurements An array of measurements you want to insert.
    * @return void
    */
   public void measurementsV2Post (List<Measurement> measurements) throws ApiException {
     Object postBody = measurements;
+    
+    // verify the required parameter 'measurements' is set
+    if (measurements == null) {
+       throw new ApiException(400, "Missing the required parameter 'measurements' when calling measurementsV2Post");
+    }
     
 
     // create path and map variables
@@ -256,7 +271,7 @@ public class MeasurementsApi {
   
   /**
    * Get measurements range for this user
-   * Get timestamp of the user&#39;s first and last measurements taken.
+   * Get Unix time-stamp (epoch time) of the user&#39;s first and last measurements taken.
    * @param sources Enter source name to limit to specific source (varchar)
    * @param user If not specified, uses currently logged in user (bigint)
    * @return void
