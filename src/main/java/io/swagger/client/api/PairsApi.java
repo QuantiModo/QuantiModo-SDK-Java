@@ -1,7 +1,8 @@
 package io.swagger.client.api;
 
 import io.swagger.client.ApiException;
-import io.swagger.client.ApiInvoker;
+import io.swagger.client.ApiClient;
+import io.swagger.client.Configuration;
 
 import io.swagger.client.model.*;
 
@@ -19,19 +20,22 @@ import java.util.Map;
 import java.util.HashMap;
 
 public class PairsApi {
-  String basePath = "https://localhost/api";
-  ApiInvoker apiInvoker = ApiInvoker.getInstance();
+  private ApiClient apiClient;
 
-  public ApiInvoker getInvoker() {
-    return apiInvoker;
+  public PairsApi() {
+    this(Configuration.getDefaultApiClient());
   }
 
-  public void setBasePath(String basePath) {
-    this.basePath = basePath;
+  public PairsApi(ApiClient apiClient) {
+    this.apiClient = apiClient;
   }
 
-  public String getBasePath() {
-    return basePath;
+  public ApiClient getApiClient() {
+    return apiClient;
+  }
+
+  public void setApiClient(ApiClient apiClient) {
+    this.apiClient = apiClient;
   }
 
   
@@ -39,19 +43,29 @@ public class PairsApi {
    * Get pairs
    * Pairs cause measurements with effect measurements grouped over the duration of action after the onset delay.
    * @param cause Original variable name for the explanatory or independent variable
-   * @param effect Original variable name for the outcome or dependent variable
-   * @param duration Duration of action (in seconds) from the cause variable settings.
-   * @param delay Delay before onset of action (in seconds) from the cause variable settings.
-   * @param startTime The earliest date (in epoch time) for which we should return measurements
-   * @param endTime The most recent date (in epoch time) for which we should return measurements
    * @param causeSource Name of data source that the cause measurements should come from
-   * @param effectSource Name of data source that the effectmeasurements should come from
    * @param causeUnit Abbreviated name for the unit cause measurements to be returned in
+   * @param delay Delay before onset of action (in seconds) from the cause variable settings.
+   * @param duration Duration of action (in seconds) from the cause variable settings.
+   * @param effect Original variable name for the outcome or dependent variable
+   * @param effectSource Name of data source that the effectmeasurements should come from
    * @param effectUnit Abbreviated name for the unit effect measurements to be returned in
-   * @return void
+   * @param endTime The most recent date (in epoch time) for which we should return measurements
+   * @param startTime The earliest date (in epoch time) for which we should return measurements
+   * @return List<Pairs>
    */
-  public void pairsGet (String cause, String effect, String duration, String delay, String startTime, String endTime, String causeSource, String effectSource, String causeUnit, String effectUnit) throws ApiException {
+  public List<Pairs> pairsGet (String cause, String causeSource, String causeUnit, String delay, String duration, String effect, String effectSource, String effectUnit, String endTime, String startTime) throws ApiException {
     Object postBody = null;
+    
+    // verify the required parameter 'cause' is set
+    if (cause == null) {
+       throw new ApiException(400, "Missing the required parameter 'cause' when calling pairsGet");
+    }
+    
+    // verify the required parameter 'effect' is set
+    if (effect == null) {
+       throw new ApiException(400, "Missing the required parameter 'effect' when calling pairsGet");
+    }
     
 
     // create path and map variables
@@ -63,32 +77,38 @@ public class PairsApi {
     Map<String, String> formParams = new HashMap<String, String>();
 
     if (cause != null)
-      queryParams.put("cause", ApiInvoker.parameterToString(cause));
-    if (effect != null)
-      queryParams.put("effect", ApiInvoker.parameterToString(effect));
-    if (duration != null)
-      queryParams.put("duration", ApiInvoker.parameterToString(duration));
-    if (delay != null)
-      queryParams.put("delay", ApiInvoker.parameterToString(delay));
-    if (startTime != null)
-      queryParams.put("startTime", ApiInvoker.parameterToString(startTime));
-    if (endTime != null)
-      queryParams.put("endTime", ApiInvoker.parameterToString(endTime));
+      queryParams.put("cause", apiClient.parameterToString(cause));
     if (causeSource != null)
-      queryParams.put("causeSource", ApiInvoker.parameterToString(causeSource));
-    if (effectSource != null)
-      queryParams.put("effectSource", ApiInvoker.parameterToString(effectSource));
+      queryParams.put("causeSource", apiClient.parameterToString(causeSource));
     if (causeUnit != null)
-      queryParams.put("causeUnit", ApiInvoker.parameterToString(causeUnit));
+      queryParams.put("causeUnit", apiClient.parameterToString(causeUnit));
+    if (delay != null)
+      queryParams.put("delay", apiClient.parameterToString(delay));
+    if (duration != null)
+      queryParams.put("duration", apiClient.parameterToString(duration));
+    if (effect != null)
+      queryParams.put("effect", apiClient.parameterToString(effect));
+    if (effectSource != null)
+      queryParams.put("effectSource", apiClient.parameterToString(effectSource));
     if (effectUnit != null)
-      queryParams.put("effectUnit", ApiInvoker.parameterToString(effectUnit));
+      queryParams.put("effectUnit", apiClient.parameterToString(effectUnit));
+    if (endTime != null)
+      queryParams.put("endTime", apiClient.parameterToString(endTime));
+    if (startTime != null)
+      queryParams.put("startTime", apiClient.parameterToString(startTime));
     
+
     
-    String[] contentTypes = {
+
+    final String[] accepts = {
+      "application/json"
+    };
+    final String accept = apiClient.selectHeaderAccept(accepts);
+
+    final String[] contentTypes = {
       
     };
-
-    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+    final String contentType = apiClient.selectHeaderContentType(contentTypes);
 
     if(contentType.startsWith("multipart/form-data")) {
       boolean hasFields = false;
@@ -102,12 +122,13 @@ public class PairsApi {
     }
 
     try {
-      String response = apiInvoker.invokeAPI(basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType);
+      String[] authNames = new String[] { "oauth2" };
+      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, accept, contentType, authNames);
       if(response != null){
-        return ;
+        return (List<Pairs>) apiClient.deserialize(response, "array", Pairs.class);
       }
       else {
-        return ;
+        return null;
       }
     } catch (ApiException ex) {
       throw ex;

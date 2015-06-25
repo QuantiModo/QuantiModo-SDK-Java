@@ -8,8 +8,6 @@ import io.swagger.client.model.*;
 
 import java.util.*;
 
-import io.swagger.client.model.UnitCategory;
-import io.swagger.client.model.Unit;
 
 import com.sun.jersey.multipart.FormDataMultiPart;
 import com.sun.jersey.multipart.file.FileDataBodyPart;
@@ -20,14 +18,14 @@ import java.io.File;
 import java.util.Map;
 import java.util.HashMap;
 
-public class UnitsApi {
+public class ConnectApi {
   private ApiClient apiClient;
 
-  public UnitsApi() {
+  public ConnectApi() {
     this(Configuration.getDefaultApiClient());
   }
 
-  public UnitsApi(ApiClient apiClient) {
+  public ConnectApi(ApiClient apiClient) {
     this.apiClient = apiClient;
   }
 
@@ -41,28 +39,36 @@ public class UnitsApi {
 
   
   /**
-   * Get unit categories
-   * Get a list of the categories of measurement units such as &#39;Distance&#39;, &#39;Duration&#39;, &#39;Energy&#39;, &#39;Frequency&#39;, &#39;Miscellany&#39;, &#39;Pressure&#39;, &#39;Proportion&#39;, &#39;Rating&#39;, &#39;Temperature&#39;, &#39;Volume&#39;, and &#39;Weight&#39;.
-   * @return UnitCategory
+   * Get embeddable connect javascript
+   * Get embeddable connect javascript
+   * @param t User token
+   * @return void
    */
-  public UnitCategory unitCategoriesGet () throws ApiException {
+  public void v1ConnectJsGet (String t) throws ApiException {
     Object postBody = null;
+    
+    // verify the required parameter 't' is set
+    if (t == null) {
+       throw new ApiException(400, "Missing the required parameter 't' when calling v1ConnectJsGet");
+    }
     
 
     // create path and map variables
-    String path = "/unitCategories".replaceAll("\\{format\\}","json");
+    String path = "/v1/connect.js".replaceAll("\\{format\\}","json");
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
+    if (t != null)
+      queryParams.put("t", apiClient.parameterToString(t));
     
 
     
 
     final String[] accepts = {
-      "application/json"
+      "application/x-javascript"
     };
     final String accept = apiClient.selectHeaderAccept(accepts);
 
@@ -83,13 +89,13 @@ public class UnitsApi {
     }
 
     try {
-      String[] authNames = new String[] { "oauth2" };
+      String[] authNames = new String[] {  };
       String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, accept, contentType, authNames);
       if(response != null){
-        return (UnitCategory) apiClient.deserialize(response, "", UnitCategory.class);
+        return ;
       }
       else {
-        return null;
+        return ;
       }
     } catch (ApiException ex) {
       throw ex;
@@ -97,37 +103,36 @@ public class UnitsApi {
   }
   
   /**
-   * Get all available units
-   * Get all available units
-   * @param unitName Unit name
-   * @param abbreviatedUnitName Restrict the results to a specific unit by providing the unit abbreviation.
-   * @param categoryName Restrict the results to a specific unit category by providing the unit category name.
-   * @return List<Unit>
+   * Mobile connect page
+   * Mobile connect page
+   * @param t User token
+   * @return void
    */
-  public List<Unit> unitsGet (String unitName, String abbreviatedUnitName, String categoryName) throws ApiException {
+  public void v1ConnectMobileGet (String t) throws ApiException {
     Object postBody = null;
+    
+    // verify the required parameter 't' is set
+    if (t == null) {
+       throw new ApiException(400, "Missing the required parameter 't' when calling v1ConnectMobileGet");
+    }
     
 
     // create path and map variables
-    String path = "/units".replaceAll("\\{format\\}","json");
+    String path = "/v1/connect/mobile".replaceAll("\\{format\\}","json");
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    if (unitName != null)
-      queryParams.put("unitName", apiClient.parameterToString(unitName));
-    if (abbreviatedUnitName != null)
-      queryParams.put("abbreviatedUnitName", apiClient.parameterToString(abbreviatedUnitName));
-    if (categoryName != null)
-      queryParams.put("categoryName", apiClient.parameterToString(categoryName));
+    if (t != null)
+      queryParams.put("t", apiClient.parameterToString(t));
     
 
     
 
     final String[] accepts = {
-      "application/json"
+      "text/html"
     };
     final String accept = apiClient.selectHeaderAccept(accepts);
 
@@ -148,13 +153,13 @@ public class UnitsApi {
     }
 
     try {
-      String[] authNames = new String[] { "oauth2" };
+      String[] authNames = new String[] {  };
       String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, accept, contentType, authNames);
       if(response != null){
-        return (List<Unit>) apiClient.deserialize(response, "array", Unit.class);
+        return ;
       }
       else {
-        return null;
+        return ;
       }
     } catch (ApiException ex) {
       throw ex;

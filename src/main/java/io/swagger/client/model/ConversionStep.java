@@ -1,7 +1,7 @@
 package io.swagger.client.model;
 
 
-import com.wordnik.swagger.annotations.*;
+import io.swagger.annotations.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
@@ -16,9 +16,9 @@ public class ConversionStep  {
 
   
   /**
-   * 
+   * ADD or MULTIPLY
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "ADD or MULTIPLY")
   @JsonProperty("operation")
   public OperationEnum getOperation() {
     return operation;
@@ -29,9 +29,9 @@ public class ConversionStep  {
 
   
   /**
-   * 
+   * This specifies the order of conversion steps starting with 0
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "This specifies the order of conversion steps starting with 0")
   @JsonProperty("value")
   public Double getValue() {
     return value;

@@ -3,7 +3,7 @@ package io.swagger.client.model;
 import io.swagger.client.model.ConversionStep;
 import java.util.*;
 
-import com.wordnik.swagger.annotations.*;
+import io.swagger.annotations.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 

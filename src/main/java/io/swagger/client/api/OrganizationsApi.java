@@ -1,7 +1,8 @@
 package io.swagger.client.api;
 
 import io.swagger.client.ApiException;
-import io.swagger.client.ApiInvoker;
+import io.swagger.client.ApiClient;
+import io.swagger.client.Configuration;
 
 import io.swagger.client.model.*;
 
@@ -21,19 +22,22 @@ import java.util.Map;
 import java.util.HashMap;
 
 public class OrganizationsApi {
-  String basePath = "https://localhost/api";
-  ApiInvoker apiInvoker = ApiInvoker.getInstance();
+  private ApiClient apiClient;
 
-  public ApiInvoker getInvoker() {
-    return apiInvoker;
+  public OrganizationsApi() {
+    this(Configuration.getDefaultApiClient());
   }
 
-  public void setBasePath(String basePath) {
-    this.basePath = basePath;
+  public OrganizationsApi(ApiClient apiClient) {
+    this.apiClient = apiClient;
   }
 
-  public String getBasePath() {
-    return basePath;
+  public ApiClient getApiClient() {
+    return apiClient;
+  }
+
+  public void setApiClient(ApiClient apiClient) {
+    this.apiClient = apiClient;
   }
 
   
@@ -47,10 +51,20 @@ public class OrganizationsApi {
   public UserTokenSuccessfulResponse v1OrganizationsOrganizationIdUsersPost (Integer organizationId, UserTokenRequest body) throws ApiException {
     Object postBody = body;
     
+    // verify the required parameter 'organizationId' is set
+    if (organizationId == null) {
+       throw new ApiException(400, "Missing the required parameter 'organizationId' when calling v1OrganizationsOrganizationIdUsersPost");
+    }
+    
+    // verify the required parameter 'body' is set
+    if (body == null) {
+       throw new ApiException(400, "Missing the required parameter 'body' when calling v1OrganizationsOrganizationIdUsersPost");
+    }
+    
 
     // create path and map variables
     String path = "/v1/organizations/{organizationId}/users".replaceAll("\\{format\\}","json")
-      .replaceAll("\\{" + "organizationId" + "\\}", apiInvoker.escapeString(organizationId.toString()));
+      .replaceAll("\\{" + "organizationId" + "\\}", apiClient.escapeString(organizationId.toString()));
 
     // query params
     Map<String, String> queryParams = new HashMap<String, String>();
@@ -58,12 +72,18 @@ public class OrganizationsApi {
     Map<String, String> formParams = new HashMap<String, String>();
 
     
+
     
-    String[] contentTypes = {
+
+    final String[] accepts = {
+      "application/json"
+    };
+    final String accept = apiClient.selectHeaderAccept(accepts);
+
+    final String[] contentTypes = {
       
     };
-
-    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+    final String contentType = apiClient.selectHeaderContentType(contentTypes);
 
     if(contentType.startsWith("multipart/form-data")) {
       boolean hasFields = false;
@@ -77,9 +97,10 @@ public class OrganizationsApi {
     }
 
     try {
-      String response = apiInvoker.invokeAPI(basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType);
+      String[] authNames = new String[] {  };
+      String response = apiClient.invokeAPI(path, "POST", queryParams, postBody, headerParams, formParams, accept, contentType, authNames);
       if(response != null){
-        return (UserTokenSuccessfulResponse) ApiInvoker.deserialize(response, "", UserTokenSuccessfulResponse.class);
+        return (UserTokenSuccessfulResponse) apiClient.deserialize(response, "", UserTokenSuccessfulResponse.class);
       }
       else {
         return null;

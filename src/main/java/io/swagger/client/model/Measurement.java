@@ -1,7 +1,7 @@
 package io.swagger.client.model;
 
 
-import com.wordnik.swagger.annotations.*;
+import io.swagger.annotations.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
@@ -13,6 +13,8 @@ public class Measurement  {
   private Long timestamp = null;
   private Double value = null;
   private String unit = null;
+  private Double storedValue = null;
+  private String storedUnit = null;
 
   
   /**
@@ -55,9 +57,9 @@ public class Measurement  {
 
   
   /**
-   * Measurement value
+   * Converted measurement value in requested unit
    **/
-  @ApiModelProperty(required = true, value = "Measurement value")
+  @ApiModelProperty(required = true, value = "Converted measurement value in requested unit")
   @JsonProperty("value")
   public Double getValue() {
     return value;
@@ -68,15 +70,41 @@ public class Measurement  {
 
   
   /**
-   * Unit of Measurement
+   * Unit of measurement as requested in GET request
    **/
-  @ApiModelProperty(required = true, value = "Unit of Measurement")
+  @ApiModelProperty(required = true, value = "Unit of measurement as requested in GET request")
   @JsonProperty("unit")
   public String getUnit() {
     return unit;
   }
   public void setUnit(String unit) {
     this.unit = unit;
+  }
+
+  
+  /**
+   * Measurement value in the unit as orignally submitted
+   **/
+  @ApiModelProperty(value = "Measurement value in the unit as orignally submitted")
+  @JsonProperty("storedValue")
+  public Double getStoredValue() {
+    return storedValue;
+  }
+  public void setStoredValue(Double storedValue) {
+    this.storedValue = storedValue;
+  }
+
+  
+  /**
+   * Unit of measurement as originally submitted
+   **/
+  @ApiModelProperty(value = "Unit of measurement as originally submitted")
+  @JsonProperty("storedUnit")
+  public String getStoredUnit() {
+    return storedUnit;
+  }
+  public void setStoredUnit(String storedUnit) {
+    this.storedUnit = storedUnit;
   }
 
   
@@ -91,6 +119,8 @@ public class Measurement  {
     sb.append("  timestamp: ").append(timestamp).append("\n");
     sb.append("  value: ").append(value).append("\n");
     sb.append("  unit: ").append(unit).append("\n");
+    sb.append("  storedValue: ").append(storedValue).append("\n");
+    sb.append("  storedUnit: ").append(storedUnit).append("\n");
     sb.append("}\n");
     return sb.toString();
   }
