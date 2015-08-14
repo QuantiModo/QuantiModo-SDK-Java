@@ -3,6 +3,7 @@ package io.swagger.client.api;
 import io.swagger.client.ApiException;
 import io.swagger.client.ApiClient;
 import io.swagger.client.Configuration;
+import io.swagger.client.Pair;
 
 import io.swagger.client.model.*;
 
@@ -74,26 +75,26 @@ public class OauthApi {
     String path = "/oauth2/accesstoken".replaceAll("\\{format\\}","json");
 
     // query params
-    Map<String, String> queryParams = new HashMap<String, String>();
+    List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    if (clientId != null)
-      queryParams.put("client_id", apiClient.parameterToString(clientId));
-    if (clientSecret != null)
-      queryParams.put("client_secret", apiClient.parameterToString(clientSecret));
-    if (grantType != null)
-      queryParams.put("grant_type", apiClient.parameterToString(grantType));
-    if (responseType != null)
-      queryParams.put("response_type", apiClient.parameterToString(responseType));
-    if (scope != null)
-      queryParams.put("scope", apiClient.parameterToString(scope));
-    if (redirectUri != null)
-      queryParams.put("redirect_uri", apiClient.parameterToString(redirectUri));
-    if (state != null)
-      queryParams.put("state", apiClient.parameterToString(state));
-    if (realm != null)
-      queryParams.put("realm", apiClient.parameterToString(realm));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "client_id", clientId));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "client_secret", clientSecret));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "grant_type", grantType));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "response_type", responseType));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "scope", scope));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "redirect_uri", redirectUri));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "state", state));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "realm", realm));
     
 
     
@@ -173,24 +174,24 @@ public class OauthApi {
     String path = "/oauth2/authorize".replaceAll("\\{format\\}","json");
 
     // query params
-    Map<String, String> queryParams = new HashMap<String, String>();
+    List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    if (clientId != null)
-      queryParams.put("client_id", apiClient.parameterToString(clientId));
-    if (clientSecret != null)
-      queryParams.put("client_secret", apiClient.parameterToString(clientSecret));
-    if (responseType != null)
-      queryParams.put("response_type", apiClient.parameterToString(responseType));
-    if (scope != null)
-      queryParams.put("scope", apiClient.parameterToString(scope));
-    if (redirectUri != null)
-      queryParams.put("redirect_uri", apiClient.parameterToString(redirectUri));
-    if (state != null)
-      queryParams.put("state", apiClient.parameterToString(state));
-    if (realm != null)
-      queryParams.put("realm", apiClient.parameterToString(realm));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "client_id", clientId));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "client_secret", clientSecret));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "response_type", responseType));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "scope", scope));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "redirect_uri", redirectUri));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "state", state));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "realm", realm));
     
 
     

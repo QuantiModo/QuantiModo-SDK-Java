@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @ApiModel(description = "")
 public class MeasurementSet  {
   
-  private List<ValueObject> measurements = new ArrayList<ValueObject>() ;
+  private List<ValueObject> measurements = new ArrayList<ValueObject>();
   private String name = null;
   private String source = null;
   private String category = null;

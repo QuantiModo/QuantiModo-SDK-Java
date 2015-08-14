@@ -3,6 +3,7 @@ package io.swagger.client.api;
 import io.swagger.client.ApiException;
 import io.swagger.client.ApiClient;
 import io.swagger.client.Configuration;
+import io.swagger.client.Pair;
 
 import io.swagger.client.model.*;
 
@@ -43,18 +44,21 @@ public class PairsApi {
    * Get pairs
    * Pairs cause measurements with effect measurements grouped over the duration of action after the onset delay.
    * @param cause Original variable name for the explanatory or independent variable
+   * @param effect Original variable name for the outcome or dependent variable
    * @param causeSource Name of data source that the cause measurements should come from
    * @param causeUnit Abbreviated name for the unit cause measurements to be returned in
    * @param delay Delay before onset of action (in seconds) from the cause variable settings.
    * @param duration Duration of action (in seconds) from the cause variable settings.
-   * @param effect Original variable name for the outcome or dependent variable
    * @param effectSource Name of data source that the effectmeasurements should come from
    * @param effectUnit Abbreviated name for the unit effect measurements to be returned in
    * @param endTime The most recent date (in epoch time) for which we should return measurements
    * @param startTime The earliest date (in epoch time) for which we should return measurements
+   * @param limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0.
+   * @param offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10.
+   * @param sort Sort by given field. If the field is prefixed with `-, it will sort in descending order.
    * @return List<Pairs>
    */
-  public List<Pairs> pairsGet (String cause, String causeSource, String causeUnit, String delay, String duration, String effect, String effectSource, String effectUnit, String endTime, String startTime) throws ApiException {
+  public List<Pairs> pairsGet (String cause, String effect, String causeSource, String causeUnit, String delay, String duration, String effectSource, String effectUnit, String endTime, String startTime, Integer limit, Integer offset, Integer sort) throws ApiException {
     Object postBody = null;
     
     // verify the required parameter 'cause' is set
@@ -72,30 +76,36 @@ public class PairsApi {
     String path = "/pairs".replaceAll("\\{format\\}","json");
 
     // query params
-    Map<String, String> queryParams = new HashMap<String, String>();
+    List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    if (cause != null)
-      queryParams.put("cause", apiClient.parameterToString(cause));
-    if (causeSource != null)
-      queryParams.put("causeSource", apiClient.parameterToString(causeSource));
-    if (causeUnit != null)
-      queryParams.put("causeUnit", apiClient.parameterToString(causeUnit));
-    if (delay != null)
-      queryParams.put("delay", apiClient.parameterToString(delay));
-    if (duration != null)
-      queryParams.put("duration", apiClient.parameterToString(duration));
-    if (effect != null)
-      queryParams.put("effect", apiClient.parameterToString(effect));
-    if (effectSource != null)
-      queryParams.put("effectSource", apiClient.parameterToString(effectSource));
-    if (effectUnit != null)
-      queryParams.put("effectUnit", apiClient.parameterToString(effectUnit));
-    if (endTime != null)
-      queryParams.put("endTime", apiClient.parameterToString(endTime));
-    if (startTime != null)
-      queryParams.put("startTime", apiClient.parameterToString(startTime));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "cause", cause));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "causeSource", causeSource));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "causeUnit", causeUnit));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "delay", delay));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "duration", duration));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "effect", effect));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "effectSource", effectSource));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "effectUnit", effectUnit));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "endTime", endTime));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "startTime", startTime));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "offset", offset));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "sort", sort));
     
 
     

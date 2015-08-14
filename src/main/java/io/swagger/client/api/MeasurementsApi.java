@@ -3,6 +3,7 @@ package io.swagger.client.api;
 import io.swagger.client.ApiException;
 import io.swagger.client.ApiClient;
 import io.swagger.client.Configuration;
+import io.swagger.client.Pair;
 
 import io.swagger.client.model.*;
 
@@ -55,7 +56,7 @@ public class MeasurementsApi {
     String path = "/measurementSources".replaceAll("\\{format\\}","json");
 
     // query params
-    Map<String, String> queryParams = new HashMap<String, String>();
+    List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
@@ -117,7 +118,7 @@ public class MeasurementsApi {
     String path = "/measurementSources".replaceAll("\\{format\\}","json");
 
     // query params
-    Map<String, String> queryParams = new HashMap<String, String>();
+    List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
@@ -162,16 +163,19 @@ public class MeasurementsApi {
   
   /**
    * Get measurements for this user
-   * Measurements are any value that can be recorded like daily steps, a mood rating, or apples eaten.
+   * Measurements are any value that can be recorded like daily steps, a mood rating, or apples eaten. &lt;br&gt;Supported filter parameters:&lt;br&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;value&lt;/b&gt; - Value of measurement&lt;/li&gt;&lt;li&gt;&lt;b&gt;lastUpdated&lt;/b&gt; - The time that this measurement was created or last updated in the UTC format \&quot;YYYY-MM-DDThh:mm:ss\&quot;&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;
    * @param variableName Name of the variable you want measurements for
    * @param unit The unit your want the measurements in
    * @param startTime The lower limit of measurements returned (Epoch)
    * @param endTime The upper limit of measurements returned (Epoch)
    * @param groupingWidth The time (in seconds) over which measurements are grouped together
    * @param groupingTimezone The time (in seconds) over which measurements are grouped together
+   * @param limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0.
+   * @param offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10.
+   * @param sort Sort by given field. If the field is prefixed with `-, it will sort in descending order.
    * @return Measurement
    */
-  public Measurement measurementsGet (String variableName, String unit, String startTime, String endTime, Integer groupingWidth, String groupingTimezone) throws ApiException {
+  public Measurement measurementsGet (String variableName, String unit, String startTime, String endTime, Integer groupingWidth, String groupingTimezone, Integer limit, Integer offset, Integer sort) throws ApiException {
     Object postBody = null;
     
     // verify the required parameter 'variableName' is set
@@ -184,22 +188,28 @@ public class MeasurementsApi {
     String path = "/measurements".replaceAll("\\{format\\}","json");
 
     // query params
-    Map<String, String> queryParams = new HashMap<String, String>();
+    List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    if (variableName != null)
-      queryParams.put("variableName", apiClient.parameterToString(variableName));
-    if (unit != null)
-      queryParams.put("unit", apiClient.parameterToString(unit));
-    if (startTime != null)
-      queryParams.put("startTime", apiClient.parameterToString(startTime));
-    if (endTime != null)
-      queryParams.put("endTime", apiClient.parameterToString(endTime));
-    if (groupingWidth != null)
-      queryParams.put("groupingWidth", apiClient.parameterToString(groupingWidth));
-    if (groupingTimezone != null)
-      queryParams.put("groupingTimezone", apiClient.parameterToString(groupingTimezone));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "variableName", variableName));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "unit", unit));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "startTime", startTime));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "endTime", endTime));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "groupingWidth", groupingWidth));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "groupingTimezone", groupingTimezone));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "offset", offset));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "sort", sort));
     
 
     
@@ -258,7 +268,7 @@ public class MeasurementsApi {
     String path = "/measurements/v2".replaceAll("\\{format\\}","json");
 
     // query params
-    Map<String, String> queryParams = new HashMap<String, String>();
+    List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
@@ -316,14 +326,14 @@ public class MeasurementsApi {
     String path = "/measurementsRange".replaceAll("\\{format\\}","json");
 
     // query params
-    Map<String, String> queryParams = new HashMap<String, String>();
+    List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    if (sources != null)
-      queryParams.put("sources", apiClient.parameterToString(sources));
-    if (user != null)
-      queryParams.put("user", apiClient.parameterToString(user));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "sources", sources));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "user", user));
     
 
     

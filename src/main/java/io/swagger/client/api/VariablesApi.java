@@ -3,6 +3,7 @@ package io.swagger.client.api;
 import io.swagger.client.ApiException;
 import io.swagger.client.ApiClient;
 import io.swagger.client.Configuration;
+import io.swagger.client.Pair;
 
 import io.swagger.client.model.*;
 
@@ -79,18 +80,18 @@ public class VariablesApi {
     String path = "/correlations".replaceAll("\\{format\\}","json");
 
     // query params
-    Map<String, String> queryParams = new HashMap<String, String>();
+    List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    if (cause != null)
-      queryParams.put("cause", apiClient.parameterToString(cause));
-    if (effect != null)
-      queryParams.put("effect", apiClient.parameterToString(effect));
-    if (correlationcoefficient != null)
-      queryParams.put("correlationcoefficient", apiClient.parameterToString(correlationcoefficient));
-    if (vote != null)
-      queryParams.put("vote", apiClient.parameterToString(vote));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "cause", cause));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "effect", effect));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "correlationcoefficient", correlationcoefficient));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "vote", vote));
     
 
     
@@ -143,7 +144,7 @@ public class VariablesApi {
     String path = "/public/variables".replaceAll("\\{format\\}","json");
 
     // query params
-    Map<String, String> queryParams = new HashMap<String, String>();
+    List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
@@ -191,9 +192,12 @@ public class VariablesApi {
    * Get top 5 PUBLIC variables with the most correlations containing the entered search characters. For example, search for &#39;mood&#39; as an effect. Since &#39;Overall Mood&#39; has a lot of correlations with other variables, it should be in the autocomplete list.
    * @param search Search query can be some fraction of a variable name.
    * @param effectOrCause Allows us to specify which column in the `correlations` table will be searched. Choices are effect or cause.
+   * @param limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0.
+   * @param offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10.
+   * @param sort Sort by given field. If the field is prefixed with `-, it will sort in descending order.
    * @return Variable
    */
-  public Variable publicVariablesSearchSearchGet (String search, String effectOrCause) throws ApiException {
+  public Variable publicVariablesSearchSearchGet (String search, String effectOrCause, Integer limit, Integer offset, Integer sort) throws ApiException {
     Object postBody = null;
     
     // verify the required parameter 'search' is set
@@ -207,12 +211,18 @@ public class VariablesApi {
       .replaceAll("\\{" + "search" + "\\}", apiClient.escapeString(search.toString()));
 
     // query params
-    Map<String, String> queryParams = new HashMap<String, String>();
+    List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    if (effectOrCause != null)
-      queryParams.put("effectOrCause", apiClient.parameterToString(effectOrCause));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "effectOrCause", effectOrCause));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "offset", offset));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "sort", sort));
     
 
     
@@ -253,7 +263,7 @@ public class VariablesApi {
   }
   
   /**
-   * Get variable categories
+   * Variable categories
    * The variable categories include Activity, Causes of Illness, Cognitive Performance, Conditions, Environment, Foods, Location, Miscellaneous, Mood, Nutrition, Physical Activity, Physique, Sleep, Social Interactions, Symptoms, Treatments, Vital Signs, and Work.
    * @return List<VariableCategory>
    */
@@ -265,7 +275,7 @@ public class VariablesApi {
     String path = "/variableCategories".replaceAll("\\{format\\}","json");
 
     // query params
-    Map<String, String> queryParams = new HashMap<String, String>();
+    List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
@@ -327,7 +337,7 @@ public class VariablesApi {
     String path = "/variableUserSettings".replaceAll("\\{format\\}","json");
 
     // query params
-    Map<String, String> queryParams = new HashMap<String, String>();
+    List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
@@ -372,12 +382,15 @@ public class VariablesApi {
   
   /**
    * Get variables by the category name
-   * Get variables by the category name
+   * Get variables by the category name. &lt;br&gt;Supported filter parameters:&lt;br&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;name&lt;/b&gt; - Original name of the variable (supports exact name match only)&lt;/li&gt;&lt;li&gt;&lt;b&gt;lastUpdated&lt;/b&gt; - Filter by the last time any of the properties of the variable were changed. Uses UTC format \&quot;YYYY-MM-DDThh:mm:ss\&quot;&lt;/li&gt;&lt;li&gt;&lt;b&gt;source&lt;/b&gt; - The name of the data source that created the variable (supports exact name match only). So if you have a client application and you only want variables that were last updated by your app, you can include the name of your app here&lt;/li&gt;&lt;li&gt;&lt;b&gt;latestMeasurementTime&lt;/b&gt; - Filter variables based on the last time a measurement for them was created or updated in the UTC format \&quot;YYYY-MM-DDThh:mm:ss\&quot;&lt;/li&gt;&lt;li&gt;&lt;b&gt;numberOfMeasurements&lt;/b&gt; - Filter variables by the total number of measurements that they have. This could be used of you want to filter or sort by popularity.&lt;/li&gt;&lt;li&gt;&lt;b&gt;lastSource&lt;/b&gt; - Limit variables to those which measurements were last submitted by a specific source. So if you have a client application and you only want variables that were last updated by your app, you can include the name of your app here. (supports exact name match only)&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;
    * @param userId User id
-   * @param categoryName Category name
+   * @param category Filter data by category
+   * @param limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0.
+   * @param offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10.
+   * @param sort Sort by given field. If the field is prefixed with `-, it will sort in descending order.
    * @return Variable
    */
-  public Variable variablesGet (Integer userId, String categoryName) throws ApiException {
+  public Variable variablesGet (Integer userId, String category, Integer limit, Integer offset, Integer sort) throws ApiException {
     Object postBody = null;
     
 
@@ -385,14 +398,20 @@ public class VariablesApi {
     String path = "/variables".replaceAll("\\{format\\}","json");
 
     // query params
-    Map<String, String> queryParams = new HashMap<String, String>();
+    List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    if (userId != null)
-      queryParams.put("userId", apiClient.parameterToString(userId));
-    if (categoryName != null)
-      queryParams.put("categoryName", apiClient.parameterToString(categoryName));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "userId", userId));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "category", category));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "offset", offset));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "sort", sort));
     
 
     
@@ -433,7 +452,7 @@ public class VariablesApi {
   }
   
   /**
-   * Set variable
+   * Create Variables
    * Allows the client to create a new variable in the `variables` table.
    * @param variableName Original name for the variable.
    * @return void
@@ -451,7 +470,7 @@ public class VariablesApi {
     String path = "/variables".replaceAll("\\{format\\}","json");
 
     // query params
-    Map<String, String> queryParams = new HashMap<String, String>();
+    List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
@@ -518,18 +537,18 @@ public class VariablesApi {
       .replaceAll("\\{" + "search" + "\\}", apiClient.escapeString(search.toString()));
 
     // query params
-    Map<String, String> queryParams = new HashMap<String, String>();
+    List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    if (categoryName != null)
-      queryParams.put("categoryName", apiClient.parameterToString(categoryName));
-    if (source != null)
-      queryParams.put("source", apiClient.parameterToString(source));
-    if (limit != null)
-      queryParams.put("limit", apiClient.parameterToString(limit));
-    if (offset != null)
-      queryParams.put("offset", apiClient.parameterToString(offset));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "categoryName", categoryName));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "source", source));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "offset", offset));
     
 
     
@@ -589,7 +608,7 @@ public class VariablesApi {
       .replaceAll("\\{" + "variableName" + "\\}", apiClient.escapeString(variableName.toString()));
 
     // query params
-    Map<String, String> queryParams = new HashMap<String, String>();
+    List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 

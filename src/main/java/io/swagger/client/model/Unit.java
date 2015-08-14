@@ -18,7 +18,7 @@ public class Unit  {
   private CategoryEnum category = null;
   private Double minimum = null;
   private Double maximum = null;
-  private List<ConversionStep> conversionSteps = new ArrayList<ConversionStep>() ;
+  private List<ConversionStep> conversionSteps = new ArrayList<ConversionStep>();
 
   
   /**

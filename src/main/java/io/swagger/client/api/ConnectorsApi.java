@@ -3,6 +3,7 @@ package io.swagger.client.api;
 import io.swagger.client.ApiException;
 import io.swagger.client.ApiClient;
 import io.swagger.client.Configuration;
+import io.swagger.client.Pair;
 
 import io.swagger.client.model.*;
 
@@ -52,7 +53,7 @@ public class ConnectorsApi {
     String path = "/connectors/list".replaceAll("\\{format\\}","json");
 
     // query params
-    Map<String, String> queryParams = new HashMap<String, String>();
+    List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
@@ -115,7 +116,7 @@ public class ConnectorsApi {
       .replaceAll("\\{" + "connector" + "\\}", apiClient.escapeString(connector.toString()));
 
     // query params
-    Map<String, String> queryParams = new HashMap<String, String>();
+    List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
@@ -196,16 +197,16 @@ public class ConnectorsApi {
       .replaceAll("\\{" + "connector" + "\\}", apiClient.escapeString(connector.toString()));
 
     // query params
-    Map<String, String> queryParams = new HashMap<String, String>();
+    List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    if (url != null)
-      queryParams.put("url", apiClient.parameterToString(url));
-    if (parameters != null)
-      queryParams.put("parameters", apiClient.parameterToString(parameters));
-    if (usePopup != null)
-      queryParams.put("usePopup", apiClient.parameterToString(usePopup));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "url", url));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "parameters", parameters));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "usePopup", usePopup));
     
 
     
@@ -301,22 +302,22 @@ public class ConnectorsApi {
       .replaceAll("\\{" + "connector" + "\\}", apiClient.escapeString(connector.toString()));
 
     // query params
-    Map<String, String> queryParams = new HashMap<String, String>();
+    List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    if (displayName != null)
-      queryParams.put("displayName", apiClient.parameterToString(displayName));
-    if (key != null)
-      queryParams.put("key", apiClient.parameterToString(key));
-    if (usePopup != null)
-      queryParams.put("usePopup", apiClient.parameterToString(usePopup));
-    if (type != null)
-      queryParams.put("type", apiClient.parameterToString(type));
-    if (placeholder != null)
-      queryParams.put("placeholder", apiClient.parameterToString(placeholder));
-    if (defaultValue != null)
-      queryParams.put("defaultValue", apiClient.parameterToString(defaultValue));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "displayName", displayName));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "key", key));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "usePopup", usePopup));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "type", type));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "placeholder", placeholder));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "defaultValue", defaultValue));
     
 
     
@@ -376,7 +377,7 @@ public class ConnectorsApi {
       .replaceAll("\\{" + "connector" + "\\}", apiClient.escapeString(connector.toString()));
 
     // query params
-    Map<String, String> queryParams = new HashMap<String, String>();
+    List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
@@ -439,7 +440,7 @@ public class ConnectorsApi {
       .replaceAll("\\{" + "connector" + "\\}", apiClient.escapeString(connector.toString()));
 
     // query params
-    Map<String, String> queryParams = new HashMap<String, String>();
+    List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
@@ -502,7 +503,7 @@ public class ConnectorsApi {
       .replaceAll("\\{" + "connector" + "\\}", apiClient.escapeString(connector.toString()));
 
     // query params
-    Map<String, String> queryParams = new HashMap<String, String>();
+    List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 

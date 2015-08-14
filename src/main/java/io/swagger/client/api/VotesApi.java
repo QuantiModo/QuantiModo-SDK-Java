@@ -9,10 +9,7 @@ import io.swagger.client.model.*;
 
 import java.util.*;
 
-import io.swagger.client.model.User;
-import io.swagger.client.model.UserTokenRequest;
-import io.swagger.client.model.UserTokenFailedResponse;
-import io.swagger.client.model.UserTokenSuccessfulResponse;
+import io.swagger.client.model.CommonResponse;
 
 import com.sun.jersey.multipart.FormDataMultiPart;
 import com.sun.jersey.multipart.file.FileDataBodyPart;
@@ -23,14 +20,14 @@ import java.io.File;
 import java.util.Map;
 import java.util.HashMap;
 
-public class UserApi {
+public class VotesApi {
   private ApiClient apiClient;
 
-  public UserApi() {
+  public VotesApi() {
     this(Configuration.getDefaultApiClient());
   }
 
-  public UserApi(ApiClient apiClient) {
+  public VotesApi(ApiClient apiClient) {
     this.apiClient = apiClient;
   }
 
@@ -44,22 +41,41 @@ public class UserApi {
 
   
   /**
-   * Get all available units for variableGet authenticated user
-   * Returns user info for the currently authenticated user.
-   * @return User
+   * Post or update vote
+   * This is to enable users to indicate their opinion on the plausibility of a causal relationship between a treatment and outcome. QuantiModo incorporates crowd-sourced plausibility estimations into their algorithm. This is done allowing user to indicate their view of the plausibility of each relationship with thumbs up/down buttons placed next to each prediction.
+   * @param cause Cause variable name
+   * @param effect Effect variable name
+   * @param vote Vote: 0 (for implausible) or 1 (for plausible)
+   * @return CommonResponse
    */
-  public User userMeGet () throws ApiException {
+  public CommonResponse v1VotesPost (String cause, String effect, Boolean vote) throws ApiException {
     Object postBody = null;
+    
+    // verify the required parameter 'cause' is set
+    if (cause == null) {
+       throw new ApiException(400, "Missing the required parameter 'cause' when calling v1VotesPost");
+    }
+    
+    // verify the required parameter 'effect' is set
+    if (effect == null) {
+       throw new ApiException(400, "Missing the required parameter 'effect' when calling v1VotesPost");
+    }
     
 
     // create path and map variables
-    String path = "/user/me".replaceAll("\\{format\\}","json");
+    String path = "/v1/votes".replaceAll("\\{format\\}","json");
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "cause", cause));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "effect", effect));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "vote", vote));
     
 
     
@@ -87,9 +103,9 @@ public class UserApi {
 
     try {
       String[] authNames = new String[] { "oauth2" };
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, accept, contentType, authNames);
+      String response = apiClient.invokeAPI(path, "POST", queryParams, postBody, headerParams, formParams, accept, contentType, authNames);
       if(response != null){
-        return (User) apiClient.deserialize(response, "", User.class);
+        return (CommonResponse) apiClient.deserialize(response, "", CommonResponse.class);
       }
       else {
         return null;
@@ -100,35 +116,38 @@ public class UserApi {
   }
   
   /**
-   * Get user tokens for existing users, create new users
-   * Get user tokens for existing users, create new users
-   * @param organizationId Organization ID
-   * @param body Provides organization token and user ID
-   * @return UserTokenSuccessfulResponse
+   * Delete vote
+   * Delete previously posted vote
+   * @param cause Cause variable name
+   * @param effect Effect variable name
+   * @return CommonResponse
    */
-  public UserTokenSuccessfulResponse v1OrganizationsOrganizationIdUsersPost (Integer organizationId, UserTokenRequest body) throws ApiException {
-    Object postBody = body;
+  public CommonResponse v1VotesDeletePost (String cause, String effect) throws ApiException {
+    Object postBody = null;
     
-    // verify the required parameter 'organizationId' is set
-    if (organizationId == null) {
-       throw new ApiException(400, "Missing the required parameter 'organizationId' when calling v1OrganizationsOrganizationIdUsersPost");
+    // verify the required parameter 'cause' is set
+    if (cause == null) {
+       throw new ApiException(400, "Missing the required parameter 'cause' when calling v1VotesDeletePost");
     }
     
-    // verify the required parameter 'body' is set
-    if (body == null) {
-       throw new ApiException(400, "Missing the required parameter 'body' when calling v1OrganizationsOrganizationIdUsersPost");
+    // verify the required parameter 'effect' is set
+    if (effect == null) {
+       throw new ApiException(400, "Missing the required parameter 'effect' when calling v1VotesDeletePost");
     }
     
 
     // create path and map variables
-    String path = "/v1/organizations/{organizationId}/users".replaceAll("\\{format\\}","json")
-      .replaceAll("\\{" + "organizationId" + "\\}", apiClient.escapeString(organizationId.toString()));
+    String path = "/v1/votes/delete".replaceAll("\\{format\\}","json");
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "cause", cause));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "effect", effect));
     
 
     
@@ -155,10 +174,10 @@ public class UserApi {
     }
 
     try {
-      String[] authNames = new String[] {  };
+      String[] authNames = new String[] { "oauth2" };
       String response = apiClient.invokeAPI(path, "POST", queryParams, postBody, headerParams, formParams, accept, contentType, authNames);
       if(response != null){
-        return (UserTokenSuccessfulResponse) apiClient.deserialize(response, "", UserTokenSuccessfulResponse.class);
+        return (CommonResponse) apiClient.deserialize(response, "", CommonResponse.class);
       }
       else {
         return null;

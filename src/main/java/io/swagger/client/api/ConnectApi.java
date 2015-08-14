@@ -3,6 +3,7 @@ package io.swagger.client.api;
 import io.swagger.client.ApiException;
 import io.swagger.client.ApiClient;
 import io.swagger.client.Configuration;
+import io.swagger.client.Pair;
 
 import io.swagger.client.model.*;
 
@@ -47,22 +48,17 @@ public class ConnectApi {
   public void v1ConnectJsGet (String t) throws ApiException {
     Object postBody = null;
     
-    // verify the required parameter 't' is set
-    if (t == null) {
-       throw new ApiException(400, "Missing the required parameter 't' when calling v1ConnectJsGet");
-    }
-    
 
     // create path and map variables
     String path = "/v1/connect.js".replaceAll("\\{format\\}","json");
 
     // query params
-    Map<String, String> queryParams = new HashMap<String, String>();
+    List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    if (t != null)
-      queryParams.put("t", apiClient.parameterToString(t));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "t", t));
     
 
     
@@ -121,12 +117,12 @@ public class ConnectApi {
     String path = "/v1/connect/mobile".replaceAll("\\{format\\}","json");
 
     // query params
-    Map<String, String> queryParams = new HashMap<String, String>();
+    List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, String> formParams = new HashMap<String, String>();
 
-    if (t != null)
-      queryParams.put("t", apiClient.parameterToString(t));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "t", t));
     
 
     
