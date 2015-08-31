@@ -4,6 +4,7 @@ import io.swagger.client.ApiException;
 import io.swagger.client.ApiClient;
 import io.swagger.client.Configuration;
 import io.swagger.client.Pair;
+import io.swagger.client.TypeRef;
 
 import io.swagger.client.model.*;
 
@@ -11,15 +12,11 @@ import java.util.*;
 
 import io.swagger.client.model.Pairs;
 
-import com.sun.jersey.multipart.FormDataMultiPart;
-import com.sun.jersey.multipart.file.FileDataBodyPart;
-
-import javax.ws.rs.core.MediaType;
-
 import java.io.File;
 import java.util.Map;
 import java.util.HashMap;
 
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-08-31T05:51:00.313Z")
 public class PairsApi {
   private ApiClient apiClient;
 
@@ -60,25 +57,25 @@ public class PairsApi {
    */
   public List<Pairs> pairsGet (String cause, String effect, String causeSource, String causeUnit, String delay, String duration, String effectSource, String effectUnit, String endTime, String startTime, Integer limit, Integer offset, Integer sort) throws ApiException {
     Object postBody = null;
+    byte[] postBinaryBody = null;
     
-    // verify the required parameter 'cause' is set
-    if (cause == null) {
-       throw new ApiException(400, "Missing the required parameter 'cause' when calling pairsGet");
-    }
-    
-    // verify the required parameter 'effect' is set
-    if (effect == null) {
-       throw new ApiException(400, "Missing the required parameter 'effect' when calling pairsGet");
-    }
-    
-
+     // verify the required parameter 'cause' is set
+     if (cause == null) {
+        throw new ApiException(400, "Missing the required parameter 'cause' when calling pairsGet");
+     }
+     
+     // verify the required parameter 'effect' is set
+     if (effect == null) {
+        throw new ApiException(400, "Missing the required parameter 'effect' when calling pairsGet");
+     }
+     
     // create path and map variables
     String path = "/pairs".replaceAll("\\{format\\}","json");
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
-    Map<String, String> formParams = new HashMap<String, String>();
+    Map<String, Object> formParams = new HashMap<String, Object>();
 
     
     queryParams.addAll(apiClient.parameterToPairs("", "cause", cause));
@@ -110,6 +107,8 @@ public class PairsApi {
 
     
 
+    
+
     final String[] accepts = {
       "application/json"
     };
@@ -120,29 +119,23 @@ public class PairsApi {
     };
     final String contentType = apiClient.selectHeaderContentType(contentTypes);
 
-    if(contentType.startsWith("multipart/form-data")) {
-      boolean hasFields = false;
-      FormDataMultiPart mp = new FormDataMultiPart();
-      
-      if(hasFields)
-        postBody = mp;
-    }
-    else {
-      
-    }
+    String[] authNames = new String[] { "oauth2" };
+    
+    
 
-    try {
-      String[] authNames = new String[] { "oauth2" };
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, accept, contentType, authNames);
-      if(response != null){
-        return (List<Pairs>) apiClient.deserialize(response, "array", Pairs.class);
-      }
-      else {
-        return null;
-      }
-    } catch (ApiException ex) {
-      throw ex;
-    }
+    
+
+    
+    
+    TypeRef returnType = new TypeRef<List<Pairs>>() {};
+    return apiClient.invokeAPI(path, "GET", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    
+    
+
+    
+    
+    
+    
   }
   
 }

@@ -4,25 +4,22 @@ import io.swagger.client.ApiException;
 import io.swagger.client.ApiClient;
 import io.swagger.client.Configuration;
 import io.swagger.client.Pair;
+import io.swagger.client.TypeRef;
 
 import io.swagger.client.model.*;
 
 import java.util.*;
 
 import io.swagger.client.model.Variable;
+import io.swagger.client.model.UserVariables;
 import io.swagger.client.model.VariableCategory;
-import io.swagger.client.model.VariableUserSettings;
 import io.swagger.client.model.VariablesNew;
-
-import com.sun.jersey.multipart.FormDataMultiPart;
-import com.sun.jersey.multipart.file.FileDataBodyPart;
-
-import javax.ws.rs.core.MediaType;
 
 import java.io.File;
 import java.util.Map;
 import java.util.HashMap;
 
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-08-31T05:51:00.313Z")
 public class VariablesApi {
   private ApiClient apiClient;
 
@@ -54,35 +51,35 @@ public class VariablesApi {
    */
   public void correlationsPost (String cause, String effect, String correlationcoefficient, String vote) throws ApiException {
     Object postBody = null;
+    byte[] postBinaryBody = null;
     
-    // verify the required parameter 'cause' is set
-    if (cause == null) {
-       throw new ApiException(400, "Missing the required parameter 'cause' when calling correlationsPost");
-    }
-    
-    // verify the required parameter 'effect' is set
-    if (effect == null) {
-       throw new ApiException(400, "Missing the required parameter 'effect' when calling correlationsPost");
-    }
-    
-    // verify the required parameter 'correlationcoefficient' is set
-    if (correlationcoefficient == null) {
-       throw new ApiException(400, "Missing the required parameter 'correlationcoefficient' when calling correlationsPost");
-    }
-    
-    // verify the required parameter 'vote' is set
-    if (vote == null) {
-       throw new ApiException(400, "Missing the required parameter 'vote' when calling correlationsPost");
-    }
-    
-
+     // verify the required parameter 'cause' is set
+     if (cause == null) {
+        throw new ApiException(400, "Missing the required parameter 'cause' when calling correlationsPost");
+     }
+     
+     // verify the required parameter 'effect' is set
+     if (effect == null) {
+        throw new ApiException(400, "Missing the required parameter 'effect' when calling correlationsPost");
+     }
+     
+     // verify the required parameter 'correlationcoefficient' is set
+     if (correlationcoefficient == null) {
+        throw new ApiException(400, "Missing the required parameter 'correlationcoefficient' when calling correlationsPost");
+     }
+     
+     // verify the required parameter 'vote' is set
+     if (vote == null) {
+        throw new ApiException(400, "Missing the required parameter 'vote' when calling correlationsPost");
+     }
+     
     // create path and map variables
     String path = "/correlations".replaceAll("\\{format\\}","json");
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
-    Map<String, String> formParams = new HashMap<String, String>();
+    Map<String, Object> formParams = new HashMap<String, Object>();
 
     
     queryParams.addAll(apiClient.parameterToPairs("", "cause", cause));
@@ -96,6 +93,8 @@ public class VariablesApi {
 
     
 
+    
+
     final String[] accepts = {
       "application/json"
     };
@@ -106,29 +105,26 @@ public class VariablesApi {
     };
     final String contentType = apiClient.selectHeaderContentType(contentTypes);
 
-    if(contentType.startsWith("multipart/form-data")) {
-      boolean hasFields = false;
-      FormDataMultiPart mp = new FormDataMultiPart();
-      
-      if(hasFields)
-        postBody = mp;
-    }
-    else {
-      
-    }
+    String[] authNames = new String[] { "oauth2" };
+    
+    
 
-    try {
-      String[] authNames = new String[] { "oauth2" };
-      String response = apiClient.invokeAPI(path, "POST", queryParams, postBody, headerParams, formParams, accept, contentType, authNames);
-      if(response != null){
-        return ;
-      }
-      else {
-        return ;
-      }
-    } catch (ApiException ex) {
-      throw ex;
-    }
+    
+
+    
+    
+    apiClient.invokeAPI(path, "POST", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, null);
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
   }
   
   /**
@@ -138,15 +134,17 @@ public class VariablesApi {
    */
   public Variable publicVariablesGet () throws ApiException {
     Object postBody = null;
+    byte[] postBinaryBody = null;
     
-
     // create path and map variables
     String path = "/public/variables".replaceAll("\\{format\\}","json");
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
-    Map<String, String> formParams = new HashMap<String, String>();
+    Map<String, Object> formParams = new HashMap<String, Object>();
+
+    
 
     
 
@@ -162,34 +160,28 @@ public class VariablesApi {
     };
     final String contentType = apiClient.selectHeaderContentType(contentTypes);
 
-    if(contentType.startsWith("multipart/form-data")) {
-      boolean hasFields = false;
-      FormDataMultiPart mp = new FormDataMultiPart();
-      
-      if(hasFields)
-        postBody = mp;
-    }
-    else {
-      
-    }
+    String[] authNames = new String[] { "oauth2" };
+    
+    
 
-    try {
-      String[] authNames = new String[] { "oauth2" };
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, accept, contentType, authNames);
-      if(response != null){
-        return (Variable) apiClient.deserialize(response, "", Variable.class);
-      }
-      else {
-        return null;
-      }
-    } catch (ApiException ex) {
-      throw ex;
-    }
+    
+
+    
+    
+    TypeRef returnType = new TypeRef<Variable>() {};
+    return apiClient.invokeAPI(path, "GET", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    
+    
+
+    
+    
+    
+    
   }
   
   /**
    * Get top 5 PUBLIC variables with the most correlations
-   * Get top 5 PUBLIC variables with the most correlations containing the entered search characters. For example, search for &#39;mood&#39; as an effect. Since &#39;Overall Mood&#39; has a lot of correlations with other variables, it should be in the autocomplete list.
+   * Get top 5 PUBLIC variables with the most correlations containing the entered search characters. For example, search for &#39;mood&#39; as an effect. Since &#39;Overall Mood&#39; has a lot of correlations with other variables, it should be in the autocomplete list.&lt;br&gt;Supported filter parameters:&lt;br&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;category&lt;/b&gt; - Category of Variable&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;
    * @param search Search query can be some fraction of a variable name.
    * @param effectOrCause Allows us to specify which column in the `correlations` table will be searched. Choices are effect or cause.
    * @param limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0.
@@ -199,13 +191,13 @@ public class VariablesApi {
    */
   public Variable publicVariablesSearchSearchGet (String search, String effectOrCause, Integer limit, Integer offset, Integer sort) throws ApiException {
     Object postBody = null;
+    byte[] postBinaryBody = null;
     
-    // verify the required parameter 'search' is set
-    if (search == null) {
-       throw new ApiException(400, "Missing the required parameter 'search' when calling publicVariablesSearchSearchGet");
-    }
-    
-
+     // verify the required parameter 'search' is set
+     if (search == null) {
+        throw new ApiException(400, "Missing the required parameter 'search' when calling publicVariablesSearchSearchGet");
+     }
+     
     // create path and map variables
     String path = "/public/variables/search/{search}".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "search" + "\\}", apiClient.escapeString(search.toString()));
@@ -213,7 +205,7 @@ public class VariablesApi {
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
-    Map<String, String> formParams = new HashMap<String, String>();
+    Map<String, Object> formParams = new HashMap<String, Object>();
 
     
     queryParams.addAll(apiClient.parameterToPairs("", "effectOrCause", effectOrCause));
@@ -227,6 +219,8 @@ public class VariablesApi {
 
     
 
+    
+
     final String[] accepts = {
       "application/json"
     };
@@ -237,29 +231,84 @@ public class VariablesApi {
     };
     final String contentType = apiClient.selectHeaderContentType(contentTypes);
 
-    if(contentType.startsWith("multipart/form-data")) {
-      boolean hasFields = false;
-      FormDataMultiPart mp = new FormDataMultiPart();
-      
-      if(hasFields)
-        postBody = mp;
-    }
-    else {
-      
-    }
+    String[] authNames = new String[] { "oauth2" };
+    
+    
 
-    try {
-      String[] authNames = new String[] { "oauth2" };
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, accept, contentType, authNames);
-      if(response != null){
-        return (Variable) apiClient.deserialize(response, "", Variable.class);
-      }
-      else {
-        return null;
-      }
-    } catch (ApiException ex) {
-      throw ex;
-    }
+    
+
+    
+    
+    TypeRef returnType = new TypeRef<Variable>() {};
+    return apiClient.invokeAPI(path, "GET", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    
+    
+
+    
+    
+    
+    
+  }
+  
+  /**
+   * Update User Settings for a Variable
+   * Users can change things like the display name for a variable. They can also change the parameters used in analysis of that variable such as the expected duration of action for a variable to have an effect, the estimated delay before the onset of action. In order to filter out erroneous data, they are able to set the maximum and minimum reasonable daily values for a variable.
+   * @param sharingData Variable user settings data
+   * @return void
+   */
+  public void v1UserVariablesPost (UserVariables sharingData) throws ApiException {
+    Object postBody = sharingData;
+    byte[] postBinaryBody = null;
+    
+     // verify the required parameter 'sharingData' is set
+     if (sharingData == null) {
+        throw new ApiException(400, "Missing the required parameter 'sharingData' when calling v1UserVariablesPost");
+     }
+     
+    // create path and map variables
+    String path = "/v1/userVariables".replaceAll("\\{format\\}","json");
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    Map<String, String> headerParams = new HashMap<String, String>();
+    Map<String, Object> formParams = new HashMap<String, Object>();
+
+    
+
+    
+
+    
+
+    final String[] accepts = {
+      "application/json"
+    };
+    final String accept = apiClient.selectHeaderAccept(accepts);
+
+    final String[] contentTypes = {
+      
+    };
+    final String contentType = apiClient.selectHeaderContentType(contentTypes);
+
+    String[] authNames = new String[] { "oauth2" };
+    
+    
+
+    
+
+    
+    
+    apiClient.invokeAPI(path, "POST", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, null);
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
   }
   
   /**
@@ -269,77 +318,17 @@ public class VariablesApi {
    */
   public List<VariableCategory> variableCategoriesGet () throws ApiException {
     Object postBody = null;
+    byte[] postBinaryBody = null;
     
-
     // create path and map variables
     String path = "/variableCategories".replaceAll("\\{format\\}","json");
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
-    Map<String, String> formParams = new HashMap<String, String>();
+    Map<String, Object> formParams = new HashMap<String, Object>();
 
     
-
-    
-
-    final String[] accepts = {
-      "application/json"
-    };
-    final String accept = apiClient.selectHeaderAccept(accepts);
-
-    final String[] contentTypes = {
-      
-    };
-    final String contentType = apiClient.selectHeaderContentType(contentTypes);
-
-    if(contentType.startsWith("multipart/form-data")) {
-      boolean hasFields = false;
-      FormDataMultiPart mp = new FormDataMultiPart();
-      
-      if(hasFields)
-        postBody = mp;
-    }
-    else {
-      
-    }
-
-    try {
-      String[] authNames = new String[] { "oauth2" };
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, accept, contentType, authNames);
-      if(response != null){
-        return (List<VariableCategory>) apiClient.deserialize(response, "array", VariableCategory.class);
-      }
-      else {
-        return null;
-      }
-    } catch (ApiException ex) {
-      throw ex;
-    }
-  }
-  
-  /**
-   * Update User Settings for a Variable
-   * Users can change things like the display name for a variable. They can also change the parameters used in analysis of that variable such as the expected duration of action for a variable to have an effect, the estimated delay before the onset of action. In order to filter out erroneous data, they are able to set the maximum and minimum reasonable daily values for a variable.
-   * @param sharingData Variable user settings data
-   * @return void
-   */
-  public void variableUserSettingsPost (VariableUserSettings sharingData) throws ApiException {
-    Object postBody = sharingData;
-    
-    // verify the required parameter 'sharingData' is set
-    if (sharingData == null) {
-       throw new ApiException(400, "Missing the required parameter 'sharingData' when calling variableUserSettingsPost");
-    }
-    
-
-    // create path and map variables
-    String path = "/variableUserSettings".replaceAll("\\{format\\}","json");
-
-    // query params
-    List<Pair> queryParams = new ArrayList<Pair>();
-    Map<String, String> headerParams = new HashMap<String, String>();
-    Map<String, String> formParams = new HashMap<String, String>();
 
     
 
@@ -355,29 +344,23 @@ public class VariablesApi {
     };
     final String contentType = apiClient.selectHeaderContentType(contentTypes);
 
-    if(contentType.startsWith("multipart/form-data")) {
-      boolean hasFields = false;
-      FormDataMultiPart mp = new FormDataMultiPart();
-      
-      if(hasFields)
-        postBody = mp;
-    }
-    else {
-      
-    }
+    String[] authNames = new String[] { "oauth2" };
+    
+    
 
-    try {
-      String[] authNames = new String[] { "oauth2" };
-      String response = apiClient.invokeAPI(path, "POST", queryParams, postBody, headerParams, formParams, accept, contentType, authNames);
-      if(response != null){
-        return ;
-      }
-      else {
-        return ;
-      }
-    } catch (ApiException ex) {
-      throw ex;
-    }
+    
+
+    
+    
+    TypeRef returnType = new TypeRef<List<VariableCategory>>() {};
+    return apiClient.invokeAPI(path, "GET", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    
+    
+
+    
+    
+    
+    
   }
   
   /**
@@ -392,15 +375,15 @@ public class VariablesApi {
    */
   public Variable variablesGet (Integer userId, String category, Integer limit, Integer offset, Integer sort) throws ApiException {
     Object postBody = null;
+    byte[] postBinaryBody = null;
     
-
     // create path and map variables
     String path = "/variables".replaceAll("\\{format\\}","json");
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
-    Map<String, String> formParams = new HashMap<String, String>();
+    Map<String, Object> formParams = new HashMap<String, Object>();
 
     
     queryParams.addAll(apiClient.parameterToPairs("", "userId", userId));
@@ -416,6 +399,8 @@ public class VariablesApi {
 
     
 
+    
+
     final String[] accepts = {
       "application/json"
     };
@@ -426,29 +411,23 @@ public class VariablesApi {
     };
     final String contentType = apiClient.selectHeaderContentType(contentTypes);
 
-    if(contentType.startsWith("multipart/form-data")) {
-      boolean hasFields = false;
-      FormDataMultiPart mp = new FormDataMultiPart();
-      
-      if(hasFields)
-        postBody = mp;
-    }
-    else {
-      
-    }
+    String[] authNames = new String[] { "basicAuth", "oauth2" };
+    
+    
 
-    try {
-      String[] authNames = new String[] { "basicAuth", "oauth2" };
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, accept, contentType, authNames);
-      if(response != null){
-        return (Variable) apiClient.deserialize(response, "", Variable.class);
-      }
-      else {
-        return null;
-      }
-    } catch (ApiException ex) {
-      throw ex;
-    }
+    
+
+    
+    
+    TypeRef returnType = new TypeRef<Variable>() {};
+    return apiClient.invokeAPI(path, "GET", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    
+    
+
+    
+    
+    
+    
   }
   
   /**
@@ -459,20 +438,22 @@ public class VariablesApi {
    */
   public void variablesPost (VariablesNew variableName) throws ApiException {
     Object postBody = variableName;
+    byte[] postBinaryBody = null;
     
-    // verify the required parameter 'variableName' is set
-    if (variableName == null) {
-       throw new ApiException(400, "Missing the required parameter 'variableName' when calling variablesPost");
-    }
-    
-
+     // verify the required parameter 'variableName' is set
+     if (variableName == null) {
+        throw new ApiException(400, "Missing the required parameter 'variableName' when calling variablesPost");
+     }
+     
     // create path and map variables
     String path = "/variables".replaceAll("\\{format\\}","json");
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
-    Map<String, String> formParams = new HashMap<String, String>();
+    Map<String, Object> formParams = new HashMap<String, Object>();
+
+    
 
     
 
@@ -488,29 +469,24 @@ public class VariablesApi {
     };
     final String contentType = apiClient.selectHeaderContentType(contentTypes);
 
-    if(contentType.startsWith("multipart/form-data")) {
-      boolean hasFields = false;
-      FormDataMultiPart mp = new FormDataMultiPart();
-      
-      if(hasFields)
-        postBody = mp;
-    }
-    else {
-      
-    }
+    String[] authNames = new String[] { "oauth2" };
+    
+    
 
-    try {
-      String[] authNames = new String[] { "oauth2" };
-      String response = apiClient.invokeAPI(path, "POST", queryParams, postBody, headerParams, formParams, accept, contentType, authNames);
-      if(response != null){
-        return ;
-      }
-      else {
-        return ;
-      }
-    } catch (ApiException ex) {
-      throw ex;
-    }
+    
+
+    
+    
+    apiClient.invokeAPI(path, "POST", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, null);
+    
+    
+
+    
+    
+    
+    
+    
+    
   }
   
   /**
@@ -525,13 +501,13 @@ public class VariablesApi {
    */
   public List<Variable> variablesSearchSearchGet (String search, String categoryName, String source, Integer limit, Integer offset) throws ApiException {
     Object postBody = null;
+    byte[] postBinaryBody = null;
     
-    // verify the required parameter 'search' is set
-    if (search == null) {
-       throw new ApiException(400, "Missing the required parameter 'search' when calling variablesSearchSearchGet");
-    }
-    
-
+     // verify the required parameter 'search' is set
+     if (search == null) {
+        throw new ApiException(400, "Missing the required parameter 'search' when calling variablesSearchSearchGet");
+     }
+     
     // create path and map variables
     String path = "/variables/search/{search}".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "search" + "\\}", apiClient.escapeString(search.toString()));
@@ -539,7 +515,7 @@ public class VariablesApi {
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
-    Map<String, String> formParams = new HashMap<String, String>();
+    Map<String, Object> formParams = new HashMap<String, Object>();
 
     
     queryParams.addAll(apiClient.parameterToPairs("", "categoryName", categoryName));
@@ -553,6 +529,8 @@ public class VariablesApi {
 
     
 
+    
+
     final String[] accepts = {
       "application/json"
     };
@@ -563,29 +541,23 @@ public class VariablesApi {
     };
     final String contentType = apiClient.selectHeaderContentType(contentTypes);
 
-    if(contentType.startsWith("multipart/form-data")) {
-      boolean hasFields = false;
-      FormDataMultiPart mp = new FormDataMultiPart();
-      
-      if(hasFields)
-        postBody = mp;
-    }
-    else {
-      
-    }
+    String[] authNames = new String[] { "oauth2" };
+    
+    
 
-    try {
-      String[] authNames = new String[] { "oauth2" };
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, accept, contentType, authNames);
-      if(response != null){
-        return (List<Variable>) apiClient.deserialize(response, "array", Variable.class);
-      }
-      else {
-        return null;
-      }
-    } catch (ApiException ex) {
-      throw ex;
-    }
+    
+
+    
+    
+    TypeRef returnType = new TypeRef<List<Variable>>() {};
+    return apiClient.invokeAPI(path, "GET", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    
+    
+
+    
+    
+    
+    
   }
   
   /**
@@ -596,13 +568,13 @@ public class VariablesApi {
    */
   public Variable variablesVariableNameGet (String variableName) throws ApiException {
     Object postBody = null;
+    byte[] postBinaryBody = null;
     
-    // verify the required parameter 'variableName' is set
-    if (variableName == null) {
-       throw new ApiException(400, "Missing the required parameter 'variableName' when calling variablesVariableNameGet");
-    }
-    
-
+     // verify the required parameter 'variableName' is set
+     if (variableName == null) {
+        throw new ApiException(400, "Missing the required parameter 'variableName' when calling variablesVariableNameGet");
+     }
+     
     // create path and map variables
     String path = "/variables/{variableName}".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "variableName" + "\\}", apiClient.escapeString(variableName.toString()));
@@ -610,7 +582,9 @@ public class VariablesApi {
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
-    Map<String, String> formParams = new HashMap<String, String>();
+    Map<String, Object> formParams = new HashMap<String, Object>();
+
+    
 
     
 
@@ -626,29 +600,23 @@ public class VariablesApi {
     };
     final String contentType = apiClient.selectHeaderContentType(contentTypes);
 
-    if(contentType.startsWith("multipart/form-data")) {
-      boolean hasFields = false;
-      FormDataMultiPart mp = new FormDataMultiPart();
-      
-      if(hasFields)
-        postBody = mp;
-    }
-    else {
-      
-    }
+    String[] authNames = new String[] { "oauth2" };
+    
+    
 
-    try {
-      String[] authNames = new String[] { "oauth2" };
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, accept, contentType, authNames);
-      if(response != null){
-        return (Variable) apiClient.deserialize(response, "", Variable.class);
-      }
-      else {
-        return null;
-      }
-    } catch (ApiException ex) {
-      throw ex;
-    }
+    
+
+    
+    
+    TypeRef returnType = new TypeRef<Variable>() {};
+    return apiClient.invokeAPI(path, "GET", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    
+    
+
+    
+    
+    
+    
   }
   
 }

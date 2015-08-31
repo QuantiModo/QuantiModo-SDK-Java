@@ -1,12 +1,15 @@
 package io.swagger.client.model;
 
 
+
+
 import io.swagger.annotations.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 @ApiModel(description = "")
-public class VariableCategory  {
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-08-31T05:51:00.313Z")
+public class VariableCategory   {
   
   private String name = null;
 

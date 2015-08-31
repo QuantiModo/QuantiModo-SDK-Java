@@ -4,6 +4,7 @@ import io.swagger.client.ApiException;
 import io.swagger.client.ApiClient;
 import io.swagger.client.Configuration;
 import io.swagger.client.Pair;
+import io.swagger.client.TypeRef;
 
 import io.swagger.client.model.*;
 
@@ -11,15 +12,11 @@ import java.util.*;
 
 import io.swagger.client.model.CommonResponse;
 
-import com.sun.jersey.multipart.FormDataMultiPart;
-import com.sun.jersey.multipart.file.FileDataBodyPart;
-
-import javax.ws.rs.core.MediaType;
-
 import java.io.File;
 import java.util.Map;
 import java.util.HashMap;
 
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-08-31T05:51:00.313Z")
 public class VotesApi {
   private ApiClient apiClient;
 
@@ -50,25 +47,25 @@ public class VotesApi {
    */
   public CommonResponse v1VotesPost (String cause, String effect, Boolean vote) throws ApiException {
     Object postBody = null;
+    byte[] postBinaryBody = null;
     
-    // verify the required parameter 'cause' is set
-    if (cause == null) {
-       throw new ApiException(400, "Missing the required parameter 'cause' when calling v1VotesPost");
-    }
-    
-    // verify the required parameter 'effect' is set
-    if (effect == null) {
-       throw new ApiException(400, "Missing the required parameter 'effect' when calling v1VotesPost");
-    }
-    
-
+     // verify the required parameter 'cause' is set
+     if (cause == null) {
+        throw new ApiException(400, "Missing the required parameter 'cause' when calling v1VotesPost");
+     }
+     
+     // verify the required parameter 'effect' is set
+     if (effect == null) {
+        throw new ApiException(400, "Missing the required parameter 'effect' when calling v1VotesPost");
+     }
+     
     // create path and map variables
     String path = "/v1/votes".replaceAll("\\{format\\}","json");
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
-    Map<String, String> formParams = new HashMap<String, String>();
+    Map<String, Object> formParams = new HashMap<String, Object>();
 
     
     queryParams.addAll(apiClient.parameterToPairs("", "cause", cause));
@@ -80,6 +77,8 @@ public class VotesApi {
 
     
 
+    
+
     final String[] accepts = {
       "application/json"
     };
@@ -90,29 +89,23 @@ public class VotesApi {
     };
     final String contentType = apiClient.selectHeaderContentType(contentTypes);
 
-    if(contentType.startsWith("multipart/form-data")) {
-      boolean hasFields = false;
-      FormDataMultiPart mp = new FormDataMultiPart();
-      
-      if(hasFields)
-        postBody = mp;
-    }
-    else {
-      
-    }
+    String[] authNames = new String[] { "oauth2" };
+    
+    
 
-    try {
-      String[] authNames = new String[] { "oauth2" };
-      String response = apiClient.invokeAPI(path, "POST", queryParams, postBody, headerParams, formParams, accept, contentType, authNames);
-      if(response != null){
-        return (CommonResponse) apiClient.deserialize(response, "", CommonResponse.class);
-      }
-      else {
-        return null;
-      }
-    } catch (ApiException ex) {
-      throw ex;
-    }
+    
+
+    
+    
+    TypeRef returnType = new TypeRef<CommonResponse>() {};
+    return apiClient.invokeAPI(path, "POST", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    
+    
+
+    
+    
+    
+    
   }
   
   /**
@@ -124,30 +117,32 @@ public class VotesApi {
    */
   public CommonResponse v1VotesDeletePost (String cause, String effect) throws ApiException {
     Object postBody = null;
+    byte[] postBinaryBody = null;
     
-    // verify the required parameter 'cause' is set
-    if (cause == null) {
-       throw new ApiException(400, "Missing the required parameter 'cause' when calling v1VotesDeletePost");
-    }
-    
-    // verify the required parameter 'effect' is set
-    if (effect == null) {
-       throw new ApiException(400, "Missing the required parameter 'effect' when calling v1VotesDeletePost");
-    }
-    
-
+     // verify the required parameter 'cause' is set
+     if (cause == null) {
+        throw new ApiException(400, "Missing the required parameter 'cause' when calling v1VotesDeletePost");
+     }
+     
+     // verify the required parameter 'effect' is set
+     if (effect == null) {
+        throw new ApiException(400, "Missing the required parameter 'effect' when calling v1VotesDeletePost");
+     }
+     
     // create path and map variables
     String path = "/v1/votes/delete".replaceAll("\\{format\\}","json");
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
-    Map<String, String> formParams = new HashMap<String, String>();
+    Map<String, Object> formParams = new HashMap<String, Object>();
 
     
     queryParams.addAll(apiClient.parameterToPairs("", "cause", cause));
     
     queryParams.addAll(apiClient.parameterToPairs("", "effect", effect));
+    
+
     
 
     
@@ -162,29 +157,23 @@ public class VotesApi {
     };
     final String contentType = apiClient.selectHeaderContentType(contentTypes);
 
-    if(contentType.startsWith("multipart/form-data")) {
-      boolean hasFields = false;
-      FormDataMultiPart mp = new FormDataMultiPart();
-      
-      if(hasFields)
-        postBody = mp;
-    }
-    else {
-      
-    }
+    String[] authNames = new String[] { "oauth2" };
+    
+    
 
-    try {
-      String[] authNames = new String[] { "oauth2" };
-      String response = apiClient.invokeAPI(path, "POST", queryParams, postBody, headerParams, formParams, accept, contentType, authNames);
-      if(response != null){
-        return (CommonResponse) apiClient.deserialize(response, "", CommonResponse.class);
-      }
-      else {
-        return null;
-      }
-    } catch (ApiException ex) {
-      throw ex;
-    }
+    
+
+    
+    
+    TypeRef returnType = new TypeRef<CommonResponse>() {};
+    return apiClient.invokeAPI(path, "POST", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    
+    
+
+    
+    
+    
+    
   }
   
 }

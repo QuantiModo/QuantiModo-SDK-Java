@@ -2,12 +2,15 @@ package io.swagger.client.model;
 
 import io.swagger.client.model.UserTokenSuccessfulResponseInnerUserField;
 
+
+
 import io.swagger.annotations.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 @ApiModel(description = "")
-public class UserTokenSuccessfulResponse  {
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-08-31T05:51:00.313Z")
+public class UserTokenSuccessfulResponse   {
   
   private Integer code = null;
   private String message = null;

@@ -1,12 +1,15 @@
 package io.swagger.client.model;
 
 
+
+
 import io.swagger.annotations.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 @ApiModel(description = "")
-public class Connector  {
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-08-31T05:51:00.313Z")
+public class Connector   {
   
   private Integer id = null;
   private String name = null;
@@ -16,7 +19,7 @@ public class Connector  {
   private String connected = null;
   private String connectInstructions = null;
   private Integer lastUpdate = null;
-  private Integer latestData = null;
+  private Integer totalMeasurementsInLastUpdate = null;
   private Boolean noDataYet = null;
 
   
@@ -128,12 +131,12 @@ public class Connector  {
    * Number of measurements obtained during latest update
    **/
   @ApiModelProperty(required = true, value = "Number of measurements obtained during latest update")
-  @JsonProperty("latestData")
-  public Integer getLatestData() {
-    return latestData;
+  @JsonProperty("totalMeasurementsInLastUpdate")
+  public Integer getTotalMeasurementsInLastUpdate() {
+    return totalMeasurementsInLastUpdate;
   }
-  public void setLatestData(Integer latestData) {
-    this.latestData = latestData;
+  public void setTotalMeasurementsInLastUpdate(Integer totalMeasurementsInLastUpdate) {
+    this.totalMeasurementsInLastUpdate = totalMeasurementsInLastUpdate;
   }
 
   
@@ -164,7 +167,7 @@ public class Connector  {
     sb.append("  connected: ").append(connected).append("\n");
     sb.append("  connectInstructions: ").append(connectInstructions).append("\n");
     sb.append("  lastUpdate: ").append(lastUpdate).append("\n");
-    sb.append("  latestData: ").append(latestData).append("\n");
+    sb.append("  totalMeasurementsInLastUpdate: ").append(totalMeasurementsInLastUpdate).append("\n");
     sb.append("  noDataYet: ").append(noDataYet).append("\n");
     sb.append("}\n");
     return sb.toString();

@@ -1,5 +1,6 @@
 package io.swagger.client;
 
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-08-31T05:51:00.313Z")
 public class Pair {
     private String name = "";
     private String value = "";

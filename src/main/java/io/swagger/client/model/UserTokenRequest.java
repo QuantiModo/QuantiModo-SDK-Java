@@ -2,12 +2,15 @@ package io.swagger.client.model;
 
 import io.swagger.client.model.UserTokenRequestInnerUserField;
 
+
+
 import io.swagger.annotations.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 @ApiModel(description = "")
-public class UserTokenRequest  {
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-08-31T05:51:00.313Z")
+public class UserTokenRequest   {
   
   private UserTokenRequestInnerUserField user = null;
   private String organizationAccessToken = null;

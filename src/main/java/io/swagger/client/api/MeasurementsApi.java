@@ -4,6 +4,7 @@ import io.swagger.client.ApiException;
 import io.swagger.client.ApiClient;
 import io.swagger.client.Configuration;
 import io.swagger.client.Pair;
+import io.swagger.client.TypeRef;
 
 import io.swagger.client.model.*;
 
@@ -14,15 +15,11 @@ import io.swagger.client.model.Measurement;
 import io.swagger.client.model.MeasurementSet;
 import io.swagger.client.model.MeasurementRange;
 
-import com.sun.jersey.multipart.FormDataMultiPart;
-import com.sun.jersey.multipart.file.FileDataBodyPart;
-
-import javax.ws.rs.core.MediaType;
-
 import java.io.File;
 import java.util.Map;
 import java.util.HashMap;
 
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-08-31T05:51:00.313Z")
 public class MeasurementsApi {
   private ApiClient apiClient;
 
@@ -50,15 +47,17 @@ public class MeasurementsApi {
    */
   public MeasurementSource measurementSourcesGet () throws ApiException {
     Object postBody = null;
+    byte[] postBinaryBody = null;
     
-
     // create path and map variables
     String path = "/measurementSources".replaceAll("\\{format\\}","json");
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
-    Map<String, String> formParams = new HashMap<String, String>();
+    Map<String, Object> formParams = new HashMap<String, Object>();
+
+    
 
     
 
@@ -74,29 +73,23 @@ public class MeasurementsApi {
     };
     final String contentType = apiClient.selectHeaderContentType(contentTypes);
 
-    if(contentType.startsWith("multipart/form-data")) {
-      boolean hasFields = false;
-      FormDataMultiPart mp = new FormDataMultiPart();
-      
-      if(hasFields)
-        postBody = mp;
-    }
-    else {
-      
-    }
+    String[] authNames = new String[] { "oauth2" };
+    
+    
 
-    try {
-      String[] authNames = new String[] { "oauth2" };
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, accept, contentType, authNames);
-      if(response != null){
-        return (MeasurementSource) apiClient.deserialize(response, "", MeasurementSource.class);
-      }
-      else {
-        return null;
-      }
-    } catch (ApiException ex) {
-      throw ex;
-    }
+    
+
+    
+    
+    TypeRef returnType = new TypeRef<MeasurementSource>() {};
+    return apiClient.invokeAPI(path, "GET", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    
+    
+
+    
+    
+    
+    
   }
   
   /**
@@ -107,20 +100,22 @@ public class MeasurementsApi {
    */
   public void measurementSourcesPost (MeasurementSource name) throws ApiException {
     Object postBody = name;
+    byte[] postBinaryBody = null;
     
-    // verify the required parameter 'name' is set
-    if (name == null) {
-       throw new ApiException(400, "Missing the required parameter 'name' when calling measurementSourcesPost");
-    }
-    
-
+     // verify the required parameter 'name' is set
+     if (name == null) {
+        throw new ApiException(400, "Missing the required parameter 'name' when calling measurementSourcesPost");
+     }
+     
     // create path and map variables
     String path = "/measurementSources".replaceAll("\\{format\\}","json");
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
-    Map<String, String> formParams = new HashMap<String, String>();
+    Map<String, Object> formParams = new HashMap<String, Object>();
+
+    
 
     
 
@@ -136,29 +131,10 @@ public class MeasurementsApi {
     };
     final String contentType = apiClient.selectHeaderContentType(contentTypes);
 
-    if(contentType.startsWith("multipart/form-data")) {
-      boolean hasFields = false;
-      FormDataMultiPart mp = new FormDataMultiPart();
-      
-      if(hasFields)
-        postBody = mp;
-    }
-    else {
-      
-    }
-
-    try {
-      String[] authNames = new String[] { "oauth2" };
-      String response = apiClient.invokeAPI(path, "POST", queryParams, postBody, headerParams, formParams, accept, contentType, authNames);
-      if(response != null){
-        return ;
-      }
-      else {
-        return ;
-      }
-    } catch (ApiException ex) {
-      throw ex;
-    }
+    String[] authNames = new String[] { "oauth2" };
+    
+    
+    
   }
   
   /**
@@ -177,20 +153,20 @@ public class MeasurementsApi {
    */
   public Measurement measurementsGet (String variableName, String unit, String startTime, String endTime, Integer groupingWidth, String groupingTimezone, Integer limit, Integer offset, Integer sort) throws ApiException {
     Object postBody = null;
+    byte[] postBinaryBody = null;
     
-    // verify the required parameter 'variableName' is set
-    if (variableName == null) {
-       throw new ApiException(400, "Missing the required parameter 'variableName' when calling measurementsGet");
-    }
-    
-
+     // verify the required parameter 'variableName' is set
+     if (variableName == null) {
+        throw new ApiException(400, "Missing the required parameter 'variableName' when calling measurementsGet");
+     }
+     
     // create path and map variables
     String path = "/measurements".replaceAll("\\{format\\}","json");
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
-    Map<String, String> formParams = new HashMap<String, String>();
+    Map<String, Object> formParams = new HashMap<String, Object>();
 
     
     queryParams.addAll(apiClient.parameterToPairs("", "variableName", variableName));
@@ -214,6 +190,8 @@ public class MeasurementsApi {
 
     
 
+    
+
     final String[] accepts = {
       "application/json"
     };
@@ -224,29 +202,23 @@ public class MeasurementsApi {
     };
     final String contentType = apiClient.selectHeaderContentType(contentTypes);
 
-    if(contentType.startsWith("multipart/form-data")) {
-      boolean hasFields = false;
-      FormDataMultiPart mp = new FormDataMultiPart();
-      
-      if(hasFields)
-        postBody = mp;
-    }
-    else {
-      
-    }
+    String[] authNames = new String[] { "oauth2" };
+    
+    
 
-    try {
-      String[] authNames = new String[] { "oauth2" };
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, accept, contentType, authNames);
-      if(response != null){
-        return (Measurement) apiClient.deserialize(response, "", Measurement.class);
-      }
-      else {
-        return null;
-      }
-    } catch (ApiException ex) {
-      throw ex;
-    }
+    
+
+    
+    
+    TypeRef returnType = new TypeRef<Measurement>() {};
+    return apiClient.invokeAPI(path, "GET", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    
+    
+
+    
+    
+    
+    
   }
   
   /**
@@ -257,20 +229,22 @@ public class MeasurementsApi {
    */
   public void measurementsV2Post (MeasurementSet measurements) throws ApiException {
     Object postBody = measurements;
+    byte[] postBinaryBody = null;
     
-    // verify the required parameter 'measurements' is set
-    if (measurements == null) {
-       throw new ApiException(400, "Missing the required parameter 'measurements' when calling measurementsV2Post");
-    }
-    
-
+     // verify the required parameter 'measurements' is set
+     if (measurements == null) {
+        throw new ApiException(400, "Missing the required parameter 'measurements' when calling measurementsV2Post");
+     }
+     
     // create path and map variables
     String path = "/measurements/v2".replaceAll("\\{format\\}","json");
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
-    Map<String, String> formParams = new HashMap<String, String>();
+    Map<String, Object> formParams = new HashMap<String, Object>();
+
+    
 
     
 
@@ -286,29 +260,22 @@ public class MeasurementsApi {
     };
     final String contentType = apiClient.selectHeaderContentType(contentTypes);
 
-    if(contentType.startsWith("multipart/form-data")) {
-      boolean hasFields = false;
-      FormDataMultiPart mp = new FormDataMultiPart();
-      
-      if(hasFields)
-        postBody = mp;
-    }
-    else {
-      
-    }
+    String[] authNames = new String[] { "oauth2" };
+    
+    
 
-    try {
-      String[] authNames = new String[] { "oauth2" };
-      String response = apiClient.invokeAPI(path, "POST", queryParams, postBody, headerParams, formParams, accept, contentType, authNames);
-      if(response != null){
-        return ;
-      }
-      else {
-        return ;
-      }
-    } catch (ApiException ex) {
-      throw ex;
-    }
+    
+
+    
+    
+    apiClient.invokeAPI(path, "POST", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, null);
+    
+    
+
+    
+    
+    
+    
   }
   
   /**
@@ -320,20 +287,22 @@ public class MeasurementsApi {
    */
   public MeasurementRange measurementsRangeGet (String sources, Integer user) throws ApiException {
     Object postBody = null;
+    byte[] postBinaryBody = null;
     
-
     // create path and map variables
     String path = "/measurementsRange".replaceAll("\\{format\\}","json");
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
     Map<String, String> headerParams = new HashMap<String, String>();
-    Map<String, String> formParams = new HashMap<String, String>();
+    Map<String, Object> formParams = new HashMap<String, Object>();
 
     
     queryParams.addAll(apiClient.parameterToPairs("", "sources", sources));
     
     queryParams.addAll(apiClient.parameterToPairs("", "user", user));
+    
+
     
 
     
@@ -348,29 +317,23 @@ public class MeasurementsApi {
     };
     final String contentType = apiClient.selectHeaderContentType(contentTypes);
 
-    if(contentType.startsWith("multipart/form-data")) {
-      boolean hasFields = false;
-      FormDataMultiPart mp = new FormDataMultiPart();
-      
-      if(hasFields)
-        postBody = mp;
-    }
-    else {
-      
-    }
+    String[] authNames = new String[] { "oauth2" };
+    
+    
 
-    try {
-      String[] authNames = new String[] { "oauth2" };
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, accept, contentType, authNames);
-      if(response != null){
-        return (MeasurementRange) apiClient.deserialize(response, "", MeasurementRange.class);
-      }
-      else {
-        return null;
-      }
-    } catch (ApiException ex) {
-      throw ex;
-    }
+    
+
+    
+    
+    TypeRef returnType = new TypeRef<MeasurementRange>() {};
+    return apiClient.invokeAPI(path, "GET", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    
+    
+
+    
+    
+    
+    
   }
   
 }

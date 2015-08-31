@@ -3,12 +3,15 @@ package io.swagger.client.model;
 import java.util.*;
 import io.swagger.client.model.ValueObject;
 
+
+
 import io.swagger.annotations.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 @ApiModel(description = "")
-public class MeasurementSet  {
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-08-31T05:51:00.313Z")
+public class MeasurementSet   {
   
   private List<ValueObject> measurements = new ArrayList<ValueObject>();
   private String name = null;

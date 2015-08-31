@@ -4,6 +4,8 @@ import io.swagger.client.model.VariableNew;
 import java.util.ArrayList;
 import java.util.*;
 
+
+
 import io.swagger.annotations.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -12,7 +14,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * New variables
  **/
 @ApiModel(description = "New variables")
-public class VariablesNew extends ArrayList<VariableNew> {
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-08-31T05:51:00.313Z")
+public class VariablesNew extends ArrayList<VariableNew>  {
   
 
   

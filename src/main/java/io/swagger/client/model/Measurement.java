@@ -1,12 +1,15 @@
 package io.swagger.client.model;
 
 
+
+
 import io.swagger.annotations.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 @ApiModel(description = "")
-public class Measurement  {
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-08-31T05:51:00.313Z")
+public class Measurement   {
   
   private String variable = null;
   private String source = null;
@@ -14,7 +17,7 @@ public class Measurement  {
   private Double value = null;
   private String unit = null;
   private Double storedValue = null;
-  private String storedUnit = null;
+  private String storedAbbreviatedUnitName = null;
 
   
   /**
@@ -99,12 +102,12 @@ public class Measurement  {
    * Unit of measurement as originally submitted
    **/
   @ApiModelProperty(value = "Unit of measurement as originally submitted")
-  @JsonProperty("storedUnit")
-  public String getStoredUnit() {
-    return storedUnit;
+  @JsonProperty("storedAbbreviatedUnitName")
+  public String getStoredAbbreviatedUnitName() {
+    return storedAbbreviatedUnitName;
   }
-  public void setStoredUnit(String storedUnit) {
-    this.storedUnit = storedUnit;
+  public void setStoredAbbreviatedUnitName(String storedAbbreviatedUnitName) {
+    this.storedAbbreviatedUnitName = storedAbbreviatedUnitName;
   }
 
   
@@ -120,7 +123,7 @@ public class Measurement  {
     sb.append("  value: ").append(value).append("\n");
     sb.append("  unit: ").append(unit).append("\n");
     sb.append("  storedValue: ").append(storedValue).append("\n");
-    sb.append("  storedUnit: ").append(storedUnit).append("\n");
+    sb.append("  storedAbbreviatedUnitName: ").append(storedAbbreviatedUnitName).append("\n");
     sb.append("}\n");
     return sb.toString();
   }
