@@ -1,5 +1,6 @@
 package io.swagger.client.model;
 
+import io.swagger.client.StringUtil;
 import java.util.*;
 import io.swagger.client.model.ConnectorInfoHistoryItem;
 
@@ -10,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 @ApiModel(description = "")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-09-02T06:04:40.138Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-09-22T01:20:58.482Z")
 public class ConnectorInfo   {
   
   private Integer id = null;
@@ -76,11 +77,11 @@ public class ConnectorInfo   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConnectorInfo {\n");
     
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  connected: ").append(connected).append("\n");
-    sb.append("  error: ").append(error).append("\n");
-    sb.append("  history: ").append(history).append("\n");
-    sb.append("}\n");
+    sb.append("    id: ").append(StringUtil.toIndentedString(id)).append("\n");
+    sb.append("    connected: ").append(StringUtil.toIndentedString(connected)).append("\n");
+    sb.append("    error: ").append(StringUtil.toIndentedString(error)).append("\n");
+    sb.append("    history: ").append(StringUtil.toIndentedString(history)).append("\n");
+    sb.append("}");
     return sb.toString();
   }
 }

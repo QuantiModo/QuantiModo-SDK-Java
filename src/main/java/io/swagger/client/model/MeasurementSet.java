@@ -1,5 +1,6 @@
 package io.swagger.client.model;
 
+import io.swagger.client.StringUtil;
 import java.util.*;
 import io.swagger.client.model.ValueObject;
 
@@ -10,16 +11,29 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 @ApiModel(description = "")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-09-02T06:04:40.138Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-09-22T01:20:58.482Z")
 public class MeasurementSet   {
   
   private List<ValueObject> measurements = new ArrayList<ValueObject>();
   private String name = null;
   private String source = null;
   private String category = null;
-  public enum CombinationOperationEnum {
-     MEAN,  SUM, 
-  };
+
+public enum CombinationOperationEnum {
+  MEAN("MEAN"), SUM("SUM");
+
+  private String value;
+
+  CombinationOperationEnum(String value) {
+    this.value = value;
+  }
+
+  @Override
+  public String toString() {
+    return value;
+  }
+}
+
   private CombinationOperationEnum combinationOperation = null;
   private String unit = null;
 
@@ -108,13 +122,13 @@ public class MeasurementSet   {
     StringBuilder sb = new StringBuilder();
     sb.append("class MeasurementSet {\n");
     
-    sb.append("  measurements: ").append(measurements).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("  source: ").append(source).append("\n");
-    sb.append("  category: ").append(category).append("\n");
-    sb.append("  combinationOperation: ").append(combinationOperation).append("\n");
-    sb.append("  unit: ").append(unit).append("\n");
-    sb.append("}\n");
+    sb.append("    measurements: ").append(StringUtil.toIndentedString(measurements)).append("\n");
+    sb.append("    name: ").append(StringUtil.toIndentedString(name)).append("\n");
+    sb.append("    source: ").append(StringUtil.toIndentedString(source)).append("\n");
+    sb.append("    category: ").append(StringUtil.toIndentedString(category)).append("\n");
+    sb.append("    combinationOperation: ").append(StringUtil.toIndentedString(combinationOperation)).append("\n");
+    sb.append("    unit: ").append(StringUtil.toIndentedString(unit)).append("\n");
+    sb.append("}");
     return sb.toString();
   }
 }

@@ -1,5 +1,6 @@
 package io.swagger.client.model;
 
+import io.swagger.client.StringUtil;
 
 
 
@@ -8,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 @ApiModel(description = "")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-09-02T06:04:40.138Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-09-22T01:20:58.482Z")
 public class ConnectorInfoHistoryItem   {
   
   private Integer numberOfMeasurements = null;
@@ -75,11 +76,11 @@ public class ConnectorInfoHistoryItem   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConnectorInfoHistoryItem {\n");
     
-    sb.append("  numberOfMeasurements: ").append(numberOfMeasurements).append("\n");
-    sb.append("  success: ").append(success).append("\n");
-    sb.append("  message: ").append(message).append("\n");
-    sb.append("  createdAt: ").append(createdAt).append("\n");
-    sb.append("}\n");
+    sb.append("    numberOfMeasurements: ").append(StringUtil.toIndentedString(numberOfMeasurements)).append("\n");
+    sb.append("    success: ").append(StringUtil.toIndentedString(success)).append("\n");
+    sb.append("    message: ").append(StringUtil.toIndentedString(message)).append("\n");
+    sb.append("    createdAt: ").append(StringUtil.toIndentedString(createdAt)).append("\n");
+    sb.append("}");
     return sb.toString();
   }
 }

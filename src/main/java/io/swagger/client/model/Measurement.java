@@ -1,5 +1,7 @@
 package io.swagger.client.model;
 
+import io.swagger.client.StringUtil;
+import io.swagger.client.model.HumanTime;
 
 
 
@@ -8,16 +10,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 @ApiModel(description = "")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-09-02T06:04:40.138Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-09-22T01:20:58.482Z")
 public class Measurement   {
   
   private String variable = null;
   private String source = null;
   private Long timestamp = null;
+  private String startTime = null;
+  private HumanTime humanTime = null;
   private Double value = null;
   private String unit = null;
+  private Integer originalValue = null;
   private Double storedValue = null;
   private String storedAbbreviatedUnitName = null;
+  private String originalAbbreviatedUnitName = null;
+  private String abbreviatedUnitName = null;
+  private String note = null;
 
   
   /**
@@ -60,6 +68,32 @@ public class Measurement   {
 
   
   /**
+   * Start Time for the measurement event in ISO 8601
+   **/
+  @ApiModelProperty(value = "Start Time for the measurement event in ISO 8601")
+  @JsonProperty("startTime")
+  public String getStartTime() {
+    return startTime;
+  }
+  public void setStartTime(String startTime) {
+    this.startTime = startTime;
+  }
+
+  
+  /**
+   * Start Time for the measurement event in ISO 8601
+   **/
+  @ApiModelProperty(value = "Start Time for the measurement event in ISO 8601")
+  @JsonProperty("humanTime")
+  public HumanTime getHumanTime() {
+    return humanTime;
+  }
+  public void setHumanTime(HumanTime humanTime) {
+    this.humanTime = humanTime;
+  }
+
+  
+  /**
    * Converted measurement value in requested unit
    **/
   @ApiModelProperty(required = true, value = "Converted measurement value in requested unit")
@@ -82,6 +116,19 @@ public class Measurement   {
   }
   public void setUnit(String unit) {
     this.unit = unit;
+  }
+
+  
+  /**
+   * Original value
+   **/
+  @ApiModelProperty(value = "Original value")
+  @JsonProperty("originalValue")
+  public Integer getOriginalValue() {
+    return originalValue;
+  }
+  public void setOriginalValue(Integer originalValue) {
+    this.originalValue = originalValue;
   }
 
   
@@ -111,20 +158,65 @@ public class Measurement   {
   }
 
   
+  /**
+   * Original Unit of measurement as originally submitted
+   **/
+  @ApiModelProperty(value = "Original Unit of measurement as originally submitted")
+  @JsonProperty("originalAbbreviatedUnitName")
+  public String getOriginalAbbreviatedUnitName() {
+    return originalAbbreviatedUnitName;
+  }
+  public void setOriginalAbbreviatedUnitName(String originalAbbreviatedUnitName) {
+    this.originalAbbreviatedUnitName = originalAbbreviatedUnitName;
+  }
+
+  
+  /**
+   * Unit of measurement as originally submitted
+   **/
+  @ApiModelProperty(value = "Unit of measurement as originally submitted")
+  @JsonProperty("abbreviatedUnitName")
+  public String getAbbreviatedUnitName() {
+    return abbreviatedUnitName;
+  }
+  public void setAbbreviatedUnitName(String abbreviatedUnitName) {
+    this.abbreviatedUnitName = abbreviatedUnitName;
+  }
+
+  
+  /**
+   * Note of measurement
+   **/
+  @ApiModelProperty(value = "Note of measurement")
+  @JsonProperty("note")
+  public String getNote() {
+    return note;
+  }
+  public void setNote(String note) {
+    this.note = note;
+  }
+
+  
 
   @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
     sb.append("class Measurement {\n");
     
-    sb.append("  variable: ").append(variable).append("\n");
-    sb.append("  source: ").append(source).append("\n");
-    sb.append("  timestamp: ").append(timestamp).append("\n");
-    sb.append("  value: ").append(value).append("\n");
-    sb.append("  unit: ").append(unit).append("\n");
-    sb.append("  storedValue: ").append(storedValue).append("\n");
-    sb.append("  storedAbbreviatedUnitName: ").append(storedAbbreviatedUnitName).append("\n");
-    sb.append("}\n");
+    sb.append("    variable: ").append(StringUtil.toIndentedString(variable)).append("\n");
+    sb.append("    source: ").append(StringUtil.toIndentedString(source)).append("\n");
+    sb.append("    timestamp: ").append(StringUtil.toIndentedString(timestamp)).append("\n");
+    sb.append("    startTime: ").append(StringUtil.toIndentedString(startTime)).append("\n");
+    sb.append("    humanTime: ").append(StringUtil.toIndentedString(humanTime)).append("\n");
+    sb.append("    value: ").append(StringUtil.toIndentedString(value)).append("\n");
+    sb.append("    unit: ").append(StringUtil.toIndentedString(unit)).append("\n");
+    sb.append("    originalValue: ").append(StringUtil.toIndentedString(originalValue)).append("\n");
+    sb.append("    storedValue: ").append(StringUtil.toIndentedString(storedValue)).append("\n");
+    sb.append("    storedAbbreviatedUnitName: ").append(StringUtil.toIndentedString(storedAbbreviatedUnitName)).append("\n");
+    sb.append("    originalAbbreviatedUnitName: ").append(StringUtil.toIndentedString(originalAbbreviatedUnitName)).append("\n");
+    sb.append("    abbreviatedUnitName: ").append(StringUtil.toIndentedString(abbreviatedUnitName)).append("\n");
+    sb.append("    note: ").append(StringUtil.toIndentedString(note)).append("\n");
+    sb.append("}");
     return sb.toString();
   }
 }

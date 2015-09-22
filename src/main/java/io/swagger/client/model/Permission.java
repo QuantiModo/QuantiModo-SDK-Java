@@ -1,5 +1,6 @@
 package io.swagger.client.model;
 
+import io.swagger.client.StringUtil;
 
 
 
@@ -8,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 @ApiModel(description = "")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-09-02T06:04:40.138Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-09-22T01:20:58.482Z")
 public class Permission   {
   
   private Integer target = null;
@@ -117,14 +118,14 @@ public class Permission   {
     StringBuilder sb = new StringBuilder();
     sb.append("class Permission {\n");
     
-    sb.append("  target: ").append(target).append("\n");
-    sb.append("  variableName: ").append(variableName).append("\n");
-    sb.append("  minTimestamp: ").append(minTimestamp).append("\n");
-    sb.append("  maxTimestamp: ").append(maxTimestamp).append("\n");
-    sb.append("  minTimeOfDay: ").append(minTimeOfDay).append("\n");
-    sb.append("  maxTimeOfDay: ").append(maxTimeOfDay).append("\n");
-    sb.append("  week: ").append(week).append("\n");
-    sb.append("}\n");
+    sb.append("    target: ").append(StringUtil.toIndentedString(target)).append("\n");
+    sb.append("    variableName: ").append(StringUtil.toIndentedString(variableName)).append("\n");
+    sb.append("    minTimestamp: ").append(StringUtil.toIndentedString(minTimestamp)).append("\n");
+    sb.append("    maxTimestamp: ").append(StringUtil.toIndentedString(maxTimestamp)).append("\n");
+    sb.append("    minTimeOfDay: ").append(StringUtil.toIndentedString(minTimeOfDay)).append("\n");
+    sb.append("    maxTimeOfDay: ").append(StringUtil.toIndentedString(maxTimeOfDay)).append("\n");
+    sb.append("    week: ").append(StringUtil.toIndentedString(week)).append("\n");
+    sb.append("}");
     return sb.toString();
   }
 }

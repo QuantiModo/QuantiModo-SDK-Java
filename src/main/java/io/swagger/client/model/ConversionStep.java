@@ -1,5 +1,6 @@
 package io.swagger.client.model;
 
+import io.swagger.client.StringUtil;
 
 
 
@@ -8,12 +9,25 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 @ApiModel(description = "")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-09-02T06:04:40.138Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-09-22T01:20:58.482Z")
 public class ConversionStep   {
   
-  public enum OperationEnum {
-     MULTIPLY,  ADD, 
-  };
+
+public enum OperationEnum {
+  MULTIPLY("MULTIPLY"), ADD("ADD");
+
+  private String value;
+
+  OperationEnum(String value) {
+    this.value = value;
+  }
+
+  @Override
+  public String toString() {
+    return value;
+  }
+}
+
   private OperationEnum operation = null;
   private Double value = null;
 
@@ -50,9 +64,9 @@ public class ConversionStep   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConversionStep {\n");
     
-    sb.append("  operation: ").append(operation).append("\n");
-    sb.append("  value: ").append(value).append("\n");
-    sb.append("}\n");
+    sb.append("    operation: ").append(StringUtil.toIndentedString(operation)).append("\n");
+    sb.append("    value: ").append(StringUtil.toIndentedString(value)).append("\n");
+    sb.append("}");
     return sb.toString();
   }
 }

@@ -1,5 +1,6 @@
 package io.swagger.client.model;
 
+import io.swagger.client.StringUtil;
 import java.math.BigDecimal;
 
 
@@ -9,12 +10,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 @ApiModel(description = "")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-09-02T06:04:40.138Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-09-22T01:20:58.482Z")
 public class Correlation   {
   
   private BigDecimal correlationCoefficient = null;
   private String cause = null;
+  private String originalCause = null;
   private String effect = null;
+  private String originalEffect = null;
   private Double onsetDelay = null;
   private BigDecimal durationOfAction = null;
   private BigDecimal numberOfPairs = null;
@@ -25,6 +28,13 @@ public class Correlation   {
   private BigDecimal causalityFactor = null;
   private String causeCategory = null;
   private String effectCategory = null;
+  private BigDecimal valuePredictingHighOutcome = null;
+  private BigDecimal valuePredictingLowOutcome = null;
+  private BigDecimal optimalPearsonProduct = null;
+  private BigDecimal averageVote = null;
+  private BigDecimal userVote = null;
+  private String causeUnit = null;
+  private Integer causeUnitId = null;
 
   
   /**
@@ -54,6 +64,19 @@ public class Correlation   {
 
   
   /**
+   * original name of the cause.
+   **/
+  @ApiModelProperty(value = "original name of the cause.")
+  @JsonProperty("originalCause")
+  public String getOriginalCause() {
+    return originalCause;
+  }
+  public void setOriginalCause(String originalCause) {
+    this.originalCause = originalCause;
+  }
+
+  
+  /**
    * ORIGINAL variable name of the effect variable for which the user desires correlations.
    **/
   @ApiModelProperty(required = true, value = "ORIGINAL variable name of the effect variable for which the user desires correlations.")
@@ -63,6 +86,19 @@ public class Correlation   {
   }
   public void setEffect(String effect) {
     this.effect = effect;
+  }
+
+  
+  /**
+   * effect variable original name.
+   **/
+  @ApiModelProperty(value = "effect variable original name.")
+  @JsonProperty("originalEffect")
+  public String getOriginalEffect() {
+    return originalEffect;
+  }
+  public void setOriginalEffect(String originalEffect) {
+    this.originalEffect = originalEffect;
   }
 
   
@@ -196,26 +232,126 @@ public class Correlation   {
   }
 
   
+  /**
+   * cause value that predicts an above average effect value (in default unit for cause variable)
+   **/
+  @ApiModelProperty(value = "cause value that predicts an above average effect value (in default unit for cause variable)")
+  @JsonProperty("valuePredictingHighOutcome")
+  public BigDecimal getValuePredictingHighOutcome() {
+    return valuePredictingHighOutcome;
+  }
+  public void setValuePredictingHighOutcome(BigDecimal valuePredictingHighOutcome) {
+    this.valuePredictingHighOutcome = valuePredictingHighOutcome;
+  }
+
+  
+  /**
+   * cause value that predicts a below average effect value (in default unit for cause variable)
+   **/
+  @ApiModelProperty(value = "cause value that predicts a below average effect value (in default unit for cause variable)")
+  @JsonProperty("valuePredictingLowOutcome")
+  public BigDecimal getValuePredictingLowOutcome() {
+    return valuePredictingLowOutcome;
+  }
+  public void setValuePredictingLowOutcome(BigDecimal valuePredictingLowOutcome) {
+    this.valuePredictingLowOutcome = valuePredictingLowOutcome;
+  }
+
+  
+  /**
+   * Optimal Pearson Product
+   **/
+  @ApiModelProperty(value = "Optimal Pearson Product")
+  @JsonProperty("optimalPearsonProduct")
+  public BigDecimal getOptimalPearsonProduct() {
+    return optimalPearsonProduct;
+  }
+  public void setOptimalPearsonProduct(BigDecimal optimalPearsonProduct) {
+    this.optimalPearsonProduct = optimalPearsonProduct;
+  }
+
+  
+  /**
+   * Average Vote
+   **/
+  @ApiModelProperty(value = "Average Vote")
+  @JsonProperty("averageVote")
+  public BigDecimal getAverageVote() {
+    return averageVote;
+  }
+  public void setAverageVote(BigDecimal averageVote) {
+    this.averageVote = averageVote;
+  }
+
+  
+  /**
+   * User Vote
+   **/
+  @ApiModelProperty(value = "User Vote")
+  @JsonProperty("userVote")
+  public BigDecimal getUserVote() {
+    return userVote;
+  }
+  public void setUserVote(BigDecimal userVote) {
+    this.userVote = userVote;
+  }
+
+  
+  /**
+   * Unit of Cause
+   **/
+  @ApiModelProperty(value = "Unit of Cause")
+  @JsonProperty("causeUnit")
+  public String getCauseUnit() {
+    return causeUnit;
+  }
+  public void setCauseUnit(String causeUnit) {
+    this.causeUnit = causeUnit;
+  }
+
+  
+  /**
+   * Unit Id of Cause
+   **/
+  @ApiModelProperty(value = "Unit Id of Cause")
+  @JsonProperty("causeUnitId")
+  public Integer getCauseUnitId() {
+    return causeUnitId;
+  }
+  public void setCauseUnitId(Integer causeUnitId) {
+    this.causeUnitId = causeUnitId;
+  }
+
+  
 
   @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
     sb.append("class Correlation {\n");
     
-    sb.append("  correlationCoefficient: ").append(correlationCoefficient).append("\n");
-    sb.append("  cause: ").append(cause).append("\n");
-    sb.append("  effect: ").append(effect).append("\n");
-    sb.append("  onsetDelay: ").append(onsetDelay).append("\n");
-    sb.append("  durationOfAction: ").append(durationOfAction).append("\n");
-    sb.append("  numberOfPairs: ").append(numberOfPairs).append("\n");
-    sb.append("  effectSize: ").append(effectSize).append("\n");
-    sb.append("  statisticalSignificance: ").append(statisticalSignificance).append("\n");
-    sb.append("  timestamp: ").append(timestamp).append("\n");
-    sb.append("  reverseCorrelation: ").append(reverseCorrelation).append("\n");
-    sb.append("  causalityFactor: ").append(causalityFactor).append("\n");
-    sb.append("  causeCategory: ").append(causeCategory).append("\n");
-    sb.append("  effectCategory: ").append(effectCategory).append("\n");
-    sb.append("}\n");
+    sb.append("    correlationCoefficient: ").append(StringUtil.toIndentedString(correlationCoefficient)).append("\n");
+    sb.append("    cause: ").append(StringUtil.toIndentedString(cause)).append("\n");
+    sb.append("    originalCause: ").append(StringUtil.toIndentedString(originalCause)).append("\n");
+    sb.append("    effect: ").append(StringUtil.toIndentedString(effect)).append("\n");
+    sb.append("    originalEffect: ").append(StringUtil.toIndentedString(originalEffect)).append("\n");
+    sb.append("    onsetDelay: ").append(StringUtil.toIndentedString(onsetDelay)).append("\n");
+    sb.append("    durationOfAction: ").append(StringUtil.toIndentedString(durationOfAction)).append("\n");
+    sb.append("    numberOfPairs: ").append(StringUtil.toIndentedString(numberOfPairs)).append("\n");
+    sb.append("    effectSize: ").append(StringUtil.toIndentedString(effectSize)).append("\n");
+    sb.append("    statisticalSignificance: ").append(StringUtil.toIndentedString(statisticalSignificance)).append("\n");
+    sb.append("    timestamp: ").append(StringUtil.toIndentedString(timestamp)).append("\n");
+    sb.append("    reverseCorrelation: ").append(StringUtil.toIndentedString(reverseCorrelation)).append("\n");
+    sb.append("    causalityFactor: ").append(StringUtil.toIndentedString(causalityFactor)).append("\n");
+    sb.append("    causeCategory: ").append(StringUtil.toIndentedString(causeCategory)).append("\n");
+    sb.append("    effectCategory: ").append(StringUtil.toIndentedString(effectCategory)).append("\n");
+    sb.append("    valuePredictingHighOutcome: ").append(StringUtil.toIndentedString(valuePredictingHighOutcome)).append("\n");
+    sb.append("    valuePredictingLowOutcome: ").append(StringUtil.toIndentedString(valuePredictingLowOutcome)).append("\n");
+    sb.append("    optimalPearsonProduct: ").append(StringUtil.toIndentedString(optimalPearsonProduct)).append("\n");
+    sb.append("    averageVote: ").append(StringUtil.toIndentedString(averageVote)).append("\n");
+    sb.append("    userVote: ").append(StringUtil.toIndentedString(userVote)).append("\n");
+    sb.append("    causeUnit: ").append(StringUtil.toIndentedString(causeUnit)).append("\n");
+    sb.append("    causeUnitId: ").append(StringUtil.toIndentedString(causeUnitId)).append("\n");
+    sb.append("}");
     return sb.toString();
   }
 }

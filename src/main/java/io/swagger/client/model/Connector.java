@@ -1,5 +1,6 @@
 package io.swagger.client.model;
 
+import io.swagger.client.StringUtil;
 
 
 
@@ -8,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 @ApiModel(description = "")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-09-02T06:04:40.138Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-09-22T01:20:58.482Z")
 public class Connector   {
   
   private Integer id = null;
@@ -159,17 +160,17 @@ public class Connector   {
     StringBuilder sb = new StringBuilder();
     sb.append("class Connector {\n");
     
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("  displayName: ").append(displayName).append("\n");
-    sb.append("  image: ").append(image).append("\n");
-    sb.append("  getItUrl: ").append(getItUrl).append("\n");
-    sb.append("  connected: ").append(connected).append("\n");
-    sb.append("  connectInstructions: ").append(connectInstructions).append("\n");
-    sb.append("  lastUpdate: ").append(lastUpdate).append("\n");
-    sb.append("  totalMeasurementsInLastUpdate: ").append(totalMeasurementsInLastUpdate).append("\n");
-    sb.append("  noDataYet: ").append(noDataYet).append("\n");
-    sb.append("}\n");
+    sb.append("    id: ").append(StringUtil.toIndentedString(id)).append("\n");
+    sb.append("    name: ").append(StringUtil.toIndentedString(name)).append("\n");
+    sb.append("    displayName: ").append(StringUtil.toIndentedString(displayName)).append("\n");
+    sb.append("    image: ").append(StringUtil.toIndentedString(image)).append("\n");
+    sb.append("    getItUrl: ").append(StringUtil.toIndentedString(getItUrl)).append("\n");
+    sb.append("    connected: ").append(StringUtil.toIndentedString(connected)).append("\n");
+    sb.append("    connectInstructions: ").append(StringUtil.toIndentedString(connectInstructions)).append("\n");
+    sb.append("    lastUpdate: ").append(StringUtil.toIndentedString(lastUpdate)).append("\n");
+    sb.append("    totalMeasurementsInLastUpdate: ").append(StringUtil.toIndentedString(totalMeasurementsInLastUpdate)).append("\n");
+    sb.append("    noDataYet: ").append(StringUtil.toIndentedString(noDataYet)).append("\n");
+    sb.append("}");
     return sb.toString();
   }
 }

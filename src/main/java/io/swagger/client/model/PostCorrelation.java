@@ -1,5 +1,6 @@
 package io.swagger.client.model;
 
+import io.swagger.client.StringUtil;
 
 
 
@@ -8,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 @ApiModel(description = "")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-09-02T06:04:40.138Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-09-22T01:20:58.482Z")
 public class PostCorrelation   {
   
   private String cause = null;
@@ -75,11 +76,11 @@ public class PostCorrelation   {
     StringBuilder sb = new StringBuilder();
     sb.append("class PostCorrelation {\n");
     
-    sb.append("  cause: ").append(cause).append("\n");
-    sb.append("  effect: ").append(effect).append("\n");
-    sb.append("  correlation: ").append(correlation).append("\n");
-    sb.append("  vote: ").append(vote).append("\n");
-    sb.append("}\n");
+    sb.append("    cause: ").append(StringUtil.toIndentedString(cause)).append("\n");
+    sb.append("    effect: ").append(StringUtil.toIndentedString(effect)).append("\n");
+    sb.append("    correlation: ").append(StringUtil.toIndentedString(correlation)).append("\n");
+    sb.append("    vote: ").append(StringUtil.toIndentedString(vote)).append("\n");
+    sb.append("}");
     return sb.toString();
   }
 }

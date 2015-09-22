@@ -1,5 +1,6 @@
 package io.swagger.client.model;
 
+import io.swagger.client.StringUtil;
 
 
 
@@ -8,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 @ApiModel(description = "")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-09-02T06:04:40.138Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-09-22T01:20:58.482Z")
 public class MeasurementSource   {
   
   private String name = null;
@@ -33,8 +34,8 @@ public class MeasurementSource   {
     StringBuilder sb = new StringBuilder();
     sb.append("class MeasurementSource {\n");
     
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("}\n");
+    sb.append("    name: ").append(StringUtil.toIndentedString(name)).append("\n");
+    sb.append("}");
     return sb.toString();
   }
 }
