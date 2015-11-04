@@ -1,7 +1,7 @@
 package io.swagger.client.model;
 
 import io.swagger.client.StringUtil;
-import java.math.BigDecimal;
+import java.util.Date;
 
 
 
@@ -10,160 +10,45 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 @ApiModel(description = "")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-09-24T00:56:42.474Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-11-03T22:24:11.560Z")
 public class Correlation   {
   
-  private BigDecimal correlationCoefficient = null;
-  private String cause = null;
-  private String originalCause = null;
-  private String effect = null;
-  private String originalEffect = null;
-  private Double onsetDelay = null;
-  private BigDecimal durationOfAction = null;
-  private BigDecimal numberOfPairs = null;
-  private String effectSize = null;
-  private String statisticalSignificance = null;
-  private BigDecimal timestamp = null;
-  private BigDecimal reverseCorrelation = null;
-  private BigDecimal causalityFactor = null;
-  private String causeCategory = null;
-  private String effectCategory = null;
-  private BigDecimal valuePredictingHighOutcome = null;
-  private BigDecimal valuePredictingLowOutcome = null;
-  private BigDecimal optimalPearsonProduct = null;
-  private BigDecimal averageVote = null;
-  private BigDecimal userVote = null;
+  private Integer id = null;
+  private Integer timestamp = null;
+  private Integer userId = null;
+  private Float correlation = null;
+  private Integer causeId = null;
+  private Integer effectId = null;
+  private Integer onsetDelay = null;
+  private Integer durationOfAction = null;
+  private Integer numberOfPairs = null;
+  private Float valuePredictingHighOutcome = null;
+  private Float valuePredictingLowOutcome = null;
+  private Float optimalPearsonProduct = null;
+  private Float vote = null;
+  private Float statisticalSignificance = null;
   private String causeUnit = null;
   private Integer causeUnitId = null;
+  private Integer causeChanges = null;
+  private Integer effectChanges = null;
+  private Float qmScore = null;
+  private String error = null;
+  private Date createdAt = null;
+  private Date updatedAt = null;
+  private Float reversePearsonCorrelationCoefficient = null;
+  private Float predictivePearsonCorrelationCoefficient = null;
 
   
   /**
-   * Pearson correlation coefficient between cause and effect measurements
+   * id
    **/
-  @ApiModelProperty(required = true, value = "Pearson correlation coefficient between cause and effect measurements")
-  @JsonProperty("correlationCoefficient")
-  public BigDecimal getCorrelationCoefficient() {
-    return correlationCoefficient;
+  @ApiModelProperty(value = "id")
+  @JsonProperty("id")
+  public Integer getId() {
+    return id;
   }
-  public void setCorrelationCoefficient(BigDecimal correlationCoefficient) {
-    this.correlationCoefficient = correlationCoefficient;
-  }
-
-  
-  /**
-   * ORIGINAL variable name of the cause variable for which the user desires correlations.
-   **/
-  @ApiModelProperty(required = true, value = "ORIGINAL variable name of the cause variable for which the user desires correlations.")
-  @JsonProperty("cause")
-  public String getCause() {
-    return cause;
-  }
-  public void setCause(String cause) {
-    this.cause = cause;
-  }
-
-  
-  /**
-   * original name of the cause.
-   **/
-  @ApiModelProperty(value = "original name of the cause.")
-  @JsonProperty("originalCause")
-  public String getOriginalCause() {
-    return originalCause;
-  }
-  public void setOriginalCause(String originalCause) {
-    this.originalCause = originalCause;
-  }
-
-  
-  /**
-   * ORIGINAL variable name of the effect variable for which the user desires correlations.
-   **/
-  @ApiModelProperty(required = true, value = "ORIGINAL variable name of the effect variable for which the user desires correlations.")
-  @JsonProperty("effect")
-  public String getEffect() {
-    return effect;
-  }
-  public void setEffect(String effect) {
-    this.effect = effect;
-  }
-
-  
-  /**
-   * effect variable original name.
-   **/
-  @ApiModelProperty(value = "effect variable original name.")
-  @JsonProperty("originalEffect")
-  public String getOriginalEffect() {
-    return originalEffect;
-  }
-  public void setOriginalEffect(String originalEffect) {
-    this.originalEffect = originalEffect;
-  }
-
-  
-  /**
-   * User estimated or default time after cause measurement before a perceivable effect is observed
-   **/
-  @ApiModelProperty(required = true, value = "User estimated or default time after cause measurement before a perceivable effect is observed")
-  @JsonProperty("onsetDelay")
-  public Double getOnsetDelay() {
-    return onsetDelay;
-  }
-  public void setOnsetDelay(Double onsetDelay) {
-    this.onsetDelay = onsetDelay;
-  }
-
-  
-  /**
-   * Time over which the cause is expected to produce a perceivable effect following the onset delay
-   **/
-  @ApiModelProperty(required = true, value = "Time over which the cause is expected to produce a perceivable effect following the onset delay")
-  @JsonProperty("durationOfAction")
-  public BigDecimal getDurationOfAction() {
-    return durationOfAction;
-  }
-  public void setDurationOfAction(BigDecimal durationOfAction) {
-    this.durationOfAction = durationOfAction;
-  }
-
-  
-  /**
-   * Number of points that went into the correlation calculation
-   **/
-  @ApiModelProperty(required = true, value = "Number of points that went into the correlation calculation")
-  @JsonProperty("numberOfPairs")
-  public BigDecimal getNumberOfPairs() {
-    return numberOfPairs;
-  }
-  public void setNumberOfPairs(BigDecimal numberOfPairs) {
-    this.numberOfPairs = numberOfPairs;
-  }
-
-  
-  /**
-   * Magnitude of the effects of a cause indicating whether it's practically meaningful.
-   **/
-  @ApiModelProperty(value = "Magnitude of the effects of a cause indicating whether it's practically meaningful.")
-  @JsonProperty("effectSize")
-  public String getEffectSize() {
-    return effectSize;
-  }
-  public void setEffectSize(String effectSize) {
-    this.effectSize = effectSize;
-  }
-
-  
-  /**
-   * A function of the effect size and sample size
-   **/
-  @ApiModelProperty(value = "A function of the effect size and sample size")
-  @JsonProperty("statisticalSignificance")
-  public String getStatisticalSignificance() {
-    return statisticalSignificance;
-  }
-  public void setStatisticalSignificance(String statisticalSignificance) {
-    this.statisticalSignificance = statisticalSignificance;
+  public void setId(Integer id) {
+    this.id = id;
   }
 
   
@@ -172,75 +57,114 @@ public class Correlation   {
    **/
   @ApiModelProperty(required = true, value = "Time at which correlation was calculated")
   @JsonProperty("timestamp")
-  public BigDecimal getTimestamp() {
+  public Integer getTimestamp() {
     return timestamp;
   }
-  public void setTimestamp(BigDecimal timestamp) {
+  public void setTimestamp(Integer timestamp) {
     this.timestamp = timestamp;
   }
 
   
   /**
-   * Correlation when cause and effect are reversed. For any causal relationship, the forward correlation should exceed the reverse correlation.
+   * ID of user that owns this correlation
    **/
-  @ApiModelProperty(value = "Correlation when cause and effect are reversed. For any causal relationship, the forward correlation should exceed the reverse correlation.")
-  @JsonProperty("reverseCorrelation")
-  public BigDecimal getReverseCorrelation() {
-    return reverseCorrelation;
+  @ApiModelProperty(required = true, value = "ID of user that owns this correlation")
+  @JsonProperty("user_id")
+  public Integer getUserId() {
+    return userId;
   }
-  public void setReverseCorrelation(BigDecimal reverseCorrelation) {
-    this.reverseCorrelation = reverseCorrelation;
+  public void setUserId(Integer userId) {
+    this.userId = userId;
   }
 
   
   /**
-   * 
+   * Pearson correlation coefficient between cause and effect measurements
    **/
-  @ApiModelProperty(value = "")
-  @JsonProperty("causalityFactor")
-  public BigDecimal getCausalityFactor() {
-    return causalityFactor;
+  @ApiModelProperty(required = true, value = "Pearson correlation coefficient between cause and effect measurements")
+  @JsonProperty("correlation")
+  public Float getCorrelation() {
+    return correlation;
   }
-  public void setCausalityFactor(BigDecimal causalityFactor) {
-    this.causalityFactor = causalityFactor;
+  public void setCorrelation(Float correlation) {
+    this.correlation = correlation;
   }
 
   
   /**
-   * Variable category of the cause variable.
+   * variable ID of the cause variable for which the user desires correlations
    **/
-  @ApiModelProperty(value = "Variable category of the cause variable.")
-  @JsonProperty("causeCategory")
-  public String getCauseCategory() {
-    return causeCategory;
+  @ApiModelProperty(required = true, value = "variable ID of the cause variable for which the user desires correlations")
+  @JsonProperty("cause_id")
+  public Integer getCauseId() {
+    return causeId;
   }
-  public void setCauseCategory(String causeCategory) {
-    this.causeCategory = causeCategory;
+  public void setCauseId(Integer causeId) {
+    this.causeId = causeId;
   }
 
   
   /**
-   * Variable category of the effect variable.
+   * variable ID of the effect variable for which the user desires correlations
    **/
-  @ApiModelProperty(value = "Variable category of the effect variable.")
-  @JsonProperty("effectCategory")
-  public String getEffectCategory() {
-    return effectCategory;
+  @ApiModelProperty(required = true, value = "variable ID of the effect variable for which the user desires correlations")
+  @JsonProperty("effect_id")
+  public Integer getEffectId() {
+    return effectId;
   }
-  public void setEffectCategory(String effectCategory) {
-    this.effectCategory = effectCategory;
+  public void setEffectId(Integer effectId) {
+    this.effectId = effectId;
+  }
+
+  
+  /**
+   * User estimated or default time after cause measurement before a perceivable effect is observed
+   **/
+  @ApiModelProperty(required = true, value = "User estimated or default time after cause measurement before a perceivable effect is observed")
+  @JsonProperty("onset_delay")
+  public Integer getOnsetDelay() {
+    return onsetDelay;
+  }
+  public void setOnsetDelay(Integer onsetDelay) {
+    this.onsetDelay = onsetDelay;
+  }
+
+  
+  /**
+   * Time over which the cause is expected to produce a perceivable effect following the onset delay
+   **/
+  @ApiModelProperty(required = true, value = "Time over which the cause is expected to produce a perceivable effect following the onset delay")
+  @JsonProperty("duration_of_action")
+  public Integer getDurationOfAction() {
+    return durationOfAction;
+  }
+  public void setDurationOfAction(Integer durationOfAction) {
+    this.durationOfAction = durationOfAction;
+  }
+
+  
+  /**
+   * Number of points that went into the correlation calculation
+   **/
+  @ApiModelProperty(required = true, value = "Number of points that went into the correlation calculation")
+  @JsonProperty("number_of_pairs")
+  public Integer getNumberOfPairs() {
+    return numberOfPairs;
+  }
+  public void setNumberOfPairs(Integer numberOfPairs) {
+    this.numberOfPairs = numberOfPairs;
   }
 
   
   /**
    * cause value that predicts an above average effect value (in default unit for cause variable)
    **/
-  @ApiModelProperty(value = "cause value that predicts an above average effect value (in default unit for cause variable)")
-  @JsonProperty("valuePredictingHighOutcome")
-  public BigDecimal getValuePredictingHighOutcome() {
+  @ApiModelProperty(required = true, value = "cause value that predicts an above average effect value (in default unit for cause variable)")
+  @JsonProperty("value_predicting_high_outcome")
+  public Float getValuePredictingHighOutcome() {
     return valuePredictingHighOutcome;
   }
-  public void setValuePredictingHighOutcome(BigDecimal valuePredictingHighOutcome) {
+  public void setValuePredictingHighOutcome(Float valuePredictingHighOutcome) {
     this.valuePredictingHighOutcome = valuePredictingHighOutcome;
   }
 
@@ -248,12 +172,12 @@ public class Correlation   {
   /**
    * cause value that predicts a below average effect value (in default unit for cause variable)
    **/
-  @ApiModelProperty(value = "cause value that predicts a below average effect value (in default unit for cause variable)")
-  @JsonProperty("valuePredictingLowOutcome")
-  public BigDecimal getValuePredictingLowOutcome() {
+  @ApiModelProperty(required = true, value = "cause value that predicts a below average effect value (in default unit for cause variable)")
+  @JsonProperty("value_predicting_low_outcome")
+  public Float getValuePredictingLowOutcome() {
     return valuePredictingLowOutcome;
   }
-  public void setValuePredictingLowOutcome(BigDecimal valuePredictingLowOutcome) {
+  public void setValuePredictingLowOutcome(Float valuePredictingLowOutcome) {
     this.valuePredictingLowOutcome = valuePredictingLowOutcome;
   }
 
@@ -261,47 +185,47 @@ public class Correlation   {
   /**
    * Optimal Pearson Product
    **/
-  @ApiModelProperty(value = "Optimal Pearson Product")
-  @JsonProperty("optimalPearsonProduct")
-  public BigDecimal getOptimalPearsonProduct() {
+  @ApiModelProperty(required = true, value = "Optimal Pearson Product")
+  @JsonProperty("optimal_pearson_product")
+  public Float getOptimalPearsonProduct() {
     return optimalPearsonProduct;
   }
-  public void setOptimalPearsonProduct(BigDecimal optimalPearsonProduct) {
+  public void setOptimalPearsonProduct(Float optimalPearsonProduct) {
     this.optimalPearsonProduct = optimalPearsonProduct;
   }
 
   
   /**
-   * Average Vote
+   * Vote
    **/
-  @ApiModelProperty(value = "Average Vote")
-  @JsonProperty("averageVote")
-  public BigDecimal getAverageVote() {
-    return averageVote;
+  @ApiModelProperty(required = true, value = "Vote")
+  @JsonProperty("vote")
+  public Float getVote() {
+    return vote;
   }
-  public void setAverageVote(BigDecimal averageVote) {
-    this.averageVote = averageVote;
+  public void setVote(Float vote) {
+    this.vote = vote;
   }
 
   
   /**
-   * User Vote
+   * A function of the effect size and sample size
    **/
-  @ApiModelProperty(value = "User Vote")
-  @JsonProperty("userVote")
-  public BigDecimal getUserVote() {
-    return userVote;
+  @ApiModelProperty(required = true, value = "A function of the effect size and sample size")
+  @JsonProperty("statistical_significance")
+  public Float getStatisticalSignificance() {
+    return statisticalSignificance;
   }
-  public void setUserVote(BigDecimal userVote) {
-    this.userVote = userVote;
+  public void setStatisticalSignificance(Float statisticalSignificance) {
+    this.statisticalSignificance = statisticalSignificance;
   }
 
   
   /**
    * Unit of Cause
    **/
-  @ApiModelProperty(value = "Unit of Cause")
-  @JsonProperty("causeUnit")
+  @ApiModelProperty(required = true, value = "Unit of Cause")
+  @JsonProperty("cause_unit")
   public String getCauseUnit() {
     return causeUnit;
   }
@@ -311,15 +235,119 @@ public class Correlation   {
 
   
   /**
-   * Unit Id of Cause
+   * Unit ID of Cause
    **/
-  @ApiModelProperty(value = "Unit Id of Cause")
-  @JsonProperty("causeUnitId")
+  @ApiModelProperty(required = true, value = "Unit ID of Cause")
+  @JsonProperty("cause_unit_id")
   public Integer getCauseUnitId() {
     return causeUnitId;
   }
   public void setCauseUnitId(Integer causeUnitId) {
     this.causeUnitId = causeUnitId;
+  }
+
+  
+  /**
+   * Cause changes
+   **/
+  @ApiModelProperty(required = true, value = "Cause changes")
+  @JsonProperty("cause_changes")
+  public Integer getCauseChanges() {
+    return causeChanges;
+  }
+  public void setCauseChanges(Integer causeChanges) {
+    this.causeChanges = causeChanges;
+  }
+
+  
+  /**
+   * Effect changes
+   **/
+  @ApiModelProperty(required = true, value = "Effect changes")
+  @JsonProperty("effect_changes")
+  public Integer getEffectChanges() {
+    return effectChanges;
+  }
+  public void setEffectChanges(Integer effectChanges) {
+    this.effectChanges = effectChanges;
+  }
+
+  
+  /**
+   * QM Score
+   **/
+  @ApiModelProperty(required = true, value = "QM Score")
+  @JsonProperty("qm_score")
+  public Float getQmScore() {
+    return qmScore;
+  }
+  public void setQmScore(Float qmScore) {
+    this.qmScore = qmScore;
+  }
+
+  
+  /**
+   * error
+   **/
+  @ApiModelProperty(required = true, value = "error")
+  @JsonProperty("error")
+  public String getError() {
+    return error;
+  }
+  public void setError(String error) {
+    this.error = error;
+  }
+
+  
+  /**
+   * created_at
+   **/
+  @ApiModelProperty(value = "created_at")
+  @JsonProperty("created_at")
+  public Date getCreatedAt() {
+    return createdAt;
+  }
+  public void setCreatedAt(Date createdAt) {
+    this.createdAt = createdAt;
+  }
+
+  
+  /**
+   * updated_at
+   **/
+  @ApiModelProperty(value = "updated_at")
+  @JsonProperty("updated_at")
+  public Date getUpdatedAt() {
+    return updatedAt;
+  }
+  public void setUpdatedAt(Date updatedAt) {
+    this.updatedAt = updatedAt;
+  }
+
+  
+  /**
+   * Correlation when cause and effect are reversed. For any causal relationship, the forward correlation should exceed the reverse correlation
+   **/
+  @ApiModelProperty(required = true, value = "Correlation when cause and effect are reversed. For any causal relationship, the forward correlation should exceed the reverse correlation")
+  @JsonProperty("reverse_pearson_correlation_coefficient")
+  public Float getReversePearsonCorrelationCoefficient() {
+    return reversePearsonCorrelationCoefficient;
+  }
+  public void setReversePearsonCorrelationCoefficient(Float reversePearsonCorrelationCoefficient) {
+    this.reversePearsonCorrelationCoefficient = reversePearsonCorrelationCoefficient;
+  }
+
+  
+  /**
+   * Predictive Pearson Correlation Coefficient
+   **/
+  @ApiModelProperty(required = true, value = "Predictive Pearson Correlation Coefficient")
+  @JsonProperty("predictive_pearson_correlation_coefficient")
+  public Float getPredictivePearsonCorrelationCoefficient() {
+    return predictivePearsonCorrelationCoefficient;
+  }
+  public void setPredictivePearsonCorrelationCoefficient(Float predictivePearsonCorrelationCoefficient) {
+    this.predictivePearsonCorrelationCoefficient = predictivePearsonCorrelationCoefficient;
   }
 
   
@@ -329,28 +357,30 @@ public class Correlation   {
     StringBuilder sb = new StringBuilder();
     sb.append("class Correlation {\n");
     
-    sb.append("    correlationCoefficient: ").append(StringUtil.toIndentedString(correlationCoefficient)).append("\n");
-    sb.append("    cause: ").append(StringUtil.toIndentedString(cause)).append("\n");
-    sb.append("    originalCause: ").append(StringUtil.toIndentedString(originalCause)).append("\n");
-    sb.append("    effect: ").append(StringUtil.toIndentedString(effect)).append("\n");
-    sb.append("    originalEffect: ").append(StringUtil.toIndentedString(originalEffect)).append("\n");
+    sb.append("    id: ").append(StringUtil.toIndentedString(id)).append("\n");
+    sb.append("    timestamp: ").append(StringUtil.toIndentedString(timestamp)).append("\n");
+    sb.append("    userId: ").append(StringUtil.toIndentedString(userId)).append("\n");
+    sb.append("    correlation: ").append(StringUtil.toIndentedString(correlation)).append("\n");
+    sb.append("    causeId: ").append(StringUtil.toIndentedString(causeId)).append("\n");
+    sb.append("    effectId: ").append(StringUtil.toIndentedString(effectId)).append("\n");
     sb.append("    onsetDelay: ").append(StringUtil.toIndentedString(onsetDelay)).append("\n");
     sb.append("    durationOfAction: ").append(StringUtil.toIndentedString(durationOfAction)).append("\n");
     sb.append("    numberOfPairs: ").append(StringUtil.toIndentedString(numberOfPairs)).append("\n");
-    sb.append("    effectSize: ").append(StringUtil.toIndentedString(effectSize)).append("\n");
-    sb.append("    statisticalSignificance: ").append(StringUtil.toIndentedString(statisticalSignificance)).append("\n");
-    sb.append("    timestamp: ").append(StringUtil.toIndentedString(timestamp)).append("\n");
-    sb.append("    reverseCorrelation: ").append(StringUtil.toIndentedString(reverseCorrelation)).append("\n");
-    sb.append("    causalityFactor: ").append(StringUtil.toIndentedString(causalityFactor)).append("\n");
-    sb.append("    causeCategory: ").append(StringUtil.toIndentedString(causeCategory)).append("\n");
-    sb.append("    effectCategory: ").append(StringUtil.toIndentedString(effectCategory)).append("\n");
     sb.append("    valuePredictingHighOutcome: ").append(StringUtil.toIndentedString(valuePredictingHighOutcome)).append("\n");
     sb.append("    valuePredictingLowOutcome: ").append(StringUtil.toIndentedString(valuePredictingLowOutcome)).append("\n");
     sb.append("    optimalPearsonProduct: ").append(StringUtil.toIndentedString(optimalPearsonProduct)).append("\n");
-    sb.append("    averageVote: ").append(StringUtil.toIndentedString(averageVote)).append("\n");
-    sb.append("    userVote: ").append(StringUtil.toIndentedString(userVote)).append("\n");
+    sb.append("    vote: ").append(StringUtil.toIndentedString(vote)).append("\n");
+    sb.append("    statisticalSignificance: ").append(StringUtil.toIndentedString(statisticalSignificance)).append("\n");
     sb.append("    causeUnit: ").append(StringUtil.toIndentedString(causeUnit)).append("\n");
     sb.append("    causeUnitId: ").append(StringUtil.toIndentedString(causeUnitId)).append("\n");
+    sb.append("    causeChanges: ").append(StringUtil.toIndentedString(causeChanges)).append("\n");
+    sb.append("    effectChanges: ").append(StringUtil.toIndentedString(effectChanges)).append("\n");
+    sb.append("    qmScore: ").append(StringUtil.toIndentedString(qmScore)).append("\n");
+    sb.append("    error: ").append(StringUtil.toIndentedString(error)).append("\n");
+    sb.append("    createdAt: ").append(StringUtil.toIndentedString(createdAt)).append("\n");
+    sb.append("    updatedAt: ").append(StringUtil.toIndentedString(updatedAt)).append("\n");
+    sb.append("    reversePearsonCorrelationCoefficient: ").append(StringUtil.toIndentedString(reversePearsonCorrelationCoefficient)).append("\n");
+    sb.append("    predictivePearsonCorrelationCoefficient: ").append(StringUtil.toIndentedString(predictivePearsonCorrelationCoefficient)).append("\n");
     sb.append("}");
     return sb.toString();
   }
