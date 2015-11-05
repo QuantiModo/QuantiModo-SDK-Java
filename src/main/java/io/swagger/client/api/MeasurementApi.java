@@ -16,7 +16,7 @@ import io.swagger.client.model.InlineResponse2002;
 
 import java.util.*;
 
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-11-03T22:24:11.560Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-11-05T03:15:54.261Z")
 public class MeasurementApi {
   private ApiClient apiClient;
 
@@ -188,7 +188,7 @@ public class MeasurementApi {
   
   /**
    * Get Measurements CSV
-   * Get Measurements CSV
+   * Download a CSV containing all user measurements
    * @return File
    */
   public File measurementsCsvGet () throws ApiException {
@@ -235,7 +235,7 @@ public class MeasurementApi {
   
   /**
    * Post Request for Measurements CSV
-   * Post Request for Measurements CSV
+   * Use this endpoint to schedule a CSV export containing all user measurements to be emailed to the user within 24 hours.
    * @return Integer
    */
   public Integer measurementsRequestCsvPost () throws ApiException {
