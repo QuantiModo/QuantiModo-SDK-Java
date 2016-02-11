@@ -1,16 +1,17 @@
 package io.swagger.client.model;
 
-import io.swagger.client.StringUtil;
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
 
 
 
-import io.swagger.annotations.*;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 
-@ApiModel(description = "")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-11-05T03:15:54.261Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-02-09T02:16:51.363Z")
 public class AggregatedCorrelation   {
   
   private Integer id = null;
@@ -39,11 +40,13 @@ public class AggregatedCorrelation   {
   private Date lastSuccessfulUpdateTime = null;
   private Float reversePearsonCorrelationCoefficient = null;
   private Float predictivePearsonCorrelationCoefficient = null;
+  private String dataSource = null;
 
   
   /**
    * id
    **/
+  
   @ApiModelProperty(value = "id")
   @JsonProperty("id")
   public Integer getId() {
@@ -55,9 +58,10 @@ public class AggregatedCorrelation   {
 
   
   /**
-   * correlation
+   * Pearson correlation coefficient between cause and effect measurements
    **/
-  @ApiModelProperty(required = true, value = "correlation")
+  
+  @ApiModelProperty(required = true, value = "Pearson correlation coefficient between cause and effect measurements")
   @JsonProperty("correlation")
   public Float getCorrelation() {
     return correlation;
@@ -68,9 +72,10 @@ public class AggregatedCorrelation   {
 
   
   /**
-   * cause_id
+   * variable ID of the cause variable for which the user desires correlations
    **/
-  @ApiModelProperty(required = true, value = "cause_id")
+  
+  @ApiModelProperty(required = true, value = "variable ID of the cause variable for which the user desires correlations")
   @JsonProperty("cause_id")
   public Integer getCauseId() {
     return causeId;
@@ -81,9 +86,10 @@ public class AggregatedCorrelation   {
 
   
   /**
-   * effect_id
+   * variable ID of the effect variable for which the user desires correlations
    **/
-  @ApiModelProperty(required = true, value = "effect_id")
+  
+  @ApiModelProperty(required = true, value = "variable ID of the effect variable for which the user desires correlations")
   @JsonProperty("effect_id")
   public Integer getEffectId() {
     return effectId;
@@ -94,9 +100,10 @@ public class AggregatedCorrelation   {
 
   
   /**
-   * onset_delay
+   * User estimated or default time after cause measurement before a perceivable effect is observed
    **/
-  @ApiModelProperty(required = true, value = "onset_delay")
+  
+  @ApiModelProperty(required = true, value = "User estimated or default time after cause measurement before a perceivable effect is observed")
   @JsonProperty("onset_delay")
   public Integer getOnsetDelay() {
     return onsetDelay;
@@ -107,9 +114,10 @@ public class AggregatedCorrelation   {
 
   
   /**
-   * duration_of_action
+   * Time over which the cause is expected to produce a perceivable effect following the onset delay
    **/
-  @ApiModelProperty(required = true, value = "duration_of_action")
+  
+  @ApiModelProperty(required = true, value = "Time over which the cause is expected to produce a perceivable effect following the onset delay")
   @JsonProperty("duration_of_action")
   public Integer getDurationOfAction() {
     return durationOfAction;
@@ -120,9 +128,10 @@ public class AggregatedCorrelation   {
 
   
   /**
-   * number_of_pairs
+   * Number of points that went into the correlation calculation
    **/
-  @ApiModelProperty(required = true, value = "number_of_pairs")
+  
+  @ApiModelProperty(required = true, value = "Number of points that went into the correlation calculation")
   @JsonProperty("number_of_pairs")
   public Integer getNumberOfPairs() {
     return numberOfPairs;
@@ -133,9 +142,10 @@ public class AggregatedCorrelation   {
 
   
   /**
-   * value_predicting_high_outcome
+   * cause value that predicts an above average effect value (in default unit for cause variable)
    **/
-  @ApiModelProperty(required = true, value = "value_predicting_high_outcome")
+  
+  @ApiModelProperty(required = true, value = "cause value that predicts an above average effect value (in default unit for cause variable)")
   @JsonProperty("value_predicting_high_outcome")
   public Float getValuePredictingHighOutcome() {
     return valuePredictingHighOutcome;
@@ -146,9 +156,10 @@ public class AggregatedCorrelation   {
 
   
   /**
-   * value_predicting_low_outcome
+   * cause value that predicts a below average effect value (in default unit for cause variable)
    **/
-  @ApiModelProperty(required = true, value = "value_predicting_low_outcome")
+  
+  @ApiModelProperty(required = true, value = "cause value that predicts a below average effect value (in default unit for cause variable)")
   @JsonProperty("value_predicting_low_outcome")
   public Float getValuePredictingLowOutcome() {
     return valuePredictingLowOutcome;
@@ -159,9 +170,10 @@ public class AggregatedCorrelation   {
 
   
   /**
-   * optimal_pearson_product
+   * Optimal Pearson Product
    **/
-  @ApiModelProperty(required = true, value = "optimal_pearson_product")
+  
+  @ApiModelProperty(required = true, value = "Optimal Pearson Product")
   @JsonProperty("optimal_pearson_product")
   public Float getOptimalPearsonProduct() {
     return optimalPearsonProduct;
@@ -172,9 +184,10 @@ public class AggregatedCorrelation   {
 
   
   /**
-   * vote
+   * Vote
    **/
-  @ApiModelProperty(required = true, value = "vote")
+  
+  @ApiModelProperty(required = true, value = "Vote")
   @JsonProperty("vote")
   public Float getVote() {
     return vote;
@@ -185,9 +198,10 @@ public class AggregatedCorrelation   {
 
   
   /**
-   * number_of_users
+   * Number of Users by which correlation is aggregated
    **/
-  @ApiModelProperty(required = true, value = "number_of_users")
+  
+  @ApiModelProperty(required = true, value = "Number of Users by which correlation is aggregated")
   @JsonProperty("number_of_users")
   public Integer getNumberOfUsers() {
     return numberOfUsers;
@@ -198,9 +212,10 @@ public class AggregatedCorrelation   {
 
   
   /**
-   * number_of_correlations
+   * Number of Correlations by which correlation is aggregated
    **/
-  @ApiModelProperty(required = true, value = "number_of_correlations")
+  
+  @ApiModelProperty(required = true, value = "Number of Correlations by which correlation is aggregated")
   @JsonProperty("number_of_correlations")
   public Integer getNumberOfCorrelations() {
     return numberOfCorrelations;
@@ -211,9 +226,10 @@ public class AggregatedCorrelation   {
 
   
   /**
-   * statistical_significance
+   * A function of the effect size and sample size
    **/
-  @ApiModelProperty(required = true, value = "statistical_significance")
+  
+  @ApiModelProperty(required = true, value = "A function of the effect size and sample size")
   @JsonProperty("statistical_significance")
   public Float getStatisticalSignificance() {
     return statisticalSignificance;
@@ -224,9 +240,10 @@ public class AggregatedCorrelation   {
 
   
   /**
-   * cause_unit
+   * Unit of the predictor variable
    **/
-  @ApiModelProperty(required = true, value = "cause_unit")
+  
+  @ApiModelProperty(required = true, value = "Unit of the predictor variable")
   @JsonProperty("cause_unit")
   public String getCauseUnit() {
     return causeUnit;
@@ -237,9 +254,10 @@ public class AggregatedCorrelation   {
 
   
   /**
-   * cause_unit_id
+   * Unit ID of the predictor variable
    **/
-  @ApiModelProperty(required = true, value = "cause_unit_id")
+  
+  @ApiModelProperty(required = true, value = "Unit ID of the predictor variable")
   @JsonProperty("cause_unit_id")
   public Integer getCauseUnitId() {
     return causeUnitId;
@@ -250,9 +268,10 @@ public class AggregatedCorrelation   {
 
   
   /**
-   * cause_changes
+   * Cause changes
    **/
-  @ApiModelProperty(required = true, value = "cause_changes")
+  
+  @ApiModelProperty(required = true, value = "Cause changes")
   @JsonProperty("cause_changes")
   public Integer getCauseChanges() {
     return causeChanges;
@@ -263,9 +282,10 @@ public class AggregatedCorrelation   {
 
   
   /**
-   * effect_changes
+   * Effect changes
    **/
-  @ApiModelProperty(required = true, value = "effect_changes")
+  
+  @ApiModelProperty(required = true, value = "Effect changes")
   @JsonProperty("effect_changes")
   public Integer getEffectChanges() {
     return effectChanges;
@@ -276,9 +296,10 @@ public class AggregatedCorrelation   {
 
   
   /**
-   * aggregate_qm_score
+   * Aggregated QM Score
    **/
-  @ApiModelProperty(required = true, value = "aggregate_qm_score")
+  
+  @ApiModelProperty(required = true, value = "Aggregated QM Score")
   @JsonProperty("aggregate_qm_score")
   public Float getAggregateQmScore() {
     return aggregateQmScore;
@@ -289,9 +310,10 @@ public class AggregatedCorrelation   {
 
   
   /**
-   * created_at
+   * When the record was first created. Use ISO 8601 datetime format
    **/
-  @ApiModelProperty(value = "created_at")
+  
+  @ApiModelProperty(value = "When the record was first created. Use ISO 8601 datetime format")
   @JsonProperty("created_at")
   public Date getCreatedAt() {
     return createdAt;
@@ -302,9 +324,10 @@ public class AggregatedCorrelation   {
 
   
   /**
-   * updated_at
+   * When the record in the database was last updated. Use ISO 8601 datetime format
    **/
-  @ApiModelProperty(value = "updated_at")
+  
+  @ApiModelProperty(value = "When the record in the database was last updated. Use ISO 8601 datetime format")
   @JsonProperty("updated_at")
   public Date getUpdatedAt() {
     return updatedAt;
@@ -315,9 +338,10 @@ public class AggregatedCorrelation   {
 
   
   /**
-   * status
+   * Status
    **/
-  @ApiModelProperty(required = true, value = "status")
+  
+  @ApiModelProperty(required = true, value = "Status")
   @JsonProperty("status")
   public String getStatus() {
     return status;
@@ -328,9 +352,10 @@ public class AggregatedCorrelation   {
 
   
   /**
-   * error_message
+   * Error Message
    **/
-  @ApiModelProperty(required = true, value = "error_message")
+  
+  @ApiModelProperty(required = true, value = "Error Message")
   @JsonProperty("error_message")
   public String getErrorMessage() {
     return errorMessage;
@@ -341,9 +366,10 @@ public class AggregatedCorrelation   {
 
   
   /**
-   * last_successful_update_time
+   * Last Successful update time
    **/
-  @ApiModelProperty(required = true, value = "last_successful_update_time")
+  
+  @ApiModelProperty(required = true, value = "Last Successful update time")
   @JsonProperty("last_successful_update_time")
   public Date getLastSuccessfulUpdateTime() {
     return lastSuccessfulUpdateTime;
@@ -354,9 +380,10 @@ public class AggregatedCorrelation   {
 
   
   /**
-   * reverse_pearson_correlation_coefficient
+   * Correlation when cause and effect are reversed. For any causal relationship, the forward correlation should exceed the reverse correlation
    **/
-  @ApiModelProperty(required = true, value = "reverse_pearson_correlation_coefficient")
+  
+  @ApiModelProperty(required = true, value = "Correlation when cause and effect are reversed. For any causal relationship, the forward correlation should exceed the reverse correlation")
   @JsonProperty("reverse_pearson_correlation_coefficient")
   public Float getReversePearsonCorrelationCoefficient() {
     return reversePearsonCorrelationCoefficient;
@@ -367,9 +394,10 @@ public class AggregatedCorrelation   {
 
   
   /**
-   * predictive_pearson_correlation_coefficient
+   * Predictive Pearson Correlation Coefficient
    **/
-  @ApiModelProperty(required = true, value = "predictive_pearson_correlation_coefficient")
+  
+  @ApiModelProperty(required = true, value = "Predictive Pearson Correlation Coefficient")
   @JsonProperty("predictive_pearson_correlation_coefficient")
   public Float getPredictivePearsonCorrelationCoefficient() {
     return predictivePearsonCorrelationCoefficient;
@@ -379,39 +407,111 @@ public class AggregatedCorrelation   {
   }
 
   
+  /**
+   * Source of data for this correlation
+   **/
+  
+  @ApiModelProperty(value = "Source of data for this correlation")
+  @JsonProperty("data_source")
+  public String getDataSource() {
+    return dataSource;
+  }
+  public void setDataSource(String dataSource) {
+    this.dataSource = dataSource;
+  }
+
+  
 
   @Override
-  public String toString()  {
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    AggregatedCorrelation aggregatedCorrelation = (AggregatedCorrelation) o;
+
+    return true && Objects.equals(id, aggregatedCorrelation.id) &&
+        Objects.equals(correlation, aggregatedCorrelation.correlation) &&
+        Objects.equals(causeId, aggregatedCorrelation.causeId) &&
+        Objects.equals(effectId, aggregatedCorrelation.effectId) &&
+        Objects.equals(onsetDelay, aggregatedCorrelation.onsetDelay) &&
+        Objects.equals(durationOfAction, aggregatedCorrelation.durationOfAction) &&
+        Objects.equals(numberOfPairs, aggregatedCorrelation.numberOfPairs) &&
+        Objects.equals(valuePredictingHighOutcome, aggregatedCorrelation.valuePredictingHighOutcome) &&
+        Objects.equals(valuePredictingLowOutcome, aggregatedCorrelation.valuePredictingLowOutcome) &&
+        Objects.equals(optimalPearsonProduct, aggregatedCorrelation.optimalPearsonProduct) &&
+        Objects.equals(vote, aggregatedCorrelation.vote) &&
+        Objects.equals(numberOfUsers, aggregatedCorrelation.numberOfUsers) &&
+        Objects.equals(numberOfCorrelations, aggregatedCorrelation.numberOfCorrelations) &&
+        Objects.equals(statisticalSignificance, aggregatedCorrelation.statisticalSignificance) &&
+        Objects.equals(causeUnit, aggregatedCorrelation.causeUnit) &&
+        Objects.equals(causeUnitId, aggregatedCorrelation.causeUnitId) &&
+        Objects.equals(causeChanges, aggregatedCorrelation.causeChanges) &&
+        Objects.equals(effectChanges, aggregatedCorrelation.effectChanges) &&
+        Objects.equals(aggregateQmScore, aggregatedCorrelation.aggregateQmScore) &&
+        Objects.equals(createdAt, aggregatedCorrelation.createdAt) &&
+        Objects.equals(updatedAt, aggregatedCorrelation.updatedAt) &&
+        Objects.equals(status, aggregatedCorrelation.status) &&
+        Objects.equals(errorMessage, aggregatedCorrelation.errorMessage) &&
+        Objects.equals(lastSuccessfulUpdateTime, aggregatedCorrelation.lastSuccessfulUpdateTime) &&
+        Objects.equals(reversePearsonCorrelationCoefficient, aggregatedCorrelation.reversePearsonCorrelationCoefficient) &&
+        Objects.equals(predictivePearsonCorrelationCoefficient, aggregatedCorrelation.predictivePearsonCorrelationCoefficient) &&
+        Objects.equals(dataSource, aggregatedCorrelation.dataSource)
+    ;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, correlation, causeId, effectId, onsetDelay, durationOfAction, numberOfPairs, valuePredictingHighOutcome, valuePredictingLowOutcome, optimalPearsonProduct, vote, numberOfUsers, numberOfCorrelations, statisticalSignificance, causeUnit, causeUnitId, causeChanges, effectChanges, aggregateQmScore, createdAt, updatedAt, status, errorMessage, lastSuccessfulUpdateTime, reversePearsonCorrelationCoefficient, predictivePearsonCorrelationCoefficient, dataSource);
+  }
+
+  @Override
+  public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AggregatedCorrelation {\n");
     
-    sb.append("    id: ").append(StringUtil.toIndentedString(id)).append("\n");
-    sb.append("    correlation: ").append(StringUtil.toIndentedString(correlation)).append("\n");
-    sb.append("    causeId: ").append(StringUtil.toIndentedString(causeId)).append("\n");
-    sb.append("    effectId: ").append(StringUtil.toIndentedString(effectId)).append("\n");
-    sb.append("    onsetDelay: ").append(StringUtil.toIndentedString(onsetDelay)).append("\n");
-    sb.append("    durationOfAction: ").append(StringUtil.toIndentedString(durationOfAction)).append("\n");
-    sb.append("    numberOfPairs: ").append(StringUtil.toIndentedString(numberOfPairs)).append("\n");
-    sb.append("    valuePredictingHighOutcome: ").append(StringUtil.toIndentedString(valuePredictingHighOutcome)).append("\n");
-    sb.append("    valuePredictingLowOutcome: ").append(StringUtil.toIndentedString(valuePredictingLowOutcome)).append("\n");
-    sb.append("    optimalPearsonProduct: ").append(StringUtil.toIndentedString(optimalPearsonProduct)).append("\n");
-    sb.append("    vote: ").append(StringUtil.toIndentedString(vote)).append("\n");
-    sb.append("    numberOfUsers: ").append(StringUtil.toIndentedString(numberOfUsers)).append("\n");
-    sb.append("    numberOfCorrelations: ").append(StringUtil.toIndentedString(numberOfCorrelations)).append("\n");
-    sb.append("    statisticalSignificance: ").append(StringUtil.toIndentedString(statisticalSignificance)).append("\n");
-    sb.append("    causeUnit: ").append(StringUtil.toIndentedString(causeUnit)).append("\n");
-    sb.append("    causeUnitId: ").append(StringUtil.toIndentedString(causeUnitId)).append("\n");
-    sb.append("    causeChanges: ").append(StringUtil.toIndentedString(causeChanges)).append("\n");
-    sb.append("    effectChanges: ").append(StringUtil.toIndentedString(effectChanges)).append("\n");
-    sb.append("    aggregateQmScore: ").append(StringUtil.toIndentedString(aggregateQmScore)).append("\n");
-    sb.append("    createdAt: ").append(StringUtil.toIndentedString(createdAt)).append("\n");
-    sb.append("    updatedAt: ").append(StringUtil.toIndentedString(updatedAt)).append("\n");
-    sb.append("    status: ").append(StringUtil.toIndentedString(status)).append("\n");
-    sb.append("    errorMessage: ").append(StringUtil.toIndentedString(errorMessage)).append("\n");
-    sb.append("    lastSuccessfulUpdateTime: ").append(StringUtil.toIndentedString(lastSuccessfulUpdateTime)).append("\n");
-    sb.append("    reversePearsonCorrelationCoefficient: ").append(StringUtil.toIndentedString(reversePearsonCorrelationCoefficient)).append("\n");
-    sb.append("    predictivePearsonCorrelationCoefficient: ").append(StringUtil.toIndentedString(predictivePearsonCorrelationCoefficient)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    correlation: ").append(toIndentedString(correlation)).append("\n");
+    sb.append("    causeId: ").append(toIndentedString(causeId)).append("\n");
+    sb.append("    effectId: ").append(toIndentedString(effectId)).append("\n");
+    sb.append("    onsetDelay: ").append(toIndentedString(onsetDelay)).append("\n");
+    sb.append("    durationOfAction: ").append(toIndentedString(durationOfAction)).append("\n");
+    sb.append("    numberOfPairs: ").append(toIndentedString(numberOfPairs)).append("\n");
+    sb.append("    valuePredictingHighOutcome: ").append(toIndentedString(valuePredictingHighOutcome)).append("\n");
+    sb.append("    valuePredictingLowOutcome: ").append(toIndentedString(valuePredictingLowOutcome)).append("\n");
+    sb.append("    optimalPearsonProduct: ").append(toIndentedString(optimalPearsonProduct)).append("\n");
+    sb.append("    vote: ").append(toIndentedString(vote)).append("\n");
+    sb.append("    numberOfUsers: ").append(toIndentedString(numberOfUsers)).append("\n");
+    sb.append("    numberOfCorrelations: ").append(toIndentedString(numberOfCorrelations)).append("\n");
+    sb.append("    statisticalSignificance: ").append(toIndentedString(statisticalSignificance)).append("\n");
+    sb.append("    causeUnit: ").append(toIndentedString(causeUnit)).append("\n");
+    sb.append("    causeUnitId: ").append(toIndentedString(causeUnitId)).append("\n");
+    sb.append("    causeChanges: ").append(toIndentedString(causeChanges)).append("\n");
+    sb.append("    effectChanges: ").append(toIndentedString(effectChanges)).append("\n");
+    sb.append("    aggregateQmScore: ").append(toIndentedString(aggregateQmScore)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    errorMessage: ").append(toIndentedString(errorMessage)).append("\n");
+    sb.append("    lastSuccessfulUpdateTime: ").append(toIndentedString(lastSuccessfulUpdateTime)).append("\n");
+    sb.append("    reversePearsonCorrelationCoefficient: ").append(toIndentedString(reversePearsonCorrelationCoefficient)).append("\n");
+    sb.append("    predictivePearsonCorrelationCoefficient: ").append(toIndentedString(predictivePearsonCorrelationCoefficient)).append("\n");
+    sb.append("    dataSource: ").append(toIndentedString(dataSource)).append("\n");
     sb.append("}");
     return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }
+

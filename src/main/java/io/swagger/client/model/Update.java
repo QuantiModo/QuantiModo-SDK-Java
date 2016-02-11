@@ -1,16 +1,17 @@
 package io.swagger.client.model;
 
-import io.swagger.client.StringUtil;
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
 
 
 
-import io.swagger.annotations.*;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 
-@ApiModel(description = "")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-11-05T03:15:54.261Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-02-09T02:16:51.363Z")
 public class Update   {
   
   private Integer id = null;
@@ -26,6 +27,7 @@ public class Update   {
   /**
    * id
    **/
+  
   @ApiModelProperty(value = "id")
   @JsonProperty("id")
   public Integer getId() {
@@ -39,6 +41,7 @@ public class Update   {
   /**
    * user_id
    **/
+  
   @ApiModelProperty(required = true, value = "user_id")
   @JsonProperty("user_id")
   public Integer getUserId() {
@@ -52,6 +55,7 @@ public class Update   {
   /**
    * connector_id
    **/
+  
   @ApiModelProperty(required = true, value = "connector_id")
   @JsonProperty("connector_id")
   public Integer getConnectorId() {
@@ -65,6 +69,7 @@ public class Update   {
   /**
    * number_of_measurements
    **/
+  
   @ApiModelProperty(required = true, value = "number_of_measurements")
   @JsonProperty("number_of_measurements")
   public Integer getNumberOfMeasurements() {
@@ -78,6 +83,7 @@ public class Update   {
   /**
    * success
    **/
+  
   @ApiModelProperty(required = true, value = "success")
   @JsonProperty("success")
   public Boolean getSuccess() {
@@ -91,6 +97,7 @@ public class Update   {
   /**
    * message
    **/
+  
   @ApiModelProperty(required = true, value = "message")
   @JsonProperty("message")
   public String getMessage() {
@@ -102,9 +109,10 @@ public class Update   {
 
   
   /**
-   * created_at
+   * When the record was first created. Use ISO 8601 datetime format
    **/
-  @ApiModelProperty(value = "created_at")
+  
+  @ApiModelProperty(value = "When the record was first created. Use ISO 8601 datetime format")
   @JsonProperty("created_at")
   public Date getCreatedAt() {
     return createdAt;
@@ -115,9 +123,10 @@ public class Update   {
 
   
   /**
-   * updated_at
+   * When the record in the database was last updated. Use ISO 8601 datetime format
    **/
-  @ApiModelProperty(value = "updated_at")
+  
+  @ApiModelProperty(value = "When the record in the database was last updated. Use ISO 8601 datetime format")
   @JsonProperty("updated_at")
   public Date getUpdatedAt() {
     return updatedAt;
@@ -129,19 +138,57 @@ public class Update   {
   
 
   @Override
-  public String toString()  {
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Update update = (Update) o;
+
+    return true && Objects.equals(id, update.id) &&
+        Objects.equals(userId, update.userId) &&
+        Objects.equals(connectorId, update.connectorId) &&
+        Objects.equals(numberOfMeasurements, update.numberOfMeasurements) &&
+        Objects.equals(success, update.success) &&
+        Objects.equals(message, update.message) &&
+        Objects.equals(createdAt, update.createdAt) &&
+        Objects.equals(updatedAt, update.updatedAt)
+    ;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, userId, connectorId, numberOfMeasurements, success, message, createdAt, updatedAt);
+  }
+
+  @Override
+  public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Update {\n");
     
-    sb.append("    id: ").append(StringUtil.toIndentedString(id)).append("\n");
-    sb.append("    userId: ").append(StringUtil.toIndentedString(userId)).append("\n");
-    sb.append("    connectorId: ").append(StringUtil.toIndentedString(connectorId)).append("\n");
-    sb.append("    numberOfMeasurements: ").append(StringUtil.toIndentedString(numberOfMeasurements)).append("\n");
-    sb.append("    success: ").append(StringUtil.toIndentedString(success)).append("\n");
-    sb.append("    message: ").append(StringUtil.toIndentedString(message)).append("\n");
-    sb.append("    createdAt: ").append(StringUtil.toIndentedString(createdAt)).append("\n");
-    sb.append("    updatedAt: ").append(StringUtil.toIndentedString(updatedAt)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+    sb.append("    connectorId: ").append(toIndentedString(connectorId)).append("\n");
+    sb.append("    numberOfMeasurements: ").append(toIndentedString(numberOfMeasurements)).append("\n");
+    sb.append("    success: ").append(toIndentedString(success)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }
+

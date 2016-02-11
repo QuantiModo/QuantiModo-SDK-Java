@@ -1,17 +1,18 @@
 package io.swagger.client.model;
 
-import io.swagger.client.StringUtil;
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import io.swagger.client.model.MeasurementValue;
 import java.util.*;
 
 
 
-import io.swagger.annotations.*;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 
-@ApiModel(description = "")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-11-05T03:15:54.261Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-02-09T02:16:51.363Z")
 public class MeasurementPost   {
   
   private Integer variableId = null;
@@ -21,9 +22,10 @@ public class MeasurementPost   {
 
   
   /**
-   * variable_id
+   * ID of the variable for the measurement as obtained from the GET variables endpoint
    **/
-  @ApiModelProperty(required = true, value = "variable_id")
+  
+  @ApiModelProperty(required = true, value = "ID of the variable for the measurement as obtained from the GET variables endpoint")
   @JsonProperty("variable_id")
   public Integer getVariableId() {
     return variableId;
@@ -34,9 +36,10 @@ public class MeasurementPost   {
 
   
   /**
-   * source_id
+   * Source ID of the app or device as obtained from the GET sources endpoint
    **/
-  @ApiModelProperty(required = true, value = "source_id")
+  
+  @ApiModelProperty(required = true, value = "Source ID of the app or device as obtained from the GET sources endpoint")
   @JsonProperty("source_id")
   public Integer getSourceId() {
     return sourceId;
@@ -47,9 +50,10 @@ public class MeasurementPost   {
 
   
   /**
-   * unit_id
+   * Unit id for the measurement value as obtained from the GET units endpoint
    **/
-  @ApiModelProperty(required = true, value = "unit_id")
+  
+  @ApiModelProperty(required = true, value = "Unit id for the measurement value as obtained from the GET units endpoint")
   @JsonProperty("unit_id")
   public Integer getUnitId() {
     return unitId;
@@ -62,6 +66,7 @@ public class MeasurementPost   {
   /**
    * measurements
    **/
+  
   @ApiModelProperty(required = true, value = "measurements")
   @JsonProperty("measurements")
   public List<MeasurementValue> getMeasurements() {
@@ -74,15 +79,49 @@ public class MeasurementPost   {
   
 
   @Override
-  public String toString()  {
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    MeasurementPost measurementPost = (MeasurementPost) o;
+
+    return true && Objects.equals(variableId, measurementPost.variableId) &&
+        Objects.equals(sourceId, measurementPost.sourceId) &&
+        Objects.equals(unitId, measurementPost.unitId) &&
+        Objects.equals(measurements, measurementPost.measurements)
+    ;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(variableId, sourceId, unitId, measurements);
+  }
+
+  @Override
+  public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class MeasurementPost {\n");
     
-    sb.append("    variableId: ").append(StringUtil.toIndentedString(variableId)).append("\n");
-    sb.append("    sourceId: ").append(StringUtil.toIndentedString(sourceId)).append("\n");
-    sb.append("    unitId: ").append(StringUtil.toIndentedString(unitId)).append("\n");
-    sb.append("    measurements: ").append(StringUtil.toIndentedString(measurements)).append("\n");
+    sb.append("    variableId: ").append(toIndentedString(variableId)).append("\n");
+    sb.append("    sourceId: ").append(toIndentedString(sourceId)).append("\n");
+    sb.append("    unitId: ").append(toIndentedString(unitId)).append("\n");
+    sb.append("    measurements: ").append(toIndentedString(measurements)).append("\n");
     sb.append("}");
     return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }
+

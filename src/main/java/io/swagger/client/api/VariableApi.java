@@ -1,20 +1,21 @@
 package io.swagger.client.api;
 
+import com.sun.jersey.api.client.GenericType;
+
 import io.swagger.client.ApiException;
 import io.swagger.client.ApiClient;
 import io.swagger.client.Configuration;
 import io.swagger.client.Pair;
-import io.swagger.client.TypeRef;
 
-import io.swagger.client.model.InlineResponse20027;
+import io.swagger.client.model.InlineResponse20034;
 import java.math.BigDecimal;
-import io.swagger.client.model.InlineResponse20028;
 import io.swagger.client.model.Variable;
+import io.swagger.client.model.InlineResponse20035;
 import io.swagger.client.model.InlineResponse2002;
 
 import java.util.*;
 
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-11-05T03:15:54.261Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-02-09T02:16:51.363Z")
 public class VariableApi {
   private ApiClient apiClient;
 
@@ -38,53 +39,50 @@ public class VariableApi {
   /**
    * Get all Variables
    * Get all Variables
+   * @param accessToken User&#39;s OAuth2 access token
    * @param id id
-   * @param clientId client_id
-   * @param parentId parent_id
-   * @param name name
-   * @param variableCategoryId variable_category_id
-   * @param defaultUnitId default_unit_id
-   * @param combinationOperation combination_operation
-   * @param fillingValue filling_value
-   * @param maximumAllowedValue maximum_allowed_value
-   * @param minimumAllowedValue minimum_allowed_value
-   * @param onsetDelay onset_delay
-   * @param durationOfAction duration_of_action
-   * @param _public public
-   * @param causeOnly cause_only
-   * @param mostCommonValue most_common_value
-   * @param mostCommonUnitId most_common_unit_id
-   * @param standardDeviation standard_deviation
-   * @param variance variance
-   * @param mean mean
-   * @param median median
-   * @param numberOfMeasurements number_of_measurements
-   * @param numberOfUniqueValues number_of_unique_values
-   * @param skewness skewness
-   * @param kurtosis kurtosis
-   * @param latitude latitude
-   * @param longitude longitude
-   * @param location location
+   * @param clientId The ID of the client application which last created or updated this common variable
+   * @param parentId ID of the parent variable if this variable has any parent
+   * @param name User-defined variable display name
+   * @param variableCategoryId Variable category ID
+   * @param defaultUnitId ID of the default unit for the variable
+   * @param combinationOperation How to combine values of this variable (for instance, to see a summary of the values over a month) SUM or MEAN
+   * @param fillingValue Value for replacing null measurements
+   * @param maximumAllowedValue Maximum reasonable value for this variable (uses default unit)
+   * @param minimumAllowedValue Minimum reasonable value for this variable (uses default unit)
+   * @param onsetDelay Estimated number of seconds that pass before a stimulus produces a perceivable effect
+   * @param durationOfAction Estimated number of seconds following the onset delay in which a stimulus produces a perceivable effect
+   * @param _public Is variable public
+   * @param causeOnly A value of 1 indicates that this variable is generally a cause in a causal relationship.  An example of a causeOnly variable would be a variable such as Cloud Cover which would generally not be influenced by the behaviour of the user
+   * @param mostCommonValue Most common value
+   * @param mostCommonUnitId Most common Unit
+   * @param standardDeviation Standard Deviation
+   * @param variance Average variance for this variable based on all user data
+   * @param mean Mean for this variable based on all user data
+   * @param median Median for this variable based on all user data
+   * @param numberOfMeasurements Number of measurements for this variable based on all user data
+   * @param numberOfUniqueValues Number of unique values for this variable based on all user data
+   * @param skewness Skewness for this variable based on all user data
+   * @param kurtosis Kurtosis for this variable based on all user data
    * @param status status
    * @param errorMessage error_message
-   * @param lastSuccessfulUpdateTime last_successful_update_time
-   * @param createdAt created_at
-   * @param updatedAt updated_at
-   * @param productUrl product_url
-   * @param imageUrl image_url
-   * @param price price
-   * @param numberOfUserVariables number_of_user_variables
-   * @param outcome outcome
-   * @param minimumRecordedValue minimum_recorded_value
-   * @param maximumRecordedValue maximum_recorded_value
-   * @param limit limit
-   * @param offset offset
-   * @param sort sort
-   * @return InlineResponse20027
+   * @param lastSuccessfulUpdateTime When this variable or its settings were last updated
+   * @param createdAt When the record was first created. Use ISO 8601 datetime format
+   * @param updatedAt When the record was last updated. Use ISO 8601 datetime format
+   * @param productUrl Product URL
+   * @param imageUrl Image URL
+   * @param price Price
+   * @param numberOfUserVariables Number of users who have data for this variable
+   * @param outcome Outcome variables (those with `outcome` == 1) are variables for which a human would generally want to identify the influencing factors.  These include symptoms of illness, physique, mood, cognitive performance, etc.  Generally correlation calculations are only performed on outcome variables.
+   * @param minimumRecordedValue Minimum recorded value of this variable based on all user data
+   * @param maximumRecordedValue Maximum recorded value of this variable based on all user data
+   * @param limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.
+   * @param offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned.
+   * @param sort Sort records by a given field name. If the field name is prefixed with &#39;-&#39;, it will sort in descending order.
+   * @return InlineResponse20034
    */
-  public InlineResponse20027 variablesGet (Integer id, String clientId, Integer parentId, String name, Integer variableCategoryId, Integer defaultUnitId, String combinationOperation, BigDecimal fillingValue, BigDecimal maximumAllowedValue, BigDecimal minimumAllowedValue, Integer onsetDelay, Integer durationOfAction, Integer _public, Boolean causeOnly, BigDecimal mostCommonValue, Integer mostCommonUnitId, BigDecimal standardDeviation, BigDecimal variance, BigDecimal mean, BigDecimal median, BigDecimal numberOfMeasurements, BigDecimal numberOfUniqueValues, BigDecimal skewness, BigDecimal kurtosis, BigDecimal latitude, BigDecimal longitude, String location, String status, String errorMessage, String lastSuccessfulUpdateTime, String createdAt, String updatedAt, String productUrl, String imageUrl, BigDecimal price, Integer numberOfUserVariables, Boolean outcome, BigDecimal minimumRecordedValue, BigDecimal maximumRecordedValue, Integer limit, Integer offset, String sort) throws ApiException {
+  public InlineResponse20034 variablesGet(String accessToken, Integer id, String clientId, Integer parentId, String name, Integer variableCategoryId, Integer defaultUnitId, String combinationOperation, BigDecimal fillingValue, BigDecimal maximumAllowedValue, BigDecimal minimumAllowedValue, Integer onsetDelay, Integer durationOfAction, Integer _public, Boolean causeOnly, BigDecimal mostCommonValue, Integer mostCommonUnitId, BigDecimal standardDeviation, BigDecimal variance, BigDecimal mean, BigDecimal median, BigDecimal numberOfMeasurements, BigDecimal numberOfUniqueValues, BigDecimal skewness, BigDecimal kurtosis, String status, String errorMessage, String lastSuccessfulUpdateTime, String createdAt, String updatedAt, String productUrl, String imageUrl, BigDecimal price, Integer numberOfUserVariables, Boolean outcome, BigDecimal minimumRecordedValue, BigDecimal maximumRecordedValue, Integer limit, Integer offset, String sort) throws ApiException {
     Object postBody = null;
-    byte[] postBinaryBody = null;
     
     // create path and map variables
     String path = "/variables".replaceAll("\\{format\\}","json");
@@ -94,6 +92,8 @@ public class VariableApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, Object> formParams = new HashMap<String, Object>();
 
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
     
     queryParams.addAll(apiClient.parameterToPairs("", "id", id));
     
@@ -143,12 +143,6 @@ public class VariableApi {
     
     queryParams.addAll(apiClient.parameterToPairs("", "kurtosis", kurtosis));
     
-    queryParams.addAll(apiClient.parameterToPairs("", "latitude", latitude));
-    
-    queryParams.addAll(apiClient.parameterToPairs("", "longitude", longitude));
-    
-    queryParams.addAll(apiClient.parameterToPairs("", "location", location));
-    
     queryParams.addAll(apiClient.parameterToPairs("", "status", status));
     
     queryParams.addAll(apiClient.parameterToPairs("", "error_message", errorMessage));
@@ -194,29 +188,23 @@ public class VariableApi {
     };
     final String contentType = apiClient.selectHeaderContentType(contentTypes);
 
-    String[] authNames = new String[] {  };
+    String[] authNames = new String[] { "quantimodo_oauth2" };
 
     
-
+    GenericType<InlineResponse20034> returnType = new GenericType<InlineResponse20034>() {};
+    return apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     
-    
-    TypeRef returnType = new TypeRef<InlineResponse20027>() {};
-    return apiClient.invokeAPI(path, "GET", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    
-    
-
-
   }
   
   /**
    * Store Variable
-   * Store Variable
+   * Allows the client to create a new variable in the `variables` table.
+   * @param accessToken User&#39;s OAuth2 access token
    * @param body Variable that should be stored
-   * @return InlineResponse20028
+   * @return InlineResponse20035
    */
-  public InlineResponse20028 variablesPost (Variable body) throws ApiException {
+  public InlineResponse20035 variablesPost(String accessToken, Variable body) throws ApiException {
     Object postBody = body;
-    byte[] postBinaryBody = null;
     
     // create path and map variables
     String path = "/variables".replaceAll("\\{format\\}","json");
@@ -226,6 +214,8 @@ public class VariableApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, Object> formParams = new HashMap<String, Object>();
 
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
     
 
     
@@ -242,29 +232,23 @@ public class VariableApi {
     };
     final String contentType = apiClient.selectHeaderContentType(contentTypes);
 
-    String[] authNames = new String[] {  };
+    String[] authNames = new String[] { "quantimodo_oauth2" };
 
     
-
+    GenericType<InlineResponse20035> returnType = new GenericType<InlineResponse20035>() {};
+    return apiClient.invokeAPI(path, "POST", queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     
-    
-    TypeRef returnType = new TypeRef<InlineResponse20028>() {};
-    return apiClient.invokeAPI(path, "POST", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    
-    
-
-
   }
   
   /**
    * Get Variable
    * Get Variable
    * @param id id of Variable
-   * @return InlineResponse20028
+   * @param accessToken User&#39;s OAuth2 access token
+   * @return InlineResponse20035
    */
-  public InlineResponse20028 variablesIdGet (Integer id) throws ApiException {
+  public InlineResponse20035 variablesIdGet(Integer id, String accessToken) throws ApiException {
     Object postBody = null;
-    byte[] postBinaryBody = null;
     
      // verify the required parameter 'id' is set
      if (id == null) {
@@ -281,6 +265,8 @@ public class VariableApi {
     Map<String, Object> formParams = new HashMap<String, Object>();
 
     
+    queryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
+    
 
     
 
@@ -296,30 +282,24 @@ public class VariableApi {
     };
     final String contentType = apiClient.selectHeaderContentType(contentTypes);
 
-    String[] authNames = new String[] {  };
+    String[] authNames = new String[] { "quantimodo_oauth2" };
 
     
-
+    GenericType<InlineResponse20035> returnType = new GenericType<InlineResponse20035>() {};
+    return apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     
-    
-    TypeRef returnType = new TypeRef<InlineResponse20028>() {};
-    return apiClient.invokeAPI(path, "GET", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    
-    
-
-
   }
   
   /**
    * Update Variable
    * Update Variable
    * @param id id of Variable
+   * @param accessToken User&#39;s OAuth2 access token
    * @param body Variable that should be updated
    * @return InlineResponse2002
    */
-  public InlineResponse2002 variablesIdPut (Integer id, Variable body) throws ApiException {
+  public InlineResponse2002 variablesIdPut(Integer id, String accessToken, Variable body) throws ApiException {
     Object postBody = body;
-    byte[] postBinaryBody = null;
     
      // verify the required parameter 'id' is set
      if (id == null) {
@@ -336,6 +316,8 @@ public class VariableApi {
     Map<String, Object> formParams = new HashMap<String, Object>();
 
     
+    queryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
+    
 
     
 
@@ -351,29 +333,23 @@ public class VariableApi {
     };
     final String contentType = apiClient.selectHeaderContentType(contentTypes);
 
-    String[] authNames = new String[] {  };
+    String[] authNames = new String[] { "quantimodo_oauth2" };
 
     
-
+    GenericType<InlineResponse2002> returnType = new GenericType<InlineResponse2002>() {};
+    return apiClient.invokeAPI(path, "PUT", queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     
-    
-    TypeRef returnType = new TypeRef<InlineResponse2002>() {};
-    return apiClient.invokeAPI(path, "PUT", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    
-    
-
-
   }
   
   /**
    * Delete Variable
    * Delete Variable
    * @param id id of Variable
+   * @param accessToken User&#39;s OAuth2 access token
    * @return InlineResponse2002
    */
-  public InlineResponse2002 variablesIdDelete (Integer id) throws ApiException {
+  public InlineResponse2002 variablesIdDelete(Integer id, String accessToken) throws ApiException {
     Object postBody = null;
-    byte[] postBinaryBody = null;
     
      // verify the required parameter 'id' is set
      if (id == null) {
@@ -390,6 +366,8 @@ public class VariableApi {
     Map<String, Object> formParams = new HashMap<String, Object>();
 
     
+    queryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
+    
 
     
 
@@ -405,18 +383,12 @@ public class VariableApi {
     };
     final String contentType = apiClient.selectHeaderContentType(contentTypes);
 
-    String[] authNames = new String[] {  };
+    String[] authNames = new String[] { "quantimodo_oauth2" };
 
     
-
+    GenericType<InlineResponse2002> returnType = new GenericType<InlineResponse2002>() {};
+    return apiClient.invokeAPI(path, "DELETE", queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     
-    
-    TypeRef returnType = new TypeRef<InlineResponse2002>() {};
-    return apiClient.invokeAPI(path, "DELETE", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    
-    
-
-
   }
   
 }

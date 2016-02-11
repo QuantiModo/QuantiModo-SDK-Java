@@ -1,16 +1,17 @@
 package io.swagger.client.model;
 
-import io.swagger.client.StringUtil;
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
 
 
 
-import io.swagger.annotations.*;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 
-@ApiModel(description = "")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-11-05T03:15:54.261Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-02-09T02:16:51.363Z")
 public class Connection   {
   
   private Integer id = null;
@@ -29,6 +30,7 @@ public class Connection   {
   /**
    * id
    **/
+  
   @ApiModelProperty(value = "id")
   @JsonProperty("id")
   public Integer getId() {
@@ -40,9 +42,10 @@ public class Connection   {
 
   
   /**
-   * user_id
+   * ID of user that owns this correlation
    **/
-  @ApiModelProperty(value = "user_id")
+  
+  @ApiModelProperty(value = "ID of user that owns this correlation")
   @JsonProperty("user_id")
   public Integer getUserId() {
     return userId;
@@ -53,9 +56,10 @@ public class Connection   {
 
   
   /**
-   * connector_id
+   * The id for the connector data source for which the connection is connected
    **/
-  @ApiModelProperty(required = true, value = "connector_id")
+  
+  @ApiModelProperty(required = true, value = "The id for the connector data source for which the connection is connected")
   @JsonProperty("connector_id")
   public Integer getConnectorId() {
     return connectorId;
@@ -66,9 +70,10 @@ public class Connection   {
 
   
   /**
-   * connect_status
+   * Indicates whether a connector is currently connected to a service for a user.
    **/
-  @ApiModelProperty(value = "connect_status")
+  
+  @ApiModelProperty(value = "Indicates whether a connector is currently connected to a service for a user.")
   @JsonProperty("connect_status")
   public String getConnectStatus() {
     return connectStatus;
@@ -79,9 +84,10 @@ public class Connection   {
 
   
   /**
-   * connect_error
+   * Error message if there is a problem with authorizing this connection.
    **/
-  @ApiModelProperty(value = "connect_error")
+  
+  @ApiModelProperty(value = "Error message if there is a problem with authorizing this connection.")
   @JsonProperty("connect_error")
   public String getConnectError() {
     return connectError;
@@ -92,9 +98,10 @@ public class Connection   {
 
   
   /**
-   * update_requested_at
+   * Time at which an update was requested by a user.
    **/
-  @ApiModelProperty(value = "update_requested_at")
+  
+  @ApiModelProperty(value = "Time at which an update was requested by a user.")
   @JsonProperty("update_requested_at")
   public Date getUpdateRequestedAt() {
     return updateRequestedAt;
@@ -105,9 +112,10 @@ public class Connection   {
 
   
   /**
-   * update_status
+   * Indicates whether a connector is currently updated.
    **/
-  @ApiModelProperty(value = "update_status")
+  
+  @ApiModelProperty(value = "Indicates whether a connector is currently updated.")
   @JsonProperty("update_status")
   public String getUpdateStatus() {
     return updateStatus;
@@ -118,9 +126,10 @@ public class Connection   {
 
   
   /**
-   * update_error
+   * Indicates if there was an error during the update.
    **/
-  @ApiModelProperty(value = "update_error")
+  
+  @ApiModelProperty(value = "Indicates if there was an error during the update.")
   @JsonProperty("update_error")
   public String getUpdateError() {
     return updateError;
@@ -131,9 +140,10 @@ public class Connection   {
 
   
   /**
-   * last_successful_updated_at
+   * The time at which the connector was last successfully updated.
    **/
-  @ApiModelProperty(value = "last_successful_updated_at")
+  
+  @ApiModelProperty(value = "The time at which the connector was last successfully updated.")
   @JsonProperty("last_successful_updated_at")
   public Date getLastSuccessfulUpdatedAt() {
     return lastSuccessfulUpdatedAt;
@@ -144,9 +154,10 @@ public class Connection   {
 
   
   /**
-   * created_at
+   * When the record was first created. Use ISO 8601 datetime format
    **/
-  @ApiModelProperty(value = "created_at")
+  
+  @ApiModelProperty(value = "When the record was first created. Use ISO 8601 datetime format")
   @JsonProperty("created_at")
   public Date getCreatedAt() {
     return createdAt;
@@ -157,9 +168,10 @@ public class Connection   {
 
   
   /**
-   * updated_at
+   * When the record in the database was last updated. Use ISO 8601 datetime format
    **/
-  @ApiModelProperty(value = "updated_at")
+  
+  @ApiModelProperty(value = "When the record in the database was last updated. Use ISO 8601 datetime format")
   @JsonProperty("updated_at")
   public Date getUpdatedAt() {
     return updatedAt;
@@ -171,22 +183,63 @@ public class Connection   {
   
 
   @Override
-  public String toString()  {
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Connection connection = (Connection) o;
+
+    return true && Objects.equals(id, connection.id) &&
+        Objects.equals(userId, connection.userId) &&
+        Objects.equals(connectorId, connection.connectorId) &&
+        Objects.equals(connectStatus, connection.connectStatus) &&
+        Objects.equals(connectError, connection.connectError) &&
+        Objects.equals(updateRequestedAt, connection.updateRequestedAt) &&
+        Objects.equals(updateStatus, connection.updateStatus) &&
+        Objects.equals(updateError, connection.updateError) &&
+        Objects.equals(lastSuccessfulUpdatedAt, connection.lastSuccessfulUpdatedAt) &&
+        Objects.equals(createdAt, connection.createdAt) &&
+        Objects.equals(updatedAt, connection.updatedAt)
+    ;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, userId, connectorId, connectStatus, connectError, updateRequestedAt, updateStatus, updateError, lastSuccessfulUpdatedAt, createdAt, updatedAt);
+  }
+
+  @Override
+  public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Connection {\n");
     
-    sb.append("    id: ").append(StringUtil.toIndentedString(id)).append("\n");
-    sb.append("    userId: ").append(StringUtil.toIndentedString(userId)).append("\n");
-    sb.append("    connectorId: ").append(StringUtil.toIndentedString(connectorId)).append("\n");
-    sb.append("    connectStatus: ").append(StringUtil.toIndentedString(connectStatus)).append("\n");
-    sb.append("    connectError: ").append(StringUtil.toIndentedString(connectError)).append("\n");
-    sb.append("    updateRequestedAt: ").append(StringUtil.toIndentedString(updateRequestedAt)).append("\n");
-    sb.append("    updateStatus: ").append(StringUtil.toIndentedString(updateStatus)).append("\n");
-    sb.append("    updateError: ").append(StringUtil.toIndentedString(updateError)).append("\n");
-    sb.append("    lastSuccessfulUpdatedAt: ").append(StringUtil.toIndentedString(lastSuccessfulUpdatedAt)).append("\n");
-    sb.append("    createdAt: ").append(StringUtil.toIndentedString(createdAt)).append("\n");
-    sb.append("    updatedAt: ").append(StringUtil.toIndentedString(updatedAt)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+    sb.append("    connectorId: ").append(toIndentedString(connectorId)).append("\n");
+    sb.append("    connectStatus: ").append(toIndentedString(connectStatus)).append("\n");
+    sb.append("    connectError: ").append(toIndentedString(connectError)).append("\n");
+    sb.append("    updateRequestedAt: ").append(toIndentedString(updateRequestedAt)).append("\n");
+    sb.append("    updateStatus: ").append(toIndentedString(updateStatus)).append("\n");
+    sb.append("    updateError: ").append(toIndentedString(updateError)).append("\n");
+    sb.append("    lastSuccessfulUpdatedAt: ").append(toIndentedString(lastSuccessfulUpdatedAt)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }
+

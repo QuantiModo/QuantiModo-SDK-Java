@@ -1,20 +1,21 @@
 package io.swagger.client.api;
 
+import com.sun.jersey.api.client.GenericType;
+
 import io.swagger.client.ApiException;
 import io.swagger.client.ApiClient;
 import io.swagger.client.Configuration;
 import io.swagger.client.Pair;
-import io.swagger.client.TypeRef;
 
 import java.math.BigDecimal;
-import io.swagger.client.model.InlineResponse2007;
-import io.swagger.client.model.InlineResponse2008;
+import io.swagger.client.model.InlineResponse20017;
 import io.swagger.client.model.Correlation;
+import io.swagger.client.model.InlineResponse20018;
 import io.swagger.client.model.InlineResponse2002;
 
 import java.util.*;
 
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-11-05T03:15:54.261Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-02-09T02:16:51.363Z")
 public class CorrelationApi {
   private ApiClient apiClient;
 
@@ -38,37 +39,37 @@ public class CorrelationApi {
   /**
    * Get all Correlations
    * Get all Correlations
-   * @param timestamp timestamp
-   * @param userId user_id
-   * @param correlation correlation
-   * @param causeId cause_id
-   * @param effectId effect_id
-   * @param onsetDelay onset_delay
-   * @param durationOfAction duration_of_action
-   * @param numberOfPairs number_of_pairs
-   * @param valuePredictingHighOutcome value_predicting_high_outcome
-   * @param valuePredictingLowOutcome value_predicting_low_outcome
-   * @param optimalPearsonProduct optimal_pearson_product
-   * @param vote vote
-   * @param statisticalSignificance statistical_significance
-   * @param causeUnit cause_unit
-   * @param causeUnitId cause_unit_id
-   * @param causeChanges cause_changes
-   * @param effectChanges effect_changes
-   * @param qmScore qm_score
+   * @param accessToken User&#39;s OAuth2 access token
+   * @param timestamp Time at which correlation was calculated
+   * @param userId ID of user that owns this correlation
+   * @param correlation Pearson correlation coefficient between cause and effect measurements
+   * @param causeId variable ID of the predictor variable for which the user desires correlations
+   * @param effectId variable ID of the outcome variable for which the user desires correlations
+   * @param onsetDelay User estimated or default time after cause measurement before a perceivable effect is observed
+   * @param durationOfAction Time over which the cause is expected to produce a perceivable effect following the onset delay
+   * @param numberOfPairs Number of points that went into the correlation calculation
+   * @param valuePredictingHighOutcome cause value that predicts an above average effect value (in default unit for predictor variable)
+   * @param valuePredictingLowOutcome cause value that predicts a below average effect value (in default unit for predictor variable)
+   * @param optimalPearsonProduct Optimal Pearson Product
+   * @param vote Vote
+   * @param statisticalSignificance A function of the effect size and sample size
+   * @param causeUnit Unit of the predictor variable
+   * @param causeUnitId Unit ID of the predictor variable
+   * @param causeChanges Cause changes
+   * @param effectChanges Effect changes
+   * @param qmScore QM Score
    * @param error error
-   * @param createdAt created_at
-   * @param updatedAt updated_at
-   * @param reversePearsonCorrelationCoefficient reverse_pearson_correlation_coefficient
-   * @param predictivePearsonCorrelationCoefficient predictive_pearson_correlation_coefficient
-   * @param limit limit
-   * @param offset offset
-   * @param sort sort
-   * @return InlineResponse2007
+   * @param createdAt When the record was first created. Use ISO 8601 datetime format
+   * @param updatedAt When the record in the database was last updated. Use ISO 8601 datetime format
+   * @param reversePearsonCorrelationCoefficient Correlation when cause and effect are reversed. For any causal relationship, the forward correlation should exceed the reverse correlation
+   * @param predictivePearsonCorrelationCoefficient Predictive Pearson Correlation Coefficient
+   * @param limit Limit the number of results returned
+   * @param offset Records from give Offset
+   * @param sort Sort records by given field
+   * @return InlineResponse20017
    */
-  public InlineResponse2007 correlationsGet (Integer timestamp, Integer userId, BigDecimal correlation, Integer causeId, Integer effectId, Integer onsetDelay, Integer durationOfAction, Integer numberOfPairs, BigDecimal valuePredictingHighOutcome, BigDecimal valuePredictingLowOutcome, BigDecimal optimalPearsonProduct, BigDecimal vote, BigDecimal statisticalSignificance, String causeUnit, Integer causeUnitId, Integer causeChanges, Integer effectChanges, BigDecimal qmScore, String error, String createdAt, String updatedAt, BigDecimal reversePearsonCorrelationCoefficient, BigDecimal predictivePearsonCorrelationCoefficient, Integer limit, Integer offset, String sort) throws ApiException {
+  public InlineResponse20017 correlationsGet(String accessToken, Integer timestamp, Integer userId, BigDecimal correlation, Integer causeId, Integer effectId, Integer onsetDelay, Integer durationOfAction, Integer numberOfPairs, BigDecimal valuePredictingHighOutcome, BigDecimal valuePredictingLowOutcome, BigDecimal optimalPearsonProduct, BigDecimal vote, BigDecimal statisticalSignificance, String causeUnit, Integer causeUnitId, Integer causeChanges, Integer effectChanges, BigDecimal qmScore, String error, String createdAt, String updatedAt, BigDecimal reversePearsonCorrelationCoefficient, BigDecimal predictivePearsonCorrelationCoefficient, Integer limit, Integer offset, String sort) throws ApiException {
     Object postBody = null;
-    byte[] postBinaryBody = null;
     
     // create path and map variables
     String path = "/correlations".replaceAll("\\{format\\}","json");
@@ -78,6 +79,8 @@ public class CorrelationApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, Object> formParams = new HashMap<String, Object>();
 
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
     
     queryParams.addAll(apiClient.parameterToPairs("", "timestamp", timestamp));
     
@@ -146,29 +149,23 @@ public class CorrelationApi {
     };
     final String contentType = apiClient.selectHeaderContentType(contentTypes);
 
-    String[] authNames = new String[] {  };
+    String[] authNames = new String[] { "quantimodo_oauth2" };
 
     
-
+    GenericType<InlineResponse20017> returnType = new GenericType<InlineResponse20017>() {};
+    return apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     
-    
-    TypeRef returnType = new TypeRef<InlineResponse2007>() {};
-    return apiClient.invokeAPI(path, "GET", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    
-    
-
-
   }
   
   /**
    * Store Correlation
    * Store Correlation
+   * @param accessToken User&#39;s OAuth2 access token
    * @param body Correlation that should be stored
-   * @return InlineResponse2008
+   * @return InlineResponse20018
    */
-  public InlineResponse2008 correlationsPost (Correlation body) throws ApiException {
+  public InlineResponse20018 correlationsPost(String accessToken, Correlation body) throws ApiException {
     Object postBody = body;
-    byte[] postBinaryBody = null;
     
     // create path and map variables
     String path = "/correlations".replaceAll("\\{format\\}","json");
@@ -178,6 +175,8 @@ public class CorrelationApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, Object> formParams = new HashMap<String, Object>();
 
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
     
 
     
@@ -194,29 +193,23 @@ public class CorrelationApi {
     };
     final String contentType = apiClient.selectHeaderContentType(contentTypes);
 
-    String[] authNames = new String[] {  };
+    String[] authNames = new String[] { "quantimodo_oauth2" };
 
     
-
+    GenericType<InlineResponse20018> returnType = new GenericType<InlineResponse20018>() {};
+    return apiClient.invokeAPI(path, "POST", queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     
-    
-    TypeRef returnType = new TypeRef<InlineResponse2008>() {};
-    return apiClient.invokeAPI(path, "POST", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    
-    
-
-
   }
   
   /**
-   * Get Correlation
+   * Get Correlation Details
    * Get Correlation
    * @param id id of Correlation
-   * @return InlineResponse2008
+   * @param accessToken User&#39;s OAuth2 access token
+   * @return InlineResponse20018
    */
-  public InlineResponse2008 correlationsIdGet (Integer id) throws ApiException {
+  public InlineResponse20018 correlationsIdGet(Integer id, String accessToken) throws ApiException {
     Object postBody = null;
-    byte[] postBinaryBody = null;
     
      // verify the required parameter 'id' is set
      if (id == null) {
@@ -233,6 +226,8 @@ public class CorrelationApi {
     Map<String, Object> formParams = new HashMap<String, Object>();
 
     
+    queryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
+    
 
     
 
@@ -248,30 +243,24 @@ public class CorrelationApi {
     };
     final String contentType = apiClient.selectHeaderContentType(contentTypes);
 
-    String[] authNames = new String[] {  };
+    String[] authNames = new String[] { "quantimodo_oauth2" };
 
     
-
+    GenericType<InlineResponse20018> returnType = new GenericType<InlineResponse20018>() {};
+    return apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     
-    
-    TypeRef returnType = new TypeRef<InlineResponse2008>() {};
-    return apiClient.invokeAPI(path, "GET", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    
-    
-
-
   }
   
   /**
    * Update Correlation
    * Update Correlation
    * @param id id of Correlation
+   * @param accessToken User&#39;s OAuth2 access token
    * @param body Correlation that should be updated
    * @return InlineResponse2002
    */
-  public InlineResponse2002 correlationsIdPut (Integer id, Correlation body) throws ApiException {
+  public InlineResponse2002 correlationsIdPut(Integer id, String accessToken, Correlation body) throws ApiException {
     Object postBody = body;
-    byte[] postBinaryBody = null;
     
      // verify the required parameter 'id' is set
      if (id == null) {
@@ -288,6 +277,8 @@ public class CorrelationApi {
     Map<String, Object> formParams = new HashMap<String, Object>();
 
     
+    queryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
+    
 
     
 
@@ -303,29 +294,23 @@ public class CorrelationApi {
     };
     final String contentType = apiClient.selectHeaderContentType(contentTypes);
 
-    String[] authNames = new String[] {  };
+    String[] authNames = new String[] { "quantimodo_oauth2" };
 
     
-
+    GenericType<InlineResponse2002> returnType = new GenericType<InlineResponse2002>() {};
+    return apiClient.invokeAPI(path, "PUT", queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     
-    
-    TypeRef returnType = new TypeRef<InlineResponse2002>() {};
-    return apiClient.invokeAPI(path, "PUT", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    
-    
-
-
   }
   
   /**
    * Delete Correlation
    * Delete Correlation
    * @param id id of Correlation
+   * @param accessToken User&#39;s OAuth2 access token
    * @return InlineResponse2002
    */
-  public InlineResponse2002 correlationsIdDelete (Integer id) throws ApiException {
+  public InlineResponse2002 correlationsIdDelete(Integer id, String accessToken) throws ApiException {
     Object postBody = null;
-    byte[] postBinaryBody = null;
     
      // verify the required parameter 'id' is set
      if (id == null) {
@@ -342,6 +327,8 @@ public class CorrelationApi {
     Map<String, Object> formParams = new HashMap<String, Object>();
 
     
+    queryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
+    
 
     
 
@@ -357,18 +344,12 @@ public class CorrelationApi {
     };
     final String contentType = apiClient.selectHeaderContentType(contentTypes);
 
-    String[] authNames = new String[] {  };
+    String[] authNames = new String[] { "quantimodo_oauth2" };
 
     
-
+    GenericType<InlineResponse2002> returnType = new GenericType<InlineResponse2002>() {};
+    return apiClient.invokeAPI(path, "DELETE", queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     
-    
-    TypeRef returnType = new TypeRef<InlineResponse2002>() {};
-    return apiClient.invokeAPI(path, "DELETE", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    
-    
-
-
   }
   
 }

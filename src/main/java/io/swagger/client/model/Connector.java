@@ -1,15 +1,17 @@
 package io.swagger.client.model;
 
-import io.swagger.client.StringUtil;
-
-
-
-import io.swagger.annotations.*;
+import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.util.Date;
 
 
-@ApiModel(description = "")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-11-05T03:15:54.261Z")
+
+
+
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-02-09T02:16:51.363Z")
 public class Connector   {
   
   private Integer id = null;
@@ -21,11 +23,14 @@ public class Connector   {
   private String longDescription = null;
   private Boolean enabled = null;
   private Boolean oauth = null;
+  private Date createdAt = null;
+  private Date updatedAt = null;
 
   
   /**
    * Connector ID number
    **/
+  
   @ApiModelProperty(value = "Connector ID number")
   @JsonProperty("id")
   public Integer getId() {
@@ -37,9 +42,10 @@ public class Connector   {
 
   
   /**
-   * Connector lowercase system name
+   * Lowercase system name for the data source
    **/
-  @ApiModelProperty(required = true, value = "Connector lowercase system name")
+  
+  @ApiModelProperty(required = true, value = "Lowercase system name for the data source")
   @JsonProperty("name")
   public String getName() {
     return name;
@@ -50,9 +56,10 @@ public class Connector   {
 
   
   /**
-   * Connector pretty display name
+   * Pretty display name for the data source
    **/
-  @ApiModelProperty(required = true, value = "Connector pretty display name")
+  
+  @ApiModelProperty(required = true, value = "Pretty display name for the data source")
   @JsonProperty("display_name")
   public String getDisplayName() {
     return displayName;
@@ -65,6 +72,7 @@ public class Connector   {
   /**
    * URL to the image of the connector logo
    **/
+  
   @ApiModelProperty(required = true, value = "URL to the image of the connector logo")
   @JsonProperty("image")
   public String getImage() {
@@ -78,6 +86,7 @@ public class Connector   {
   /**
    * URL to a site where one can get this device or application
    **/
+  
   @ApiModelProperty(required = true, value = "URL to a site where one can get this device or application")
   @JsonProperty("get_it_url")
   public String getGetItUrl() {
@@ -89,9 +98,10 @@ public class Connector   {
 
   
   /**
-   * Short description
+   * Short description of the service (such as the categories it tracks)
    **/
-  @ApiModelProperty(required = true, value = "Short description")
+  
+  @ApiModelProperty(required = true, value = "Short description of the service (such as the categories it tracks)")
   @JsonProperty("short_description")
   public String getShortDescription() {
     return shortDescription;
@@ -102,9 +112,10 @@ public class Connector   {
 
   
   /**
-   * Long description
+   * Longer paragraph description of the data provider
    **/
-  @ApiModelProperty(required = true, value = "Long description")
+  
+  @ApiModelProperty(required = true, value = "Longer paragraph description of the data provider")
   @JsonProperty("long_description")
   public String getLongDescription() {
     return longDescription;
@@ -115,9 +126,10 @@ public class Connector   {
 
   
   /**
-   * enabled
+   * Set to 1 if the connector should be returned when listing connectors
    **/
-  @ApiModelProperty(required = true, value = "enabled")
+  
+  @ApiModelProperty(required = true, value = "Set to 1 if the connector should be returned when listing connectors")
   @JsonProperty("enabled")
   public Boolean getEnabled() {
     return enabled;
@@ -128,9 +140,10 @@ public class Connector   {
 
   
   /**
-   * oauth
+   * Set to 1 if the connector uses OAuth authentication as opposed to username/password
    **/
-  @ApiModelProperty(required = true, value = "oauth")
+  
+  @ApiModelProperty(required = true, value = "Set to 1 if the connector uses OAuth authentication as opposed to username/password")
   @JsonProperty("oauth")
   public Boolean getOauth() {
     return oauth;
@@ -140,22 +153,93 @@ public class Connector   {
   }
 
   
+  /**
+   * When the record was first created. Use ISO 8601 datetime format
+   **/
+  
+  @ApiModelProperty(value = "When the record was first created. Use ISO 8601 datetime format")
+  @JsonProperty("created_at")
+  public Date getCreatedAt() {
+    return createdAt;
+  }
+  public void setCreatedAt(Date createdAt) {
+    this.createdAt = createdAt;
+  }
+
+  
+  /**
+   * When the record in the database was last updated. Use ISO 8601 datetime format
+   **/
+  
+  @ApiModelProperty(value = "When the record in the database was last updated. Use ISO 8601 datetime format")
+  @JsonProperty("updated_at")
+  public Date getUpdatedAt() {
+    return updatedAt;
+  }
+  public void setUpdatedAt(Date updatedAt) {
+    this.updatedAt = updatedAt;
+  }
+
+  
 
   @Override
-  public String toString()  {
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Connector connector = (Connector) o;
+
+    return true && Objects.equals(id, connector.id) &&
+        Objects.equals(name, connector.name) &&
+        Objects.equals(displayName, connector.displayName) &&
+        Objects.equals(image, connector.image) &&
+        Objects.equals(getItUrl, connector.getItUrl) &&
+        Objects.equals(shortDescription, connector.shortDescription) &&
+        Objects.equals(longDescription, connector.longDescription) &&
+        Objects.equals(enabled, connector.enabled) &&
+        Objects.equals(oauth, connector.oauth) &&
+        Objects.equals(createdAt, connector.createdAt) &&
+        Objects.equals(updatedAt, connector.updatedAt)
+    ;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, name, displayName, image, getItUrl, shortDescription, longDescription, enabled, oauth, createdAt, updatedAt);
+  }
+
+  @Override
+  public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Connector {\n");
     
-    sb.append("    id: ").append(StringUtil.toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(StringUtil.toIndentedString(name)).append("\n");
-    sb.append("    displayName: ").append(StringUtil.toIndentedString(displayName)).append("\n");
-    sb.append("    image: ").append(StringUtil.toIndentedString(image)).append("\n");
-    sb.append("    getItUrl: ").append(StringUtil.toIndentedString(getItUrl)).append("\n");
-    sb.append("    shortDescription: ").append(StringUtil.toIndentedString(shortDescription)).append("\n");
-    sb.append("    longDescription: ").append(StringUtil.toIndentedString(longDescription)).append("\n");
-    sb.append("    enabled: ").append(StringUtil.toIndentedString(enabled)).append("\n");
-    sb.append("    oauth: ").append(StringUtil.toIndentedString(oauth)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
+    sb.append("    image: ").append(toIndentedString(image)).append("\n");
+    sb.append("    getItUrl: ").append(toIndentedString(getItUrl)).append("\n");
+    sb.append("    shortDescription: ").append(toIndentedString(shortDescription)).append("\n");
+    sb.append("    longDescription: ").append(toIndentedString(longDescription)).append("\n");
+    sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
+    sb.append("    oauth: ").append(toIndentedString(oauth)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }
+

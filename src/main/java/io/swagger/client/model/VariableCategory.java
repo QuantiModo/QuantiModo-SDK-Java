@@ -1,16 +1,17 @@
 package io.swagger.client.model;
 
-import io.swagger.client.StringUtil;
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
 
 
 
-import io.swagger.annotations.*;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 
-@ApiModel(description = "")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-11-05T03:15:54.261Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-02-09T02:16:51.363Z")
 public class VariableCategory   {
   
   private Integer id = null;
@@ -34,6 +35,7 @@ public class VariableCategory   {
   /**
    * id
    **/
+  
   @ApiModelProperty(value = "id")
   @JsonProperty("id")
   public Integer getId() {
@@ -47,6 +49,7 @@ public class VariableCategory   {
   /**
    * Name of the category
    **/
+  
   @ApiModelProperty(required = true, value = "Name of the category")
   @JsonProperty("name")
   public String getName() {
@@ -60,6 +63,7 @@ public class VariableCategory   {
   /**
    * Value for replacing null measurements
    **/
+  
   @ApiModelProperty(value = "Value for replacing null measurements")
   @JsonProperty("filling_value")
   public Float getFillingValue() {
@@ -73,6 +77,7 @@ public class VariableCategory   {
   /**
    * Maximum recorded value of this category
    **/
+  
   @ApiModelProperty(value = "Maximum recorded value of this category")
   @JsonProperty("maximum_allowed_value")
   public Float getMaximumAllowedValue() {
@@ -86,6 +91,7 @@ public class VariableCategory   {
   /**
    * Minimum recorded value of this category
    **/
+  
   @ApiModelProperty(value = "Minimum recorded value of this category")
   @JsonProperty("minimum_allowed_value")
   public Float getMinimumAllowedValue() {
@@ -99,6 +105,7 @@ public class VariableCategory   {
   /**
    * How long the effect of a measurement in this variable lasts
    **/
+  
   @ApiModelProperty(value = "How long the effect of a measurement in this variable lasts")
   @JsonProperty("duration_of_action")
   public Integer getDurationOfAction() {
@@ -112,6 +119,7 @@ public class VariableCategory   {
   /**
    * How long it takes for a measurement in this variable to take effect
    **/
+  
   @ApiModelProperty(value = "How long it takes for a measurement in this variable to take effect")
   @JsonProperty("onset_delay")
   public Integer getOnsetDelay() {
@@ -125,6 +133,7 @@ public class VariableCategory   {
   /**
    * How to combine values of this variable (for instance, to see a summary of the values over a month) 0 for sum OR 1 for mean
    **/
+  
   @ApiModelProperty(value = "How to combine values of this variable (for instance, to see a summary of the values over a month) 0 for sum OR 1 for mean")
   @JsonProperty("combination_operation")
   public String getCombinationOperation() {
@@ -138,6 +147,7 @@ public class VariableCategory   {
   /**
    * updated
    **/
+  
   @ApiModelProperty(value = "updated")
   @JsonProperty("updated")
   public Integer getUpdated() {
@@ -151,6 +161,7 @@ public class VariableCategory   {
   /**
    * A value of 1 indicates that this category is generally a cause in a causal relationship.  An example of a causeOnly category would be a category such as Work which would generally not be influenced by the behaviour of the user
    **/
+  
   @ApiModelProperty(value = "A value of 1 indicates that this category is generally a cause in a causal relationship.  An example of a causeOnly category would be a category such as Work which would generally not be influenced by the behaviour of the user")
   @JsonProperty("cause_only")
   public Boolean getCauseOnly() {
@@ -164,6 +175,7 @@ public class VariableCategory   {
   /**
    * Is category public
    **/
+  
   @ApiModelProperty(value = "Is category public")
   @JsonProperty("public")
   public Integer getPublic() {
@@ -177,6 +189,7 @@ public class VariableCategory   {
   /**
    * outcome
    **/
+  
   @ApiModelProperty(value = "outcome")
   @JsonProperty("outcome")
   public Boolean getOutcome() {
@@ -188,9 +201,10 @@ public class VariableCategory   {
 
   
   /**
-   * created_at
+   * When the record was first created. Use ISO 8601 datetime format
    **/
-  @ApiModelProperty(value = "created_at")
+  
+  @ApiModelProperty(value = "When the record was first created. Use ISO 8601 datetime format")
   @JsonProperty("created_at")
   public Date getCreatedAt() {
     return createdAt;
@@ -201,9 +215,10 @@ public class VariableCategory   {
 
   
   /**
-   * updated_at
+   * When the record in the database was last updated. Use ISO 8601 datetime format
    **/
-  @ApiModelProperty(value = "updated_at")
+  
+  @ApiModelProperty(value = "When the record in the database was last updated. Use ISO 8601 datetime format")
   @JsonProperty("updated_at")
   public Date getUpdatedAt() {
     return updatedAt;
@@ -216,6 +231,7 @@ public class VariableCategory   {
   /**
    * Image URL
    **/
+  
   @ApiModelProperty(value = "Image URL")
   @JsonProperty("image_url")
   public String getImageUrl() {
@@ -229,6 +245,7 @@ public class VariableCategory   {
   /**
    * ID of the default unit for the category
    **/
+  
   @ApiModelProperty(value = "ID of the default unit for the category")
   @JsonProperty("default_unit_id")
   public Integer getDefaultUnitId() {
@@ -241,27 +258,73 @@ public class VariableCategory   {
   
 
   @Override
-  public String toString()  {
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    VariableCategory variableCategory = (VariableCategory) o;
+
+    return true && Objects.equals(id, variableCategory.id) &&
+        Objects.equals(name, variableCategory.name) &&
+        Objects.equals(fillingValue, variableCategory.fillingValue) &&
+        Objects.equals(maximumAllowedValue, variableCategory.maximumAllowedValue) &&
+        Objects.equals(minimumAllowedValue, variableCategory.minimumAllowedValue) &&
+        Objects.equals(durationOfAction, variableCategory.durationOfAction) &&
+        Objects.equals(onsetDelay, variableCategory.onsetDelay) &&
+        Objects.equals(combinationOperation, variableCategory.combinationOperation) &&
+        Objects.equals(updated, variableCategory.updated) &&
+        Objects.equals(causeOnly, variableCategory.causeOnly) &&
+        Objects.equals(_public, variableCategory._public) &&
+        Objects.equals(outcome, variableCategory.outcome) &&
+        Objects.equals(createdAt, variableCategory.createdAt) &&
+        Objects.equals(updatedAt, variableCategory.updatedAt) &&
+        Objects.equals(imageUrl, variableCategory.imageUrl) &&
+        Objects.equals(defaultUnitId, variableCategory.defaultUnitId)
+    ;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, name, fillingValue, maximumAllowedValue, minimumAllowedValue, durationOfAction, onsetDelay, combinationOperation, updated, causeOnly, _public, outcome, createdAt, updatedAt, imageUrl, defaultUnitId);
+  }
+
+  @Override
+  public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class VariableCategory {\n");
     
-    sb.append("    id: ").append(StringUtil.toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(StringUtil.toIndentedString(name)).append("\n");
-    sb.append("    fillingValue: ").append(StringUtil.toIndentedString(fillingValue)).append("\n");
-    sb.append("    maximumAllowedValue: ").append(StringUtil.toIndentedString(maximumAllowedValue)).append("\n");
-    sb.append("    minimumAllowedValue: ").append(StringUtil.toIndentedString(minimumAllowedValue)).append("\n");
-    sb.append("    durationOfAction: ").append(StringUtil.toIndentedString(durationOfAction)).append("\n");
-    sb.append("    onsetDelay: ").append(StringUtil.toIndentedString(onsetDelay)).append("\n");
-    sb.append("    combinationOperation: ").append(StringUtil.toIndentedString(combinationOperation)).append("\n");
-    sb.append("    updated: ").append(StringUtil.toIndentedString(updated)).append("\n");
-    sb.append("    causeOnly: ").append(StringUtil.toIndentedString(causeOnly)).append("\n");
-    sb.append("    _public: ").append(StringUtil.toIndentedString(_public)).append("\n");
-    sb.append("    outcome: ").append(StringUtil.toIndentedString(outcome)).append("\n");
-    sb.append("    createdAt: ").append(StringUtil.toIndentedString(createdAt)).append("\n");
-    sb.append("    updatedAt: ").append(StringUtil.toIndentedString(updatedAt)).append("\n");
-    sb.append("    imageUrl: ").append(StringUtil.toIndentedString(imageUrl)).append("\n");
-    sb.append("    defaultUnitId: ").append(StringUtil.toIndentedString(defaultUnitId)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    fillingValue: ").append(toIndentedString(fillingValue)).append("\n");
+    sb.append("    maximumAllowedValue: ").append(toIndentedString(maximumAllowedValue)).append("\n");
+    sb.append("    minimumAllowedValue: ").append(toIndentedString(minimumAllowedValue)).append("\n");
+    sb.append("    durationOfAction: ").append(toIndentedString(durationOfAction)).append("\n");
+    sb.append("    onsetDelay: ").append(toIndentedString(onsetDelay)).append("\n");
+    sb.append("    combinationOperation: ").append(toIndentedString(combinationOperation)).append("\n");
+    sb.append("    updated: ").append(toIndentedString(updated)).append("\n");
+    sb.append("    causeOnly: ").append(toIndentedString(causeOnly)).append("\n");
+    sb.append("    _public: ").append(toIndentedString(_public)).append("\n");
+    sb.append("    outcome: ").append(toIndentedString(outcome)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
+    sb.append("    imageUrl: ").append(toIndentedString(imageUrl)).append("\n");
+    sb.append("    defaultUnitId: ").append(toIndentedString(defaultUnitId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }
+

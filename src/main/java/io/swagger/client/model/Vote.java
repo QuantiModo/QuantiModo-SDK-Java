@@ -1,16 +1,17 @@
 package io.swagger.client.model;
 
-import io.swagger.client.StringUtil;
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
 
 
 
-import io.swagger.annotations.*;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 
-@ApiModel(description = "")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-11-05T03:15:54.261Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-02-09T02:16:51.363Z")
 public class Vote   {
   
   private Integer id = null;
@@ -26,6 +27,7 @@ public class Vote   {
   /**
    * id
    **/
+  
   @ApiModelProperty(value = "id")
   @JsonProperty("id")
   public Integer getId() {
@@ -39,6 +41,7 @@ public class Vote   {
   /**
    * client_id
    **/
+  
   @ApiModelProperty(required = true, value = "client_id")
   @JsonProperty("client_id")
   public String getClientId() {
@@ -52,6 +55,7 @@ public class Vote   {
   /**
    * ID of User
    **/
+  
   @ApiModelProperty(required = true, value = "ID of User")
   @JsonProperty("user_id")
   public Integer getUserId() {
@@ -63,9 +67,10 @@ public class Vote   {
 
   
   /**
-   * ID of cause variable
+   * ID of the predictor variable
    **/
-  @ApiModelProperty(required = true, value = "ID of cause variable")
+  
+  @ApiModelProperty(required = true, value = "ID of the predictor variable")
   @JsonProperty("cause_id")
   public Integer getCauseId() {
     return causeId;
@@ -78,6 +83,7 @@ public class Vote   {
   /**
    * ID of effect variable
    **/
+  
   @ApiModelProperty(required = true, value = "ID of effect variable")
   @JsonProperty("effect_id")
   public Integer getEffectId() {
@@ -91,6 +97,7 @@ public class Vote   {
   /**
    * Value of Vote
    **/
+  
   @ApiModelProperty(required = true, value = "Value of Vote")
   @JsonProperty("value")
   public Integer getValue() {
@@ -102,9 +109,10 @@ public class Vote   {
 
   
   /**
-   * created_at
+   * When the record was first created. Use ISO 8601 datetime format
    **/
-  @ApiModelProperty(value = "created_at")
+  
+  @ApiModelProperty(value = "When the record was first created. Use ISO 8601 datetime format")
   @JsonProperty("created_at")
   public Date getCreatedAt() {
     return createdAt;
@@ -115,9 +123,10 @@ public class Vote   {
 
   
   /**
-   * updated_at
+   * When the record in the database was last updated. Use ISO 8601 datetime format
    **/
-  @ApiModelProperty(value = "updated_at")
+  
+  @ApiModelProperty(value = "When the record in the database was last updated. Use ISO 8601 datetime format")
   @JsonProperty("updated_at")
   public Date getUpdatedAt() {
     return updatedAt;
@@ -129,19 +138,57 @@ public class Vote   {
   
 
   @Override
-  public String toString()  {
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Vote vote = (Vote) o;
+
+    return true && Objects.equals(id, vote.id) &&
+        Objects.equals(clientId, vote.clientId) &&
+        Objects.equals(userId, vote.userId) &&
+        Objects.equals(causeId, vote.causeId) &&
+        Objects.equals(effectId, vote.effectId) &&
+        Objects.equals(value, vote.value) &&
+        Objects.equals(createdAt, vote.createdAt) &&
+        Objects.equals(updatedAt, vote.updatedAt)
+    ;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, clientId, userId, causeId, effectId, value, createdAt, updatedAt);
+  }
+
+  @Override
+  public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Vote {\n");
     
-    sb.append("    id: ").append(StringUtil.toIndentedString(id)).append("\n");
-    sb.append("    clientId: ").append(StringUtil.toIndentedString(clientId)).append("\n");
-    sb.append("    userId: ").append(StringUtil.toIndentedString(userId)).append("\n");
-    sb.append("    causeId: ").append(StringUtil.toIndentedString(causeId)).append("\n");
-    sb.append("    effectId: ").append(StringUtil.toIndentedString(effectId)).append("\n");
-    sb.append("    value: ").append(StringUtil.toIndentedString(value)).append("\n");
-    sb.append("    createdAt: ").append(StringUtil.toIndentedString(createdAt)).append("\n");
-    sb.append("    updatedAt: ").append(StringUtil.toIndentedString(updatedAt)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    clientId: ").append(toIndentedString(clientId)).append("\n");
+    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+    sb.append("    causeId: ").append(toIndentedString(causeId)).append("\n");
+    sb.append("    effectId: ").append(toIndentedString(effectId)).append("\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }
+

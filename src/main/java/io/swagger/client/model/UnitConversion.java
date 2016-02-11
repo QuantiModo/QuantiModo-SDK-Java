@@ -1,16 +1,17 @@
 package io.swagger.client.model;
 
-import io.swagger.client.StringUtil;
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
 
 
 
-import io.swagger.annotations.*;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 
-@ApiModel(description = "")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-11-05T03:15:54.261Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-02-09T02:16:51.363Z")
 public class UnitConversion   {
   
   private Integer unitId = null;
@@ -24,6 +25,7 @@ public class UnitConversion   {
   /**
    * unit_id
    **/
+  
   @ApiModelProperty(required = true, value = "unit_id")
   @JsonProperty("unit_id")
   public Integer getUnitId() {
@@ -37,6 +39,7 @@ public class UnitConversion   {
   /**
    * step in the conversion process
    **/
+  
   @ApiModelProperty(required = true, value = "step in the conversion process")
   @JsonProperty("step_number")
   public Boolean getStepNumber() {
@@ -50,6 +53,7 @@ public class UnitConversion   {
   /**
    * 0 is add and 1 is multiply
    **/
+  
   @ApiModelProperty(required = true, value = "0 is add and 1 is multiply")
   @JsonProperty("operation")
   public Boolean getOperation() {
@@ -63,6 +67,7 @@ public class UnitConversion   {
   /**
    * number used in the operation
    **/
+  
   @ApiModelProperty(required = true, value = "number used in the operation")
   @JsonProperty("value")
   public Float getValue() {
@@ -74,9 +79,10 @@ public class UnitConversion   {
 
   
   /**
-   * created_at
+   * When the record was first created. Use ISO 8601 datetime format
    **/
-  @ApiModelProperty(value = "created_at")
+  
+  @ApiModelProperty(value = "When the record was first created. Use ISO 8601 datetime format")
   @JsonProperty("created_at")
   public Date getCreatedAt() {
     return createdAt;
@@ -87,9 +93,10 @@ public class UnitConversion   {
 
   
   /**
-   * updated_at
+   * When the record in the database was last updated. Use ISO 8601 datetime format
    **/
-  @ApiModelProperty(value = "updated_at")
+  
+  @ApiModelProperty(value = "When the record in the database was last updated. Use ISO 8601 datetime format")
   @JsonProperty("updated_at")
   public Date getUpdatedAt() {
     return updatedAt;
@@ -101,17 +108,53 @@ public class UnitConversion   {
   
 
   @Override
-  public String toString()  {
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    UnitConversion unitConversion = (UnitConversion) o;
+
+    return true && Objects.equals(unitId, unitConversion.unitId) &&
+        Objects.equals(stepNumber, unitConversion.stepNumber) &&
+        Objects.equals(operation, unitConversion.operation) &&
+        Objects.equals(value, unitConversion.value) &&
+        Objects.equals(createdAt, unitConversion.createdAt) &&
+        Objects.equals(updatedAt, unitConversion.updatedAt)
+    ;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(unitId, stepNumber, operation, value, createdAt, updatedAt);
+  }
+
+  @Override
+  public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UnitConversion {\n");
     
-    sb.append("    unitId: ").append(StringUtil.toIndentedString(unitId)).append("\n");
-    sb.append("    stepNumber: ").append(StringUtil.toIndentedString(stepNumber)).append("\n");
-    sb.append("    operation: ").append(StringUtil.toIndentedString(operation)).append("\n");
-    sb.append("    value: ").append(StringUtil.toIndentedString(value)).append("\n");
-    sb.append("    createdAt: ").append(StringUtil.toIndentedString(createdAt)).append("\n");
-    sb.append("    updatedAt: ").append(StringUtil.toIndentedString(updatedAt)).append("\n");
+    sb.append("    unitId: ").append(toIndentedString(unitId)).append("\n");
+    sb.append("    stepNumber: ").append(toIndentedString(stepNumber)).append("\n");
+    sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }
+

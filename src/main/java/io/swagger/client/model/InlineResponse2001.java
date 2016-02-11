@@ -1,16 +1,17 @@
 package io.swagger.client.model;
 
-import io.swagger.client.StringUtil;
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import io.swagger.client.model.AggregatedCorrelation;
 
 
 
-import io.swagger.annotations.*;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 
-@ApiModel(description = "")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-11-05T03:15:54.261Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-02-09T02:16:51.363Z")
 public class InlineResponse2001   {
   
   private AggregatedCorrelation data = null;
@@ -19,6 +20,7 @@ public class InlineResponse2001   {
   
   /**
    **/
+  
   @ApiModelProperty(value = "")
   @JsonProperty("data")
   public AggregatedCorrelation getData() {
@@ -31,6 +33,7 @@ public class InlineResponse2001   {
   
   /**
    **/
+  
   @ApiModelProperty(value = "")
   @JsonProperty("success")
   public Boolean getSuccess() {
@@ -43,13 +46,45 @@ public class InlineResponse2001   {
   
 
   @Override
-  public String toString()  {
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    InlineResponse2001 inlineResponse2001 = (InlineResponse2001) o;
+
+    return true && Objects.equals(data, inlineResponse2001.data) &&
+        Objects.equals(success, inlineResponse2001.success)
+    ;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(data, success);
+  }
+
+  @Override
+  public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse2001 {\n");
     
-    sb.append("    data: ").append(StringUtil.toIndentedString(data)).append("\n");
-    sb.append("    success: ").append(StringUtil.toIndentedString(success)).append("\n");
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    success: ").append(toIndentedString(success)).append("\n");
     sb.append("}");
     return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }
+

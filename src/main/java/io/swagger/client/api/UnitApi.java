@@ -1,20 +1,21 @@
 package io.swagger.client.api;
 
+import com.sun.jersey.api.client.GenericType;
+
 import io.swagger.client.ApiException;
 import io.swagger.client.ApiClient;
 import io.swagger.client.Configuration;
 import io.swagger.client.Pair;
-import io.swagger.client.TypeRef;
 
+import io.swagger.client.model.InlineResponse20026;
 import java.math.BigDecimal;
-import io.swagger.client.model.InlineResponse20017;
-import io.swagger.client.model.InlineResponse20018;
+import io.swagger.client.model.InlineResponse20027;
 import io.swagger.client.model.Unit;
 import io.swagger.client.model.InlineResponse2002;
 
 import java.util.*;
 
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-11-05T03:15:54.261Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-02-09T02:16:51.363Z")
 public class UnitApi {
   private ApiClient apiClient;
 
@@ -36,27 +37,28 @@ public class UnitApi {
 
   
   /**
-   * Get all Units
-   * Get all Units
-   * @param clientId client_id
-   * @param name name
-   * @param abbreviatedName abbreviated_name
-   * @param categoryId category_id
-   * @param minimumValue minimum_value
-   * @param maximumValue maximum_value
+   * Get all available units
+   * Get all available units
+   * @param accessToken User&#39;s OAuth2 access token
+   * @param clientId The ID of the client application which last created or updated this unit
+   * @param name Unit name
+   * @param abbreviatedName Unit abbreviation
+   * @param categoryId Unit category ID
+   * @param minimumValue Minimum value permitted for this unit
+   * @param maximumValue Maximum value permitted for this unit
    * @param updated updated
-   * @param multiply multiply
-   * @param add add
-   * @param createdAt created_at
-   * @param updatedAt updated_at
-   * @param limit limit
-   * @param offset offset
-   * @param sort sort
-   * @return InlineResponse20017
+   * @param defaultUnitId ID of default unit for this units category
+   * @param multiply Value multiplied to convert to default unit in this unit category
+   * @param add Value which should be added to convert to default unit
+   * @param createdAt When the record was first created. Use ISO 8601 datetime format
+   * @param updatedAt When the record was last updated. Use ISO 8601 datetime format
+   * @param limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.
+   * @param offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned.
+   * @param sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order.
+   * @return InlineResponse20026
    */
-  public InlineResponse20017 unitsGet (String clientId, String name, String abbreviatedName, Boolean categoryId, BigDecimal minimumValue, BigDecimal maximumValue, Integer updated, BigDecimal multiply, BigDecimal add, String createdAt, String updatedAt, Integer limit, Integer offset, String sort) throws ApiException {
+  public InlineResponse20026 unitsGet(String accessToken, String clientId, String name, String abbreviatedName, Integer categoryId, BigDecimal minimumValue, BigDecimal maximumValue, Integer updated, Integer defaultUnitId, BigDecimal multiply, BigDecimal add, String createdAt, String updatedAt, Integer limit, Integer offset, String sort) throws ApiException {
     Object postBody = null;
-    byte[] postBinaryBody = null;
     
     // create path and map variables
     String path = "/units".replaceAll("\\{format\\}","json");
@@ -66,6 +68,8 @@ public class UnitApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, Object> formParams = new HashMap<String, Object>();
 
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
     
     queryParams.addAll(apiClient.parameterToPairs("", "client_id", clientId));
     
@@ -80,6 +84,8 @@ public class UnitApi {
     queryParams.addAll(apiClient.parameterToPairs("", "maximum_value", maximumValue));
     
     queryParams.addAll(apiClient.parameterToPairs("", "updated", updated));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "default_unit_id", defaultUnitId));
     
     queryParams.addAll(apiClient.parameterToPairs("", "multiply", multiply));
     
@@ -110,29 +116,23 @@ public class UnitApi {
     };
     final String contentType = apiClient.selectHeaderContentType(contentTypes);
 
-    String[] authNames = new String[] {  };
+    String[] authNames = new String[] { "quantimodo_oauth2" };
 
     
-
+    GenericType<InlineResponse20026> returnType = new GenericType<InlineResponse20026>() {};
+    return apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     
-    
-    TypeRef returnType = new TypeRef<InlineResponse20017>() {};
-    return apiClient.invokeAPI(path, "GET", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    
-    
-
-
   }
   
   /**
    * Store Unit
    * Store Unit
+   * @param accessToken User&#39;s OAuth2 access token
    * @param body Unit that should be stored
-   * @return InlineResponse20018
+   * @return InlineResponse20027
    */
-  public InlineResponse20018 unitsPost (Unit body) throws ApiException {
+  public InlineResponse20027 unitsPost(String accessToken, Unit body) throws ApiException {
     Object postBody = body;
-    byte[] postBinaryBody = null;
     
     // create path and map variables
     String path = "/units".replaceAll("\\{format\\}","json");
@@ -142,6 +142,8 @@ public class UnitApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, Object> formParams = new HashMap<String, Object>();
 
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
     
 
     
@@ -158,29 +160,23 @@ public class UnitApi {
     };
     final String contentType = apiClient.selectHeaderContentType(contentTypes);
 
-    String[] authNames = new String[] {  };
+    String[] authNames = new String[] { "quantimodo_oauth2" };
 
     
-
+    GenericType<InlineResponse20027> returnType = new GenericType<InlineResponse20027>() {};
+    return apiClient.invokeAPI(path, "POST", queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     
-    
-    TypeRef returnType = new TypeRef<InlineResponse20018>() {};
-    return apiClient.invokeAPI(path, "POST", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    
-    
-
-
   }
   
   /**
    * Get Unit
    * Get Unit
    * @param id id of Unit
-   * @return InlineResponse20018
+   * @param accessToken User&#39;s OAuth2 access token
+   * @return InlineResponse20027
    */
-  public InlineResponse20018 unitsIdGet (Integer id) throws ApiException {
+  public InlineResponse20027 unitsIdGet(Integer id, String accessToken) throws ApiException {
     Object postBody = null;
-    byte[] postBinaryBody = null;
     
      // verify the required parameter 'id' is set
      if (id == null) {
@@ -197,6 +193,8 @@ public class UnitApi {
     Map<String, Object> formParams = new HashMap<String, Object>();
 
     
+    queryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
+    
 
     
 
@@ -212,30 +210,24 @@ public class UnitApi {
     };
     final String contentType = apiClient.selectHeaderContentType(contentTypes);
 
-    String[] authNames = new String[] {  };
+    String[] authNames = new String[] { "quantimodo_oauth2" };
 
     
-
+    GenericType<InlineResponse20027> returnType = new GenericType<InlineResponse20027>() {};
+    return apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     
-    
-    TypeRef returnType = new TypeRef<InlineResponse20018>() {};
-    return apiClient.invokeAPI(path, "GET", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    
-    
-
-
   }
   
   /**
    * Update Unit
    * Update Unit
    * @param id id of Unit
+   * @param accessToken User&#39;s OAuth2 access token
    * @param body Unit that should be updated
    * @return InlineResponse2002
    */
-  public InlineResponse2002 unitsIdPut (Integer id, Unit body) throws ApiException {
+  public InlineResponse2002 unitsIdPut(Integer id, String accessToken, Unit body) throws ApiException {
     Object postBody = body;
-    byte[] postBinaryBody = null;
     
      // verify the required parameter 'id' is set
      if (id == null) {
@@ -252,6 +244,8 @@ public class UnitApi {
     Map<String, Object> formParams = new HashMap<String, Object>();
 
     
+    queryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
+    
 
     
 
@@ -267,29 +261,23 @@ public class UnitApi {
     };
     final String contentType = apiClient.selectHeaderContentType(contentTypes);
 
-    String[] authNames = new String[] {  };
+    String[] authNames = new String[] { "quantimodo_oauth2" };
 
     
-
+    GenericType<InlineResponse2002> returnType = new GenericType<InlineResponse2002>() {};
+    return apiClient.invokeAPI(path, "PUT", queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     
-    
-    TypeRef returnType = new TypeRef<InlineResponse2002>() {};
-    return apiClient.invokeAPI(path, "PUT", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    
-    
-
-
   }
   
   /**
    * Delete Unit
    * Delete Unit
    * @param id id of Unit
+   * @param accessToken User&#39;s OAuth2 access token
    * @return InlineResponse2002
    */
-  public InlineResponse2002 unitsIdDelete (Integer id) throws ApiException {
+  public InlineResponse2002 unitsIdDelete(Integer id, String accessToken) throws ApiException {
     Object postBody = null;
-    byte[] postBinaryBody = null;
     
      // verify the required parameter 'id' is set
      if (id == null) {
@@ -306,6 +294,8 @@ public class UnitApi {
     Map<String, Object> formParams = new HashMap<String, Object>();
 
     
+    queryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
+    
 
     
 
@@ -321,18 +311,12 @@ public class UnitApi {
     };
     final String contentType = apiClient.selectHeaderContentType(contentTypes);
 
-    String[] authNames = new String[] {  };
+    String[] authNames = new String[] { "quantimodo_oauth2" };
 
     
-
+    GenericType<InlineResponse2002> returnType = new GenericType<InlineResponse2002>() {};
+    return apiClient.invokeAPI(path, "DELETE", queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     
-    
-    TypeRef returnType = new TypeRef<InlineResponse2002>() {};
-    return apiClient.invokeAPI(path, "DELETE", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    
-    
-
-
   }
   
 }

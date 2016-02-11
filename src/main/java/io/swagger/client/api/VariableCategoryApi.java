@@ -1,20 +1,21 @@
 package io.swagger.client.api;
 
+import com.sun.jersey.api.client.GenericType;
+
 import io.swagger.client.ApiException;
 import io.swagger.client.ApiClient;
 import io.swagger.client.Configuration;
 import io.swagger.client.Pair;
-import io.swagger.client.TypeRef;
 
-import io.swagger.client.model.InlineResponse20023;
+import io.swagger.client.model.InlineResponse20031;
 import java.math.BigDecimal;
 import io.swagger.client.model.VariableCategory;
-import io.swagger.client.model.InlineResponse20024;
+import io.swagger.client.model.InlineResponse20032;
 import io.swagger.client.model.InlineResponse2002;
 
 import java.util.*;
 
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-11-05T03:15:54.261Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-02-09T02:16:51.363Z")
 public class VariableCategoryApi {
   private ApiClient apiClient;
 
@@ -37,30 +38,30 @@ public class VariableCategoryApi {
   
   /**
    * Get all VariableCategories
-   * Get all VariableCategories
-   * @param name name
-   * @param fillingValue filling_value
-   * @param maximumAllowedValue maximum_allowed_value
-   * @param minimumAllowedValue minimum_allowed_value
-   * @param durationOfAction duration_of_action
-   * @param onsetDelay onset_delay
-   * @param combinationOperation combination_operation
+   * The variable categories include Activity, Causes of Illness, Cognitive Performance, Conditions, Environment, Foods, Location, Miscellaneous, Mood, Nutrition, Physical Activity, Physique, Sleep, Social Interactions, Symptoms, Treatments, Vital Signs, and Work.
+   * @param accessToken User&#39;s OAuth2 access token
+   * @param name Name of the category
+   * @param fillingValue Value for replacing null measurements
+   * @param maximumAllowedValue Maximum recorded value of this category
+   * @param minimumAllowedValue Minimum recorded value of this category
+   * @param durationOfAction Estimated number of seconds following the onset delay in which a stimulus produces a perceivable effect
+   * @param onsetDelay Estimated number of seconds that pass before a stimulus produces a perceivable effect
+   * @param combinationOperation How to combine values of this variable (for instance, to see a summary of the values over a month) SUM or MEAN
    * @param updated updated
-   * @param causeOnly cause_only
-   * @param _public public
+   * @param causeOnly A value of 1 indicates that this category is generally a cause in a causal relationship.  An example of a causeOnly category would be a category such as Work which would generally not be influenced by the behaviour of the user
+   * @param _public Is category public
    * @param outcome outcome
-   * @param createdAt created_at
-   * @param updatedAt updated_at
-   * @param imageUrl image_url
-   * @param defaultUnitId default_unit_id
-   * @param limit limit
-   * @param offset offset
-   * @param sort sort
-   * @return InlineResponse20023
+   * @param createdAt When the record was first created. Use ISO 8601 datetime format
+   * @param updatedAt When the record was last updated. Use ISO 8601 datetime format
+   * @param imageUrl Image URL
+   * @param defaultUnitId ID of the default unit for the category
+   * @param limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.
+   * @param offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned.
+   * @param sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order.
+   * @return InlineResponse20031
    */
-  public InlineResponse20023 variableCategoriesGet (String name, BigDecimal fillingValue, BigDecimal maximumAllowedValue, BigDecimal minimumAllowedValue, Integer durationOfAction, Integer onsetDelay, String combinationOperation, Integer updated, Boolean causeOnly, Integer _public, Boolean outcome, String createdAt, String updatedAt, String imageUrl, Integer defaultUnitId, Integer limit, Integer offset, String sort) throws ApiException {
+  public InlineResponse20031 variableCategoriesGet(String accessToken, String name, BigDecimal fillingValue, BigDecimal maximumAllowedValue, BigDecimal minimumAllowedValue, Integer durationOfAction, Integer onsetDelay, String combinationOperation, Integer updated, Boolean causeOnly, Integer _public, Boolean outcome, String createdAt, String updatedAt, String imageUrl, Integer defaultUnitId, Integer limit, Integer offset, String sort) throws ApiException {
     Object postBody = null;
-    byte[] postBinaryBody = null;
     
     // create path and map variables
     String path = "/variableCategories".replaceAll("\\{format\\}","json");
@@ -70,6 +71,8 @@ public class VariableCategoryApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, Object> formParams = new HashMap<String, Object>();
 
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
     
     queryParams.addAll(apiClient.parameterToPairs("", "name", name));
     
@@ -122,29 +125,23 @@ public class VariableCategoryApi {
     };
     final String contentType = apiClient.selectHeaderContentType(contentTypes);
 
-    String[] authNames = new String[] {  };
+    String[] authNames = new String[] { "quantimodo_oauth2" };
 
     
-
+    GenericType<InlineResponse20031> returnType = new GenericType<InlineResponse20031>() {};
+    return apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     
-    
-    TypeRef returnType = new TypeRef<InlineResponse20023>() {};
-    return apiClient.invokeAPI(path, "GET", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    
-    
-
-
   }
   
   /**
    * Store VariableCategory
    * Store VariableCategory
+   * @param accessToken User&#39;s OAuth2 access token
    * @param body VariableCategory that should be stored
-   * @return InlineResponse20024
+   * @return InlineResponse20032
    */
-  public InlineResponse20024 variableCategoriesPost (VariableCategory body) throws ApiException {
+  public InlineResponse20032 variableCategoriesPost(String accessToken, VariableCategory body) throws ApiException {
     Object postBody = body;
-    byte[] postBinaryBody = null;
     
     // create path and map variables
     String path = "/variableCategories".replaceAll("\\{format\\}","json");
@@ -154,6 +151,8 @@ public class VariableCategoryApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, Object> formParams = new HashMap<String, Object>();
 
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
     
 
     
@@ -170,29 +169,23 @@ public class VariableCategoryApi {
     };
     final String contentType = apiClient.selectHeaderContentType(contentTypes);
 
-    String[] authNames = new String[] {  };
+    String[] authNames = new String[] { "quantimodo_oauth2" };
 
     
-
+    GenericType<InlineResponse20032> returnType = new GenericType<InlineResponse20032>() {};
+    return apiClient.invokeAPI(path, "POST", queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     
-    
-    TypeRef returnType = new TypeRef<InlineResponse20024>() {};
-    return apiClient.invokeAPI(path, "POST", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    
-    
-
-
   }
   
   /**
    * Get VariableCategory
    * Get VariableCategory
    * @param id id of VariableCategory
-   * @return InlineResponse20024
+   * @param accessToken User&#39;s OAuth2 access token
+   * @return InlineResponse20032
    */
-  public InlineResponse20024 variableCategoriesIdGet (Integer id) throws ApiException {
+  public InlineResponse20032 variableCategoriesIdGet(Integer id, String accessToken) throws ApiException {
     Object postBody = null;
-    byte[] postBinaryBody = null;
     
      // verify the required parameter 'id' is set
      if (id == null) {
@@ -209,6 +202,8 @@ public class VariableCategoryApi {
     Map<String, Object> formParams = new HashMap<String, Object>();
 
     
+    queryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
+    
 
     
 
@@ -224,30 +219,24 @@ public class VariableCategoryApi {
     };
     final String contentType = apiClient.selectHeaderContentType(contentTypes);
 
-    String[] authNames = new String[] {  };
+    String[] authNames = new String[] { "quantimodo_oauth2" };
 
     
-
+    GenericType<InlineResponse20032> returnType = new GenericType<InlineResponse20032>() {};
+    return apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     
-    
-    TypeRef returnType = new TypeRef<InlineResponse20024>() {};
-    return apiClient.invokeAPI(path, "GET", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    
-    
-
-
   }
   
   /**
    * Update VariableCategory
    * Update VariableCategory
    * @param id id of VariableCategory
+   * @param accessToken User&#39;s OAuth2 access token
    * @param body VariableCategory that should be updated
    * @return InlineResponse2002
    */
-  public InlineResponse2002 variableCategoriesIdPut (Integer id, VariableCategory body) throws ApiException {
+  public InlineResponse2002 variableCategoriesIdPut(Integer id, String accessToken, VariableCategory body) throws ApiException {
     Object postBody = body;
-    byte[] postBinaryBody = null;
     
      // verify the required parameter 'id' is set
      if (id == null) {
@@ -264,6 +253,8 @@ public class VariableCategoryApi {
     Map<String, Object> formParams = new HashMap<String, Object>();
 
     
+    queryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
+    
 
     
 
@@ -279,29 +270,23 @@ public class VariableCategoryApi {
     };
     final String contentType = apiClient.selectHeaderContentType(contentTypes);
 
-    String[] authNames = new String[] {  };
+    String[] authNames = new String[] { "quantimodo_oauth2" };
 
     
-
+    GenericType<InlineResponse2002> returnType = new GenericType<InlineResponse2002>() {};
+    return apiClient.invokeAPI(path, "PUT", queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     
-    
-    TypeRef returnType = new TypeRef<InlineResponse2002>() {};
-    return apiClient.invokeAPI(path, "PUT", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    
-    
-
-
   }
   
   /**
    * Delete VariableCategory
    * Delete VariableCategory
    * @param id id of VariableCategory
+   * @param accessToken User&#39;s OAuth2 access token
    * @return InlineResponse2002
    */
-  public InlineResponse2002 variableCategoriesIdDelete (Integer id) throws ApiException {
+  public InlineResponse2002 variableCategoriesIdDelete(Integer id, String accessToken) throws ApiException {
     Object postBody = null;
-    byte[] postBinaryBody = null;
     
      // verify the required parameter 'id' is set
      if (id == null) {
@@ -318,6 +303,8 @@ public class VariableCategoryApi {
     Map<String, Object> formParams = new HashMap<String, Object>();
 
     
+    queryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
+    
 
     
 
@@ -333,18 +320,12 @@ public class VariableCategoryApi {
     };
     final String contentType = apiClient.selectHeaderContentType(contentTypes);
 
-    String[] authNames = new String[] {  };
+    String[] authNames = new String[] { "quantimodo_oauth2" };
 
     
-
+    GenericType<InlineResponse2002> returnType = new GenericType<InlineResponse2002>() {};
+    return apiClient.invokeAPI(path, "DELETE", queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     
-    
-    TypeRef returnType = new TypeRef<InlineResponse2002>() {};
-    return apiClient.invokeAPI(path, "DELETE", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    
-    
-
-
   }
   
 }

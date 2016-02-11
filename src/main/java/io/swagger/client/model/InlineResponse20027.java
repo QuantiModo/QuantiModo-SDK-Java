@@ -1,37 +1,39 @@
 package io.swagger.client.model;
 
-import io.swagger.client.StringUtil;
-import io.swagger.client.model.Variable;
-import java.util.*;
-
-
-
-import io.swagger.annotations.*;
+import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import io.swagger.client.model.Unit;
 
 
-@ApiModel(description = "")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-11-05T03:15:54.261Z")
+
+
+
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-02-09T02:16:51.363Z")
 public class InlineResponse20027   {
   
-  private List<Variable> data = new ArrayList<Variable>();
+  private Unit data = null;
   private Boolean success = null;
 
   
   /**
    **/
+  
   @ApiModelProperty(value = "")
   @JsonProperty("data")
-  public List<Variable> getData() {
+  public Unit getData() {
     return data;
   }
-  public void setData(List<Variable> data) {
+  public void setData(Unit data) {
     this.data = data;
   }
 
   
   /**
    **/
+  
   @ApiModelProperty(value = "")
   @JsonProperty("success")
   public Boolean getSuccess() {
@@ -44,13 +46,45 @@ public class InlineResponse20027   {
   
 
   @Override
-  public String toString()  {
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    InlineResponse20027 inlineResponse20027 = (InlineResponse20027) o;
+
+    return true && Objects.equals(data, inlineResponse20027.data) &&
+        Objects.equals(success, inlineResponse20027.success)
+    ;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(data, success);
+  }
+
+  @Override
+  public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20027 {\n");
     
-    sb.append("    data: ").append(StringUtil.toIndentedString(data)).append("\n");
-    sb.append("    success: ").append(StringUtil.toIndentedString(success)).append("\n");
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    success: ").append(toIndentedString(success)).append("\n");
     sb.append("}");
     return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }
+

@@ -1,19 +1,20 @@
 package io.swagger.client.api;
 
+import com.sun.jersey.api.client.GenericType;
+
 import io.swagger.client.ApiException;
 import io.swagger.client.ApiClient;
 import io.swagger.client.Configuration;
 import io.swagger.client.Pair;
-import io.swagger.client.TypeRef;
 
-import io.swagger.client.model.InlineResponse2009;
-import io.swagger.client.model.InlineResponse20010;
+import io.swagger.client.model.InlineResponse2004;
 import io.swagger.client.model.Credential;
+import io.swagger.client.model.InlineResponse20019;
 import io.swagger.client.model.InlineResponse2002;
 
 import java.util.*;
 
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-11-05T03:15:54.261Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-02-09T02:16:51.363Z")
 public class CredentialApi {
   private ApiClient apiClient;
 
@@ -37,19 +38,20 @@ public class CredentialApi {
   /**
    * Get all Credentials
    * Get all Credentials
-   * @param connectorId connector_id
-   * @param attrKey attr_key
-   * @param attrValue attr_value
-   * @param createdAt created_at
-   * @param updatedAt updated_at
-   * @param limit limit
-   * @param offset offset
-   * @param sort sort
-   * @return InlineResponse2009
+   * @param accessToken User&#39;s OAuth2 access token
+   * @param userId ID of user that owns this credential
+   * @param connectorId The id for the connector data source from which the credential was obtained
+   * @param attrKey Attribute name such as token, userid, username, or password
+   * @param attrValue Encrypted value for the attribute specified
+   * @param createdAt When the record was first created. Use ISO 8601 datetime format
+   * @param updatedAt When the record was last updated. Use ISO 8601 datetime format
+   * @param limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.
+   * @param offset OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned.
+   * @param sort Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order.
+   * @return InlineResponse2004
    */
-  public InlineResponse2009 credentialsGet (Boolean connectorId, String attrKey, String attrValue, String createdAt, String updatedAt, Integer limit, Integer offset, String sort) throws ApiException {
+  public InlineResponse2004 credentialsGet(String accessToken, Integer userId, Integer connectorId, String attrKey, String attrValue, String createdAt, String updatedAt, Integer limit, Integer offset, String sort) throws ApiException {
     Object postBody = null;
-    byte[] postBinaryBody = null;
     
     // create path and map variables
     String path = "/credentials".replaceAll("\\{format\\}","json");
@@ -59,6 +61,10 @@ public class CredentialApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, Object> formParams = new HashMap<String, Object>();
 
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "user_id", userId));
     
     queryParams.addAll(apiClient.parameterToPairs("", "connector_id", connectorId));
     
@@ -91,29 +97,23 @@ public class CredentialApi {
     };
     final String contentType = apiClient.selectHeaderContentType(contentTypes);
 
-    String[] authNames = new String[] {  };
+    String[] authNames = new String[] { "quantimodo_oauth2" };
 
     
-
+    GenericType<InlineResponse2004> returnType = new GenericType<InlineResponse2004>() {};
+    return apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     
-    
-    TypeRef returnType = new TypeRef<InlineResponse2009>() {};
-    return apiClient.invokeAPI(path, "GET", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    
-    
-
-
   }
   
   /**
    * Store Credential
    * Store Credential
+   * @param accessToken User&#39;s OAuth2 access token
    * @param body Credential that should be stored
-   * @return InlineResponse20010
+   * @return InlineResponse20019
    */
-  public InlineResponse20010 credentialsPost (Credential body) throws ApiException {
+  public InlineResponse20019 credentialsPost(String accessToken, Credential body) throws ApiException {
     Object postBody = body;
-    byte[] postBinaryBody = null;
     
     // create path and map variables
     String path = "/credentials".replaceAll("\\{format\\}","json");
@@ -123,6 +123,8 @@ public class CredentialApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     Map<String, Object> formParams = new HashMap<String, Object>();
 
+    
+    queryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
     
 
     
@@ -139,18 +141,12 @@ public class CredentialApi {
     };
     final String contentType = apiClient.selectHeaderContentType(contentTypes);
 
-    String[] authNames = new String[] {  };
+    String[] authNames = new String[] { "quantimodo_oauth2" };
 
     
-
+    GenericType<InlineResponse20019> returnType = new GenericType<InlineResponse20019>() {};
+    return apiClient.invokeAPI(path, "POST", queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     
-    
-    TypeRef returnType = new TypeRef<InlineResponse20010>() {};
-    return apiClient.invokeAPI(path, "POST", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    
-    
-
-
   }
   
   /**
@@ -158,11 +154,11 @@ public class CredentialApi {
    * Get Credential
    * @param id connector id
    * @param attrKey attrKey
-   * @return InlineResponse20010
+   * @param accessToken User&#39;s OAuth2 access token
+   * @return InlineResponse20019
    */
-  public InlineResponse20010 credentialsIdGet (Integer id, String attrKey) throws ApiException {
+  public InlineResponse20019 credentialsIdGet(Integer id, String attrKey, String accessToken) throws ApiException {
     Object postBody = null;
-    byte[] postBinaryBody = null;
     
      // verify the required parameter 'id' is set
      if (id == null) {
@@ -184,6 +180,8 @@ public class CredentialApi {
     Map<String, Object> formParams = new HashMap<String, Object>();
 
     
+    queryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
+    
     queryParams.addAll(apiClient.parameterToPairs("", "attrKey", attrKey));
     
 
@@ -201,18 +199,12 @@ public class CredentialApi {
     };
     final String contentType = apiClient.selectHeaderContentType(contentTypes);
 
-    String[] authNames = new String[] {  };
+    String[] authNames = new String[] { "quantimodo_oauth2" };
 
     
-
+    GenericType<InlineResponse20019> returnType = new GenericType<InlineResponse20019>() {};
+    return apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     
-    
-    TypeRef returnType = new TypeRef<InlineResponse20010>() {};
-    return apiClient.invokeAPI(path, "GET", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    
-    
-
-
   }
   
   /**
@@ -220,12 +212,12 @@ public class CredentialApi {
    * Update Credential
    * @param id connector id
    * @param attrKey attrKey
+   * @param accessToken User&#39;s OAuth2 access token
    * @param body Credential that should be updated
    * @return InlineResponse2002
    */
-  public InlineResponse2002 credentialsIdPut (Integer id, String attrKey, Credential body) throws ApiException {
+  public InlineResponse2002 credentialsIdPut(Integer id, String attrKey, String accessToken, Credential body) throws ApiException {
     Object postBody = body;
-    byte[] postBinaryBody = null;
     
      // verify the required parameter 'id' is set
      if (id == null) {
@@ -247,6 +239,8 @@ public class CredentialApi {
     Map<String, Object> formParams = new HashMap<String, Object>();
 
     
+    queryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
+    
     queryParams.addAll(apiClient.parameterToPairs("", "attrKey", attrKey));
     
 
@@ -264,18 +258,12 @@ public class CredentialApi {
     };
     final String contentType = apiClient.selectHeaderContentType(contentTypes);
 
-    String[] authNames = new String[] {  };
+    String[] authNames = new String[] { "quantimodo_oauth2" };
 
     
-
+    GenericType<InlineResponse2002> returnType = new GenericType<InlineResponse2002>() {};
+    return apiClient.invokeAPI(path, "PUT", queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     
-    
-    TypeRef returnType = new TypeRef<InlineResponse2002>() {};
-    return apiClient.invokeAPI(path, "PUT", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    
-    
-
-
   }
   
   /**
@@ -283,11 +271,11 @@ public class CredentialApi {
    * Delete Credential
    * @param id connector id
    * @param attrKey attrKey
+   * @param accessToken User&#39;s OAuth2 access token
    * @return InlineResponse2002
    */
-  public InlineResponse2002 credentialsIdDelete (Integer id, String attrKey) throws ApiException {
+  public InlineResponse2002 credentialsIdDelete(Integer id, String attrKey, String accessToken) throws ApiException {
     Object postBody = null;
-    byte[] postBinaryBody = null;
     
      // verify the required parameter 'id' is set
      if (id == null) {
@@ -309,6 +297,8 @@ public class CredentialApi {
     Map<String, Object> formParams = new HashMap<String, Object>();
 
     
+    queryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
+    
     queryParams.addAll(apiClient.parameterToPairs("", "attrKey", attrKey));
     
 
@@ -326,18 +316,12 @@ public class CredentialApi {
     };
     final String contentType = apiClient.selectHeaderContentType(contentTypes);
 
-    String[] authNames = new String[] {  };
+    String[] authNames = new String[] { "quantimodo_oauth2" };
 
     
-
+    GenericType<InlineResponse2002> returnType = new GenericType<InlineResponse2002>() {};
+    return apiClient.invokeAPI(path, "DELETE", queryParams, postBody, headerParams, formParams, accept, contentType, authNames, returnType);
     
-    
-    TypeRef returnType = new TypeRef<InlineResponse2002>() {};
-    return apiClient.invokeAPI(path, "DELETE", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    
-    
-
-
   }
   
 }
