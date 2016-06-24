@@ -1,24 +1,24 @@
 package io.swagger.client.api;
 
+import com.sun.jersey.api.client.GenericType;
+
 import io.swagger.client.ApiException;
 import io.swagger.client.ApiClient;
 import io.swagger.client.Configuration;
-import io.swagger.client.Pair;
-import io.swagger.client.TypeRef;
-
 import io.swagger.client.model.*;
-
-import java.util.*;
+import io.swagger.client.Pair;
 
 import io.swagger.client.model.UserTokenRequest;
-import io.swagger.client.model.UserTokenFailedResponse;
 import io.swagger.client.model.UserTokenSuccessfulResponse;
+import io.swagger.client.model.UserTokenFailedResponse;
 
-import java.io.File;
-import java.util.Map;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-09-02T06:04:40.138Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-06-24T22:10:22.059Z")
 public class OrganizationsApi {
   private ApiClient apiClient;
 
@@ -38,74 +38,54 @@ public class OrganizationsApi {
     this.apiClient = apiClient;
   }
 
-  
   /**
    * Get user tokens for existing users, create new users
    * Get user tokens for existing users, create new users
-   * @param organizationId Organization ID
-   * @param body Provides organization token and user ID
+   * @param organizationId Organization ID (required)
+   * @param body Provides organization token and user ID (required)
+   * @param accessToken User&#39;s OAuth2 access token (optional)
    * @return UserTokenSuccessfulResponse
+   * @throws ApiException if fails to make API call
    */
-  public UserTokenSuccessfulResponse v1OrganizationsOrganizationIdUsersPost (Integer organizationId, UserTokenRequest body) throws ApiException {
-    Object postBody = body;
-    byte[] postBinaryBody = null;
+  public UserTokenSuccessfulResponse v1OrganizationsOrganizationIdUsersPost(Integer organizationId, UserTokenRequest body, String accessToken) throws ApiException {
+    Object localVarPostBody = body;
     
-     // verify the required parameter 'organizationId' is set
-     if (organizationId == null) {
-        throw new ApiException(400, "Missing the required parameter 'organizationId' when calling v1OrganizationsOrganizationIdUsersPost");
-     }
-     
-     // verify the required parameter 'body' is set
-     if (body == null) {
-        throw new ApiException(400, "Missing the required parameter 'body' when calling v1OrganizationsOrganizationIdUsersPost");
-     }
-     
+    // verify the required parameter 'organizationId' is set
+    if (organizationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'organizationId' when calling v1OrganizationsOrganizationIdUsersPost");
+    }
+    
+    // verify the required parameter 'body' is set
+    if (body == null) {
+      throw new ApiException(400, "Missing the required parameter 'body' when calling v1OrganizationsOrganizationIdUsersPost");
+    }
+    
     // create path and map variables
-    String path = "/v1/organizations/{organizationId}/users".replaceAll("\\{format\\}","json")
+    String localVarPath = "/v1/organizations/{organizationId}/users".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "organizationId" + "\\}", apiClient.escapeString(organizationId.toString()));
 
     // query params
-    List<Pair> queryParams = new ArrayList<Pair>();
-    Map<String, String> headerParams = new HashMap<String, String>();
-    Map<String, Object> formParams = new HashMap<String, Object>();
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
 
     
-
     
-
-    
-
-    final String[] accepts = {
+    final String[] localVarAccepts = {
       "application/json"
     };
-    final String accept = apiClient.selectHeaderAccept(accepts);
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-    final String[] contentTypes = {
-      
+    final String[] localVarContentTypes = {
+      "application/json"
     };
-    final String contentType = apiClient.selectHeaderContentType(contentTypes);
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] authNames = new String[] {  };
-    
-    
+    String[] localVarAuthNames = new String[] { "oauth2", "internalApiKey" };
 
-    
-
-    
-    
-    TypeRef returnType = new TypeRef<UserTokenSuccessfulResponse>() {};
-    return apiClient.invokeAPI(path, "POST", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-  }
-  
+    GenericType<UserTokenSuccessfulResponse> localVarReturnType = new GenericType<UserTokenSuccessfulResponse>() {};
+    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
 }

@@ -1,15 +1,16 @@
 package io.swagger.client.model;
 
-import io.swagger.client.StringUtil;
-
-
-
-import io.swagger.annotations.*;
+import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 
-@ApiModel(description = "")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-09-24T00:56:42.474Z")
+/**
+ * CommonResponse
+ */
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-06-24T22:10:22.059Z")
 public class CommonResponse   {
   
   private Integer status = null;
@@ -20,7 +21,12 @@ public class CommonResponse   {
   /**
    * Status code
    **/
-  @ApiModelProperty(required = true, value = "Status code")
+  public CommonResponse status(Integer status) {
+    this.status = status;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", required = true, value = "Status code")
   @JsonProperty("status")
   public Integer getStatus() {
     return status;
@@ -29,11 +35,16 @@ public class CommonResponse   {
     this.status = status;
   }
 
-  
+
   /**
    * Message
    **/
-  @ApiModelProperty(value = "Message")
+  public CommonResponse message(String message) {
+    this.message = message;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "Message")
   @JsonProperty("message")
   public String getMessage() {
     return message;
@@ -42,10 +53,15 @@ public class CommonResponse   {
     this.message = message;
   }
 
-  
+
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  public CommonResponse success(Boolean success) {
+    this.success = success;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", required = true, value = "")
   @JsonProperty("success")
   public Boolean getSuccess() {
     return success;
@@ -54,17 +70,47 @@ public class CommonResponse   {
     this.success = success;
   }
 
-  
 
   @Override
-  public String toString()  {
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    CommonResponse commonResponse = (CommonResponse) o;
+    return Objects.equals(this.status, commonResponse.status) &&
+        Objects.equals(this.message, commonResponse.message) &&
+        Objects.equals(this.success, commonResponse.success);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(status, message, success);
+  }
+
+  @Override
+  public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CommonResponse {\n");
     
-    sb.append("    status: ").append(StringUtil.toIndentedString(status)).append("\n");
-    sb.append("    message: ").append(StringUtil.toIndentedString(message)).append("\n");
-    sb.append("    success: ").append(StringUtil.toIndentedString(success)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    success: ").append(toIndentedString(success)).append("\n");
     sb.append("}");
     return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }
+

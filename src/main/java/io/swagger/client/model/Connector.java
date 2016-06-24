@@ -1,15 +1,16 @@
 package io.swagger.client.model;
 
-import io.swagger.client.StringUtil;
-
-
-
-import io.swagger.annotations.*;
+import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 
-@ApiModel(description = "")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-11-05T03:15:54.261Z")
+/**
+ * Connector
+ */
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-06-24T22:10:22.059Z")
 public class Connector   {
   
   private Integer id = null;
@@ -17,16 +18,22 @@ public class Connector   {
   private String displayName = null;
   private String image = null;
   private String getItUrl = null;
-  private String shortDescription = null;
-  private String longDescription = null;
-  private Boolean enabled = null;
-  private Boolean oauth = null;
+  private String connected = null;
+  private String connectInstructions = null;
+  private Integer lastUpdate = null;
+  private Integer totalMeasurementsInLastUpdate = null;
+  private Boolean noDataYet = null;
 
   
   /**
    * Connector ID number
    **/
-  @ApiModelProperty(value = "Connector ID number")
+  public Connector id(Integer id) {
+    this.id = id;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", required = true, value = "Connector ID number")
   @JsonProperty("id")
   public Integer getId() {
     return id;
@@ -35,11 +42,16 @@ public class Connector   {
     this.id = id;
   }
 
-  
+
   /**
    * Connector lowercase system name
    **/
-  @ApiModelProperty(required = true, value = "Connector lowercase system name")
+  public Connector name(String name) {
+    this.name = name;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", required = true, value = "Connector lowercase system name")
   @JsonProperty("name")
   public String getName() {
     return name;
@@ -48,12 +60,17 @@ public class Connector   {
     this.name = name;
   }
 
-  
+
   /**
    * Connector pretty display name
    **/
-  @ApiModelProperty(required = true, value = "Connector pretty display name")
-  @JsonProperty("display_name")
+  public Connector displayName(String displayName) {
+    this.displayName = displayName;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", required = true, value = "Connector pretty display name")
+  @JsonProperty("displayName")
   public String getDisplayName() {
     return displayName;
   }
@@ -61,11 +78,16 @@ public class Connector   {
     this.displayName = displayName;
   }
 
-  
+
   /**
    * URL to the image of the connector logo
    **/
-  @ApiModelProperty(required = true, value = "URL to the image of the connector logo")
+  public Connector image(String image) {
+    this.image = image;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", required = true, value = "URL to the image of the connector logo")
   @JsonProperty("image")
   public String getImage() {
     return image;
@@ -74,12 +96,17 @@ public class Connector   {
     this.image = image;
   }
 
-  
+
   /**
    * URL to a site where one can get this device or application
    **/
-  @ApiModelProperty(required = true, value = "URL to a site where one can get this device or application")
-  @JsonProperty("get_it_url")
+  public Connector getItUrl(String getItUrl) {
+    this.getItUrl = getItUrl;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", required = true, value = "URL to a site where one can get this device or application")
+  @JsonProperty("getItUrl")
   public String getGetItUrl() {
     return getItUrl;
   }
@@ -87,75 +114,151 @@ public class Connector   {
     this.getItUrl = getItUrl;
   }
 
-  
+
   /**
-   * Short description
+   * True if the authenticated user has this connector enabled
    **/
-  @ApiModelProperty(required = true, value = "Short description")
-  @JsonProperty("short_description")
-  public String getShortDescription() {
-    return shortDescription;
+  public Connector connected(String connected) {
+    this.connected = connected;
+    return this;
   }
-  public void setShortDescription(String shortDescription) {
-    this.shortDescription = shortDescription;
+  
+  @ApiModelProperty(example = "null", required = true, value = "True if the authenticated user has this connector enabled")
+  @JsonProperty("connected")
+  public String getConnected() {
+    return connected;
+  }
+  public void setConnected(String connected) {
+    this.connected = connected;
   }
 
-  
+
   /**
-   * Long description
+   * URL and parameters used when connecting to a service
    **/
-  @ApiModelProperty(required = true, value = "Long description")
-  @JsonProperty("long_description")
-  public String getLongDescription() {
-    return longDescription;
+  public Connector connectInstructions(String connectInstructions) {
+    this.connectInstructions = connectInstructions;
+    return this;
   }
-  public void setLongDescription(String longDescription) {
-    this.longDescription = longDescription;
+  
+  @ApiModelProperty(example = "null", required = true, value = "URL and parameters used when connecting to a service")
+  @JsonProperty("connectInstructions")
+  public String getConnectInstructions() {
+    return connectInstructions;
+  }
+  public void setConnectInstructions(String connectInstructions) {
+    this.connectInstructions = connectInstructions;
   }
 
-  
+
   /**
-   * enabled
+   * Epoch timestamp of last sync
    **/
-  @ApiModelProperty(required = true, value = "enabled")
-  @JsonProperty("enabled")
-  public Boolean getEnabled() {
-    return enabled;
+  public Connector lastUpdate(Integer lastUpdate) {
+    this.lastUpdate = lastUpdate;
+    return this;
   }
-  public void setEnabled(Boolean enabled) {
-    this.enabled = enabled;
+  
+  @ApiModelProperty(example = "null", required = true, value = "Epoch timestamp of last sync")
+  @JsonProperty("lastUpdate")
+  public Integer getLastUpdate() {
+    return lastUpdate;
+  }
+  public void setLastUpdate(Integer lastUpdate) {
+    this.lastUpdate = lastUpdate;
   }
 
-  
+
   /**
-   * oauth
+   * Number of measurements obtained during latest update
    **/
-  @ApiModelProperty(required = true, value = "oauth")
-  @JsonProperty("oauth")
-  public Boolean getOauth() {
-    return oauth;
+  public Connector totalMeasurementsInLastUpdate(Integer totalMeasurementsInLastUpdate) {
+    this.totalMeasurementsInLastUpdate = totalMeasurementsInLastUpdate;
+    return this;
   }
-  public void setOauth(Boolean oauth) {
-    this.oauth = oauth;
+  
+  @ApiModelProperty(example = "null", required = true, value = "Number of measurements obtained during latest update")
+  @JsonProperty("totalMeasurementsInLastUpdate")
+  public Integer getTotalMeasurementsInLastUpdate() {
+    return totalMeasurementsInLastUpdate;
+  }
+  public void setTotalMeasurementsInLastUpdate(Integer totalMeasurementsInLastUpdate) {
+    this.totalMeasurementsInLastUpdate = totalMeasurementsInLastUpdate;
   }
 
+
+  /**
+   * True if user has no measurements for this connector
+   **/
+  public Connector noDataYet(Boolean noDataYet) {
+    this.noDataYet = noDataYet;
+    return this;
+  }
   
+  @ApiModelProperty(example = "null", required = true, value = "True if user has no measurements for this connector")
+  @JsonProperty("noDataYet")
+  public Boolean getNoDataYet() {
+    return noDataYet;
+  }
+  public void setNoDataYet(Boolean noDataYet) {
+    this.noDataYet = noDataYet;
+  }
+
 
   @Override
-  public String toString()  {
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Connector connector = (Connector) o;
+    return Objects.equals(this.id, connector.id) &&
+        Objects.equals(this.name, connector.name) &&
+        Objects.equals(this.displayName, connector.displayName) &&
+        Objects.equals(this.image, connector.image) &&
+        Objects.equals(this.getItUrl, connector.getItUrl) &&
+        Objects.equals(this.connected, connector.connected) &&
+        Objects.equals(this.connectInstructions, connector.connectInstructions) &&
+        Objects.equals(this.lastUpdate, connector.lastUpdate) &&
+        Objects.equals(this.totalMeasurementsInLastUpdate, connector.totalMeasurementsInLastUpdate) &&
+        Objects.equals(this.noDataYet, connector.noDataYet);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, name, displayName, image, getItUrl, connected, connectInstructions, lastUpdate, totalMeasurementsInLastUpdate, noDataYet);
+  }
+
+  @Override
+  public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Connector {\n");
     
-    sb.append("    id: ").append(StringUtil.toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(StringUtil.toIndentedString(name)).append("\n");
-    sb.append("    displayName: ").append(StringUtil.toIndentedString(displayName)).append("\n");
-    sb.append("    image: ").append(StringUtil.toIndentedString(image)).append("\n");
-    sb.append("    getItUrl: ").append(StringUtil.toIndentedString(getItUrl)).append("\n");
-    sb.append("    shortDescription: ").append(StringUtil.toIndentedString(shortDescription)).append("\n");
-    sb.append("    longDescription: ").append(StringUtil.toIndentedString(longDescription)).append("\n");
-    sb.append("    enabled: ").append(StringUtil.toIndentedString(enabled)).append("\n");
-    sb.append("    oauth: ").append(StringUtil.toIndentedString(oauth)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
+    sb.append("    image: ").append(toIndentedString(image)).append("\n");
+    sb.append("    getItUrl: ").append(toIndentedString(getItUrl)).append("\n");
+    sb.append("    connected: ").append(toIndentedString(connected)).append("\n");
+    sb.append("    connectInstructions: ").append(toIndentedString(connectInstructions)).append("\n");
+    sb.append("    lastUpdate: ").append(toIndentedString(lastUpdate)).append("\n");
+    sb.append("    totalMeasurementsInLastUpdate: ").append(toIndentedString(totalMeasurementsInLastUpdate)).append("\n");
+    sb.append("    noDataYet: ").append(toIndentedString(noDataYet)).append("\n");
     sb.append("}");
     return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }
+

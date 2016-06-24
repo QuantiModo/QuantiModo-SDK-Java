@@ -1,32 +1,39 @@
 package io.swagger.client.model;
 
-
-
-
-import io.swagger.annotations.*;
+import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 
-@ApiModel(description = "")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-09-02T06:04:40.138Z")
+/**
+ * UserVariables
+ */
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-06-24T22:10:22.059Z")
 public class UserVariables   {
   
   private Integer user = null;
-  private String variable = null;
+  private Integer variableId = null;
   private Integer durationOfAction = null;
   private Integer fillingValue = null;
   private String joinWith = null;
-  private Float maximumValue = null;
-  private Float minimumValue = null;
-  private String name = null;
+  private Float maximumAllowedValue = null;
+  private Float minimumAllowedValue = null;
   private Integer onsetDelay = null;
-  private String unit = null;
+  private String experimentStartTime = null;
+  private String experimentEndTime = null;
 
   
   /**
    * User ID
    **/
-  @ApiModelProperty(required = true, value = "User ID")
+  public UserVariables user(Integer user) {
+    this.user = user;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", required = true, value = "User ID")
   @JsonProperty("user")
   public Integer getUser() {
     return user;
@@ -35,24 +42,34 @@ public class UserVariables   {
     this.user = user;
   }
 
-  
+
   /**
-   * Variable DISPLAY name
+   * Common variable id
    **/
-  @ApiModelProperty(required = true, value = "Variable DISPLAY name")
-  @JsonProperty("variable")
-  public String getVariable() {
-    return variable;
+  public UserVariables variableId(Integer variableId) {
+    this.variableId = variableId;
+    return this;
   }
-  public void setVariable(String variable) {
-    this.variable = variable;
+  
+  @ApiModelProperty(example = "null", required = true, value = "Common variable id")
+  @JsonProperty("variableId")
+  public Integer getVariableId() {
+    return variableId;
+  }
+  public void setVariableId(Integer variableId) {
+    this.variableId = variableId;
   }
 
-  
+
   /**
    * Estimated duration of time following the onset delay in which a stimulus produces a perceivable effect
    **/
-  @ApiModelProperty(required = true, value = "Estimated duration of time following the onset delay in which a stimulus produces a perceivable effect")
+  public UserVariables durationOfAction(Integer durationOfAction) {
+    this.durationOfAction = durationOfAction;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "Estimated duration of time following the onset delay in which a stimulus produces a perceivable effect")
   @JsonProperty("durationOfAction")
   public Integer getDurationOfAction() {
     return durationOfAction;
@@ -61,11 +78,16 @@ public class UserVariables   {
     this.durationOfAction = durationOfAction;
   }
 
-  
+
   /**
    * fillingValue
    **/
-  @ApiModelProperty(required = true, value = "fillingValue")
+  public UserVariables fillingValue(Integer fillingValue) {
+    this.fillingValue = fillingValue;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "fillingValue")
   @JsonProperty("fillingValue")
   public Integer getFillingValue() {
     return fillingValue;
@@ -74,11 +96,16 @@ public class UserVariables   {
     this.fillingValue = fillingValue;
   }
 
-  
+
   /**
    * joinWith
    **/
-  @ApiModelProperty(required = true, value = "joinWith")
+  public UserVariables joinWith(String joinWith) {
+    this.joinWith = joinWith;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "joinWith")
   @JsonProperty("joinWith")
   public String getJoinWith() {
     return joinWith;
@@ -87,50 +114,52 @@ public class UserVariables   {
     this.joinWith = joinWith;
   }
 
-  
+
   /**
-   * maximumValue
+   * maximumAllowedValue
    **/
-  @ApiModelProperty(required = true, value = "maximumValue")
-  @JsonProperty("maximumValue")
-  public Float getMaximumValue() {
-    return maximumValue;
+  public UserVariables maximumAllowedValue(Float maximumAllowedValue) {
+    this.maximumAllowedValue = maximumAllowedValue;
+    return this;
   }
-  public void setMaximumValue(Float maximumValue) {
-    this.maximumValue = maximumValue;
+  
+  @ApiModelProperty(example = "null", value = "maximumAllowedValue")
+  @JsonProperty("maximumAllowedValue")
+  public Float getMaximumAllowedValue() {
+    return maximumAllowedValue;
+  }
+  public void setMaximumAllowedValue(Float maximumAllowedValue) {
+    this.maximumAllowedValue = maximumAllowedValue;
   }
 
-  
+
   /**
-   * minimumValue
+   * minimumAllowedValue
    **/
-  @ApiModelProperty(required = true, value = "minimumValue")
-  @JsonProperty("minimumValue")
-  public Float getMinimumValue() {
-    return minimumValue;
+  public UserVariables minimumAllowedValue(Float minimumAllowedValue) {
+    this.minimumAllowedValue = minimumAllowedValue;
+    return this;
   }
-  public void setMinimumValue(Float minimumValue) {
-    this.minimumValue = minimumValue;
+  
+  @ApiModelProperty(example = "null", value = "minimumAllowedValue")
+  @JsonProperty("minimumAllowedValue")
+  public Float getMinimumAllowedValue() {
+    return minimumAllowedValue;
+  }
+  public void setMinimumAllowedValue(Float minimumAllowedValue) {
+    this.minimumAllowedValue = minimumAllowedValue;
   }
 
-  
-  /**
-   * name
-   **/
-  @ApiModelProperty(required = true, value = "name")
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
-  }
 
-  
   /**
    * onsetDelay
    **/
-  @ApiModelProperty(required = true, value = "onsetDelay")
+  public UserVariables onsetDelay(Integer onsetDelay) {
+    this.onsetDelay = onsetDelay;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "onsetDelay")
   @JsonProperty("onsetDelay")
   public Integer getOnsetDelay() {
     return onsetDelay;
@@ -139,37 +168,97 @@ public class UserVariables   {
     this.onsetDelay = onsetDelay;
   }
 
-  
+
   /**
-   * unit
+   * Earliest measurement startTime that should be used in analysis in ISO format
    **/
-  @ApiModelProperty(required = true, value = "unit")
-  @JsonProperty("unit")
-  public String getUnit() {
-    return unit;
+  public UserVariables experimentStartTime(String experimentStartTime) {
+    this.experimentStartTime = experimentStartTime;
+    return this;
   }
-  public void setUnit(String unit) {
-    this.unit = unit;
+  
+  @ApiModelProperty(example = "null", value = "Earliest measurement startTime that should be used in analysis in ISO format")
+  @JsonProperty("experimentStartTime")
+  public String getExperimentStartTime() {
+    return experimentStartTime;
+  }
+  public void setExperimentStartTime(String experimentStartTime) {
+    this.experimentStartTime = experimentStartTime;
   }
 
+
+  /**
+   * Latest measurement startTime that should be used in analysis in ISO format
+   **/
+  public UserVariables experimentEndTime(String experimentEndTime) {
+    this.experimentEndTime = experimentEndTime;
+    return this;
+  }
   
+  @ApiModelProperty(example = "null", value = "Latest measurement startTime that should be used in analysis in ISO format")
+  @JsonProperty("experimentEndTime")
+  public String getExperimentEndTime() {
+    return experimentEndTime;
+  }
+  public void setExperimentEndTime(String experimentEndTime) {
+    this.experimentEndTime = experimentEndTime;
+  }
+
 
   @Override
-  public String toString()  {
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    UserVariables userVariables = (UserVariables) o;
+    return Objects.equals(this.user, userVariables.user) &&
+        Objects.equals(this.variableId, userVariables.variableId) &&
+        Objects.equals(this.durationOfAction, userVariables.durationOfAction) &&
+        Objects.equals(this.fillingValue, userVariables.fillingValue) &&
+        Objects.equals(this.joinWith, userVariables.joinWith) &&
+        Objects.equals(this.maximumAllowedValue, userVariables.maximumAllowedValue) &&
+        Objects.equals(this.minimumAllowedValue, userVariables.minimumAllowedValue) &&
+        Objects.equals(this.onsetDelay, userVariables.onsetDelay) &&
+        Objects.equals(this.experimentStartTime, userVariables.experimentStartTime) &&
+        Objects.equals(this.experimentEndTime, userVariables.experimentEndTime);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(user, variableId, durationOfAction, fillingValue, joinWith, maximumAllowedValue, minimumAllowedValue, onsetDelay, experimentStartTime, experimentEndTime);
+  }
+
+  @Override
+  public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserVariables {\n");
     
-    sb.append("  user: ").append(user).append("\n");
-    sb.append("  variable: ").append(variable).append("\n");
-    sb.append("  durationOfAction: ").append(durationOfAction).append("\n");
-    sb.append("  fillingValue: ").append(fillingValue).append("\n");
-    sb.append("  joinWith: ").append(joinWith).append("\n");
-    sb.append("  maximumValue: ").append(maximumValue).append("\n");
-    sb.append("  minimumValue: ").append(minimumValue).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("  onsetDelay: ").append(onsetDelay).append("\n");
-    sb.append("  unit: ").append(unit).append("\n");
-    sb.append("}\n");
+    sb.append("    user: ").append(toIndentedString(user)).append("\n");
+    sb.append("    variableId: ").append(toIndentedString(variableId)).append("\n");
+    sb.append("    durationOfAction: ").append(toIndentedString(durationOfAction)).append("\n");
+    sb.append("    fillingValue: ").append(toIndentedString(fillingValue)).append("\n");
+    sb.append("    joinWith: ").append(toIndentedString(joinWith)).append("\n");
+    sb.append("    maximumAllowedValue: ").append(toIndentedString(maximumAllowedValue)).append("\n");
+    sb.append("    minimumAllowedValue: ").append(toIndentedString(minimumAllowedValue)).append("\n");
+    sb.append("    onsetDelay: ").append(toIndentedString(onsetDelay)).append("\n");
+    sb.append("    experimentStartTime: ").append(toIndentedString(experimentStartTime)).append("\n");
+    sb.append("    experimentEndTime: ").append(toIndentedString(experimentEndTime)).append("\n");
+    sb.append("}");
     return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }
+

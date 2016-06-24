@@ -1,41 +1,30 @@
 package io.swagger.client.model;
 
-import io.swagger.client.StringUtil;
-import java.util.Date;
-
-
-
-import io.swagger.annotations.*;
+import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 
-@ApiModel(description = "")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-11-05T03:15:54.261Z")
+/**
+ * UnitCategory
+ */
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-06-24T22:10:22.059Z")
 public class UnitCategory   {
   
-  private Integer id = null;
   private String name = null;
-  private Date createdAt = null;
-  private Date updatedAt = null;
 
   
   /**
-   * id
+   * Category name
    **/
-  @ApiModelProperty(value = "id")
-  @JsonProperty("id")
-  public Integer getId() {
-    return id;
+  public UnitCategory name(String name) {
+    this.name = name;
+    return this;
   }
-  public void setId(Integer id) {
-    this.id = id;
-  }
-
   
-  /**
-   * Unit category name
-   **/
-  @ApiModelProperty(required = true, value = "Unit category name")
+  @ApiModelProperty(example = "null", required = true, value = "Category name")
   @JsonProperty("name")
   public String getName() {
     return name;
@@ -44,44 +33,43 @@ public class UnitCategory   {
     this.name = name;
   }
 
-  
-  /**
-   * created_at
-   **/
-  @ApiModelProperty(value = "created_at")
-  @JsonProperty("created_at")
-  public Date getCreatedAt() {
-    return createdAt;
-  }
-  public void setCreatedAt(Date createdAt) {
-    this.createdAt = createdAt;
-  }
-
-  
-  /**
-   * updated_at
-   **/
-  @ApiModelProperty(value = "updated_at")
-  @JsonProperty("updated_at")
-  public Date getUpdatedAt() {
-    return updatedAt;
-  }
-  public void setUpdatedAt(Date updatedAt) {
-    this.updatedAt = updatedAt;
-  }
-
-  
 
   @Override
-  public String toString()  {
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    UnitCategory unitCategory = (UnitCategory) o;
+    return Objects.equals(this.name, unitCategory.name);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(name);
+  }
+
+  @Override
+  public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UnitCategory {\n");
     
-    sb.append("    id: ").append(StringUtil.toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(StringUtil.toIndentedString(name)).append("\n");
-    sb.append("    createdAt: ").append(StringUtil.toIndentedString(createdAt)).append("\n");
-    sb.append("    updatedAt: ").append(StringUtil.toIndentedString(updatedAt)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }
+

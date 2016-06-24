@@ -1,19 +1,21 @@
 package io.swagger.client.model;
 
-import io.swagger.client.StringUtil;
-import java.util.Date;
-
-
-
-import io.swagger.annotations.*;
+import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import org.joda.time.DateTime;
 
 
-@ApiModel(description = "")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-11-05T03:15:54.261Z")
+/**
+ * UserVariable
+ */
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-06-24T22:10:22.059Z")
 public class UserVariable   {
   
   private Integer parentId = null;
+  private Integer userId = null;
   private String clientId = null;
   private Integer variableId = null;
   private Integer defaultUnitId = null;
@@ -39,10 +41,10 @@ public class UserVariable   {
   private Integer numberOfCorrelations = null;
   private String status = null;
   private String errorMessage = null;
-  private Date lastSuccessfulUpdateTime = null;
+  private DateTime lastSuccessfulUpdateTime = null;
   private Float standardDeviation = null;
   private Float variance = null;
-  private Float minimumRecordedDailyValue = null;
+  private Float minimumRecordedValue = null;
   private Float maximumRecordedDailyValue = null;
   private Float mean = null;
   private Float median = null;
@@ -55,8 +57,10 @@ public class UserVariable   {
   private Float latitude = null;
   private Float longitude = null;
   private String location = null;
-  private Date createdAt = null;
-  private Date updatedAt = null;
+  private DateTime experimentStartTime = null;
+  private DateTime experimentEndTime = null;
+  private DateTime createdAt = null;
+  private DateTime updatedAt = null;
   private Boolean outcome = null;
   private String sources = null;
   private Integer earliestSourceTime = null;
@@ -70,7 +74,12 @@ public class UserVariable   {
   /**
    * ID of the parent variable if this variable has any parent
    **/
-  @ApiModelProperty(value = "ID of the parent variable if this variable has any parent")
+  public UserVariable parentId(Integer parentId) {
+    this.parentId = parentId;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "ID of the parent variable if this variable has any parent")
   @JsonProperty("parent_id")
   public Integer getParentId() {
     return parentId;
@@ -79,11 +88,34 @@ public class UserVariable   {
     this.parentId = parentId;
   }
 
+
+  /**
+   * User ID
+   **/
+  public UserVariable userId(Integer userId) {
+    this.userId = userId;
+    return this;
+  }
   
+  @ApiModelProperty(example = "null", value = "User ID")
+  @JsonProperty("user_id")
+  public Integer getUserId() {
+    return userId;
+  }
+  public void setUserId(Integer userId) {
+    this.userId = userId;
+  }
+
+
   /**
    * client_id
    **/
-  @ApiModelProperty(value = "client_id")
+  public UserVariable clientId(String clientId) {
+    this.clientId = clientId;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "client_id")
   @JsonProperty("client_id")
   public String getClientId() {
     return clientId;
@@ -92,11 +124,16 @@ public class UserVariable   {
     this.clientId = clientId;
   }
 
-  
+
   /**
    * ID of variable
    **/
-  @ApiModelProperty(required = true, value = "ID of variable")
+  public UserVariable variableId(Integer variableId) {
+    this.variableId = variableId;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", required = true, value = "ID of variable")
   @JsonProperty("variable_id")
   public Integer getVariableId() {
     return variableId;
@@ -105,11 +142,16 @@ public class UserVariable   {
     this.variableId = variableId;
   }
 
-  
+
   /**
    * ID of unit to use for this variable
    **/
-  @ApiModelProperty(value = "ID of unit to use for this variable")
+  public UserVariable defaultUnitId(Integer defaultUnitId) {
+    this.defaultUnitId = defaultUnitId;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "ID of unit to use for this variable")
   @JsonProperty("default_unit_id")
   public Integer getDefaultUnitId() {
     return defaultUnitId;
@@ -118,11 +160,16 @@ public class UserVariable   {
     this.defaultUnitId = defaultUnitId;
   }
 
-  
+
   /**
    * Minimum reasonable value for this variable (uses default unit)
    **/
-  @ApiModelProperty(value = "Minimum reasonable value for this variable (uses default unit)")
+  public UserVariable minimumAllowedValue(Float minimumAllowedValue) {
+    this.minimumAllowedValue = minimumAllowedValue;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "Minimum reasonable value for this variable (uses default unit)")
   @JsonProperty("minimum_allowed_value")
   public Float getMinimumAllowedValue() {
     return minimumAllowedValue;
@@ -131,11 +178,16 @@ public class UserVariable   {
     this.minimumAllowedValue = minimumAllowedValue;
   }
 
-  
+
   /**
    * Maximum reasonable value for this variable (uses default unit)
    **/
-  @ApiModelProperty(value = "Maximum reasonable value for this variable (uses default unit)")
+  public UserVariable maximumAllowedValue(Float maximumAllowedValue) {
+    this.maximumAllowedValue = maximumAllowedValue;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "Maximum reasonable value for this variable (uses default unit)")
   @JsonProperty("maximum_allowed_value")
   public Float getMaximumAllowedValue() {
     return maximumAllowedValue;
@@ -144,11 +196,16 @@ public class UserVariable   {
     this.maximumAllowedValue = maximumAllowedValue;
   }
 
-  
+
   /**
    * Value for replacing null measurements
    **/
-  @ApiModelProperty(value = "Value for replacing null measurements")
+  public UserVariable fillingValue(Float fillingValue) {
+    this.fillingValue = fillingValue;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "Value for replacing null measurements")
   @JsonProperty("filling_value")
   public Float getFillingValue() {
     return fillingValue;
@@ -157,11 +214,16 @@ public class UserVariable   {
     this.fillingValue = fillingValue;
   }
 
-  
+
   /**
    * The Variable this Variable should be joined with. If the variable is joined with some other variable then it is not shown to user in the list of variables
    **/
-  @ApiModelProperty(value = "The Variable this Variable should be joined with. If the variable is joined with some other variable then it is not shown to user in the list of variables")
+  public UserVariable joinWith(Integer joinWith) {
+    this.joinWith = joinWith;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "The Variable this Variable should be joined with. If the variable is joined with some other variable then it is not shown to user in the list of variables")
   @JsonProperty("join_with")
   public Integer getJoinWith() {
     return joinWith;
@@ -170,11 +232,16 @@ public class UserVariable   {
     this.joinWith = joinWith;
   }
 
-  
+
   /**
    * How long it takes for a measurement in this variable to take effect
    **/
-  @ApiModelProperty(value = "How long it takes for a measurement in this variable to take effect")
+  public UserVariable onsetDelay(Integer onsetDelay) {
+    this.onsetDelay = onsetDelay;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "How long it takes for a measurement in this variable to take effect")
   @JsonProperty("onset_delay")
   public Integer getOnsetDelay() {
     return onsetDelay;
@@ -183,11 +250,16 @@ public class UserVariable   {
     this.onsetDelay = onsetDelay;
   }
 
-  
+
   /**
    * Estimated duration of time following the onset delay in which a stimulus produces a perceivable effect
    **/
-  @ApiModelProperty(value = "Estimated duration of time following the onset delay in which a stimulus produces a perceivable effect")
+  public UserVariable durationOfAction(Integer durationOfAction) {
+    this.durationOfAction = durationOfAction;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "Estimated duration of time following the onset delay in which a stimulus produces a perceivable effect")
   @JsonProperty("duration_of_action")
   public Integer getDurationOfAction() {
     return durationOfAction;
@@ -196,11 +268,16 @@ public class UserVariable   {
     this.durationOfAction = durationOfAction;
   }
 
-  
+
   /**
    * ID of variable category
    **/
-  @ApiModelProperty(value = "ID of variable category")
+  public UserVariable variableCategoryId(Integer variableCategoryId) {
+    this.variableCategoryId = variableCategoryId;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "ID of variable category")
   @JsonProperty("variable_category_id")
   public Integer getVariableCategoryId() {
     return variableCategoryId;
@@ -209,11 +286,16 @@ public class UserVariable   {
     this.variableCategoryId = variableCategoryId;
   }
 
-  
+
   /**
    * updated
    **/
-  @ApiModelProperty(value = "updated")
+  public UserVariable updated(Integer updated) {
+    this.updated = updated;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "updated")
   @JsonProperty("updated")
   public Integer getUpdated() {
     return updated;
@@ -222,11 +304,16 @@ public class UserVariable   {
     this.updated = updated;
   }
 
-  
+
   /**
    * Is variable public
    **/
-  @ApiModelProperty(value = "Is variable public")
+  public UserVariable _public(Integer _public) {
+    this._public = _public;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "Is variable public")
   @JsonProperty("public")
   public Integer getPublic() {
     return _public;
@@ -235,11 +322,16 @@ public class UserVariable   {
     this._public = _public;
   }
 
-  
+
   /**
    * A value of 1 indicates that this variable is generally a cause in a causal relationship.  An example of a causeOnly variable would be a variable such as Cloud Cover which would generally not be influenced by the behaviour of the user
    **/
-  @ApiModelProperty(value = "A value of 1 indicates that this variable is generally a cause in a causal relationship.  An example of a causeOnly variable would be a variable such as Cloud Cover which would generally not be influenced by the behaviour of the user")
+  public UserVariable causeOnly(Boolean causeOnly) {
+    this.causeOnly = causeOnly;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "A value of 1 indicates that this variable is generally a cause in a causal relationship.  An example of a causeOnly variable would be a variable such as Cloud Cover which would generally not be influenced by the behaviour of the user")
   @JsonProperty("cause_only")
   public Boolean getCauseOnly() {
     return causeOnly;
@@ -248,11 +340,16 @@ public class UserVariable   {
     this.causeOnly = causeOnly;
   }
 
-  
+
   /**
    * 0 -> No filling, 1 -> Use filling-value
    **/
-  @ApiModelProperty(value = "0 -> No filling, 1 -> Use filling-value")
+  public UserVariable fillingType(String fillingType) {
+    this.fillingType = fillingType;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "0 -> No filling, 1 -> Use filling-value")
   @JsonProperty("filling_type")
   public String getFillingType() {
     return fillingType;
@@ -261,11 +358,16 @@ public class UserVariable   {
     this.fillingType = fillingType;
   }
 
-  
+
   /**
    * Number of measurements
    **/
-  @ApiModelProperty(value = "Number of measurements")
+  public UserVariable numberOfMeasurements(Integer numberOfMeasurements) {
+    this.numberOfMeasurements = numberOfMeasurements;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "Number of measurements")
   @JsonProperty("number_of_measurements")
   public Integer getNumberOfMeasurements() {
     return numberOfMeasurements;
@@ -274,11 +376,16 @@ public class UserVariable   {
     this.numberOfMeasurements = numberOfMeasurements;
   }
 
-  
+
   /**
    * Number of processed measurements
    **/
-  @ApiModelProperty(value = "Number of processed measurements")
+  public UserVariable numberOfProcessedMeasurements(Integer numberOfProcessedMeasurements) {
+    this.numberOfProcessedMeasurements = numberOfProcessedMeasurements;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "Number of processed measurements")
   @JsonProperty("number_of_processed_measurements")
   public Integer getNumberOfProcessedMeasurements() {
     return numberOfProcessedMeasurements;
@@ -287,11 +394,16 @@ public class UserVariable   {
     this.numberOfProcessedMeasurements = numberOfProcessedMeasurements;
   }
 
-  
+
   /**
    * Number of measurements at last analysis
    **/
-  @ApiModelProperty(value = "Number of measurements at last analysis")
+  public UserVariable measurementsAtLastAnalysis(Integer measurementsAtLastAnalysis) {
+    this.measurementsAtLastAnalysis = measurementsAtLastAnalysis;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "Number of measurements at last analysis")
   @JsonProperty("measurements_at_last_analysis")
   public Integer getMeasurementsAtLastAnalysis() {
     return measurementsAtLastAnalysis;
@@ -300,11 +412,16 @@ public class UserVariable   {
     this.measurementsAtLastAnalysis = measurementsAtLastAnalysis;
   }
 
-  
+
   /**
    * ID of last Unit
    **/
-  @ApiModelProperty(value = "ID of last Unit")
+  public UserVariable lastUnitId(Integer lastUnitId) {
+    this.lastUnitId = lastUnitId;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "ID of last Unit")
   @JsonProperty("last_unit_id")
   public Integer getLastUnitId() {
     return lastUnitId;
@@ -313,11 +430,16 @@ public class UserVariable   {
     this.lastUnitId = lastUnitId;
   }
 
-  
+
   /**
    * ID of last original Unit
    **/
-  @ApiModelProperty(value = "ID of last original Unit")
+  public UserVariable lastOriginalUnitId(Integer lastOriginalUnitId) {
+    this.lastOriginalUnitId = lastOriginalUnitId;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "ID of last original Unit")
   @JsonProperty("last_original_unit_id")
   public Integer getLastOriginalUnitId() {
     return lastOriginalUnitId;
@@ -326,11 +448,16 @@ public class UserVariable   {
     this.lastOriginalUnitId = lastOriginalUnitId;
   }
 
-  
+
   /**
    * Last Value
    **/
-  @ApiModelProperty(value = "Last Value")
+  public UserVariable lastValue(Float lastValue) {
+    this.lastValue = lastValue;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "Last Value")
   @JsonProperty("last_value")
   public Float getLastValue() {
     return lastValue;
@@ -339,11 +466,16 @@ public class UserVariable   {
     this.lastValue = lastValue;
   }
 
-  
+
   /**
    * Last original value which is stored
    **/
-  @ApiModelProperty(value = "Last original value which is stored")
+  public UserVariable lastOriginalValue(Integer lastOriginalValue) {
+    this.lastOriginalValue = lastOriginalValue;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "Last original value which is stored")
   @JsonProperty("last_original_value")
   public Integer getLastOriginalValue() {
     return lastOriginalValue;
@@ -352,11 +484,16 @@ public class UserVariable   {
     this.lastOriginalValue = lastOriginalValue;
   }
 
-  
+
   /**
    * ID of last source
    **/
-  @ApiModelProperty(value = "ID of last source")
+  public UserVariable lastSourceId(Integer lastSourceId) {
+    this.lastSourceId = lastSourceId;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "ID of last source")
   @JsonProperty("last_source_id")
   public Integer getLastSourceId() {
     return lastSourceId;
@@ -365,11 +502,16 @@ public class UserVariable   {
     this.lastSourceId = lastSourceId;
   }
 
-  
+
   /**
    * Number of correlations for this variable
    **/
-  @ApiModelProperty(value = "Number of correlations for this variable")
+  public UserVariable numberOfCorrelations(Integer numberOfCorrelations) {
+    this.numberOfCorrelations = numberOfCorrelations;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "Number of correlations for this variable")
   @JsonProperty("number_of_correlations")
   public Integer getNumberOfCorrelations() {
     return numberOfCorrelations;
@@ -378,11 +520,16 @@ public class UserVariable   {
     this.numberOfCorrelations = numberOfCorrelations;
   }
 
-  
+
   /**
    * status
    **/
-  @ApiModelProperty(value = "status")
+  public UserVariable status(String status) {
+    this.status = status;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "status")
   @JsonProperty("status")
   public String getStatus() {
     return status;
@@ -391,11 +538,16 @@ public class UserVariable   {
     this.status = status;
   }
 
-  
+
   /**
    * error_message
    **/
-  @ApiModelProperty(value = "error_message")
+  public UserVariable errorMessage(String errorMessage) {
+    this.errorMessage = errorMessage;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "error_message")
   @JsonProperty("error_message")
   public String getErrorMessage() {
     return errorMessage;
@@ -404,24 +556,34 @@ public class UserVariable   {
     this.errorMessage = errorMessage;
   }
 
-  
+
   /**
    * When this variable or its settings were last updated
    **/
-  @ApiModelProperty(value = "When this variable or its settings were last updated")
+  public UserVariable lastSuccessfulUpdateTime(DateTime lastSuccessfulUpdateTime) {
+    this.lastSuccessfulUpdateTime = lastSuccessfulUpdateTime;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "When this variable or its settings were last updated")
   @JsonProperty("last_successful_update_time")
-  public Date getLastSuccessfulUpdateTime() {
+  public DateTime getLastSuccessfulUpdateTime() {
     return lastSuccessfulUpdateTime;
   }
-  public void setLastSuccessfulUpdateTime(Date lastSuccessfulUpdateTime) {
+  public void setLastSuccessfulUpdateTime(DateTime lastSuccessfulUpdateTime) {
     this.lastSuccessfulUpdateTime = lastSuccessfulUpdateTime;
   }
 
-  
+
   /**
    * Standard deviation
    **/
-  @ApiModelProperty(value = "Standard deviation")
+  public UserVariable standardDeviation(Float standardDeviation) {
+    this.standardDeviation = standardDeviation;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "Standard deviation")
   @JsonProperty("standard_deviation")
   public Float getStandardDeviation() {
     return standardDeviation;
@@ -430,11 +592,16 @@ public class UserVariable   {
     this.standardDeviation = standardDeviation;
   }
 
-  
+
   /**
    * Variance
    **/
-  @ApiModelProperty(value = "Variance")
+  public UserVariable variance(Float variance) {
+    this.variance = variance;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "Variance")
   @JsonProperty("variance")
   public Float getVariance() {
     return variance;
@@ -443,24 +610,34 @@ public class UserVariable   {
     this.variance = variance;
   }
 
-  
+
   /**
-   * Minimum recorded daily value of this variable
+   * Minimum recorded value of this variable
    **/
-  @ApiModelProperty(value = "Minimum recorded daily value of this variable")
-  @JsonProperty("minimum_recorded_daily_value")
-  public Float getMinimumRecordedDailyValue() {
-    return minimumRecordedDailyValue;
+  public UserVariable minimumRecordedValue(Float minimumRecordedValue) {
+    this.minimumRecordedValue = minimumRecordedValue;
+    return this;
   }
-  public void setMinimumRecordedDailyValue(Float minimumRecordedDailyValue) {
-    this.minimumRecordedDailyValue = minimumRecordedDailyValue;
+  
+  @ApiModelProperty(example = "null", value = "Minimum recorded value of this variable")
+  @JsonProperty("minimum_recorded_value")
+  public Float getMinimumRecordedValue() {
+    return minimumRecordedValue;
+  }
+  public void setMinimumRecordedValue(Float minimumRecordedValue) {
+    this.minimumRecordedValue = minimumRecordedValue;
   }
 
-  
+
   /**
    * Maximum recorded daily value of this variable
    **/
-  @ApiModelProperty(value = "Maximum recorded daily value of this variable")
+  public UserVariable maximumRecordedDailyValue(Float maximumRecordedDailyValue) {
+    this.maximumRecordedDailyValue = maximumRecordedDailyValue;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "Maximum recorded daily value of this variable")
   @JsonProperty("maximum_recorded_daily_value")
   public Float getMaximumRecordedDailyValue() {
     return maximumRecordedDailyValue;
@@ -469,11 +646,16 @@ public class UserVariable   {
     this.maximumRecordedDailyValue = maximumRecordedDailyValue;
   }
 
-  
+
   /**
    * Mean
    **/
-  @ApiModelProperty(value = "Mean")
+  public UserVariable mean(Float mean) {
+    this.mean = mean;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "Mean")
   @JsonProperty("mean")
   public Float getMean() {
     return mean;
@@ -482,11 +664,16 @@ public class UserVariable   {
     this.mean = mean;
   }
 
-  
+
   /**
    * Median
    **/
-  @ApiModelProperty(value = "Median")
+  public UserVariable median(Float median) {
+    this.median = median;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "Median")
   @JsonProperty("median")
   public Float getMedian() {
     return median;
@@ -495,11 +682,16 @@ public class UserVariable   {
     this.median = median;
   }
 
-  
+
   /**
    * Most common Unit ID
    **/
-  @ApiModelProperty(value = "Most common Unit ID")
+  public UserVariable mostCommonUnitId(Integer mostCommonUnitId) {
+    this.mostCommonUnitId = mostCommonUnitId;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "Most common Unit ID")
   @JsonProperty("most_common_unit_id")
   public Integer getMostCommonUnitId() {
     return mostCommonUnitId;
@@ -508,11 +700,16 @@ public class UserVariable   {
     this.mostCommonUnitId = mostCommonUnitId;
   }
 
-  
+
   /**
    * Most common value
    **/
-  @ApiModelProperty(value = "Most common value")
+  public UserVariable mostCommonValue(Float mostCommonValue) {
+    this.mostCommonValue = mostCommonValue;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "Most common value")
   @JsonProperty("most_common_value")
   public Float getMostCommonValue() {
     return mostCommonValue;
@@ -521,11 +718,16 @@ public class UserVariable   {
     this.mostCommonValue = mostCommonValue;
   }
 
-  
+
   /**
    * Number of unique daily values
    **/
-  @ApiModelProperty(value = "Number of unique daily values")
+  public UserVariable numberOfUniqueDailyValues(Float numberOfUniqueDailyValues) {
+    this.numberOfUniqueDailyValues = numberOfUniqueDailyValues;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "Number of unique daily values")
   @JsonProperty("number_of_unique_daily_values")
   public Float getNumberOfUniqueDailyValues() {
     return numberOfUniqueDailyValues;
@@ -534,11 +736,16 @@ public class UserVariable   {
     this.numberOfUniqueDailyValues = numberOfUniqueDailyValues;
   }
 
-  
+
   /**
    * Number of changes
    **/
-  @ApiModelProperty(value = "Number of changes")
+  public UserVariable numberOfChanges(Integer numberOfChanges) {
+    this.numberOfChanges = numberOfChanges;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "Number of changes")
   @JsonProperty("number_of_changes")
   public Integer getNumberOfChanges() {
     return numberOfChanges;
@@ -547,11 +754,16 @@ public class UserVariable   {
     this.numberOfChanges = numberOfChanges;
   }
 
-  
+
   /**
    * Skewness
    **/
-  @ApiModelProperty(value = "Skewness")
+  public UserVariable skewness(Float skewness) {
+    this.skewness = skewness;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "Skewness")
   @JsonProperty("skewness")
   public Float getSkewness() {
     return skewness;
@@ -560,11 +772,16 @@ public class UserVariable   {
     this.skewness = skewness;
   }
 
-  
+
   /**
    * Kurtosis
    **/
-  @ApiModelProperty(value = "Kurtosis")
+  public UserVariable kurtosis(Float kurtosis) {
+    this.kurtosis = kurtosis;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "Kurtosis")
   @JsonProperty("kurtosis")
   public Float getKurtosis() {
     return kurtosis;
@@ -573,11 +790,16 @@ public class UserVariable   {
     this.kurtosis = kurtosis;
   }
 
-  
+
   /**
    * Latitude
    **/
-  @ApiModelProperty(value = "Latitude")
+  public UserVariable latitude(Float latitude) {
+    this.latitude = latitude;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "Latitude")
   @JsonProperty("latitude")
   public Float getLatitude() {
     return latitude;
@@ -586,11 +808,16 @@ public class UserVariable   {
     this.latitude = latitude;
   }
 
-  
+
   /**
    * Longitude
    **/
-  @ApiModelProperty(value = "Longitude")
+  public UserVariable longitude(Float longitude) {
+    this.longitude = longitude;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "Longitude")
   @JsonProperty("longitude")
   public Float getLongitude() {
     return longitude;
@@ -599,11 +826,16 @@ public class UserVariable   {
     this.longitude = longitude;
   }
 
-  
+
   /**
    * Location
    **/
-  @ApiModelProperty(value = "Location")
+  public UserVariable location(String location) {
+    this.location = location;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "Location")
   @JsonProperty("location")
   public String getLocation() {
     return location;
@@ -612,37 +844,88 @@ public class UserVariable   {
     this.location = location;
   }
 
-  
+
   /**
-   * created_at
+   * Earliest measurement start_time to be used in analysis. Use ISO 8601 datetime format
    **/
-  @ApiModelProperty(value = "created_at")
+  public UserVariable experimentStartTime(DateTime experimentStartTime) {
+    this.experimentStartTime = experimentStartTime;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "Earliest measurement start_time to be used in analysis. Use ISO 8601 datetime format")
+  @JsonProperty("experiment_start_time")
+  public DateTime getExperimentStartTime() {
+    return experimentStartTime;
+  }
+  public void setExperimentStartTime(DateTime experimentStartTime) {
+    this.experimentStartTime = experimentStartTime;
+  }
+
+
+  /**
+   * Latest measurement start_time to be used in analysis. Use ISO 8601 datetime format
+   **/
+  public UserVariable experimentEndTime(DateTime experimentEndTime) {
+    this.experimentEndTime = experimentEndTime;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "Latest measurement start_time to be used in analysis. Use ISO 8601 datetime format")
+  @JsonProperty("experiment_end_time")
+  public DateTime getExperimentEndTime() {
+    return experimentEndTime;
+  }
+  public void setExperimentEndTime(DateTime experimentEndTime) {
+    this.experimentEndTime = experimentEndTime;
+  }
+
+
+  /**
+   * When the record was first created. Use ISO 8601 datetime format
+   **/
+  public UserVariable createdAt(DateTime createdAt) {
+    this.createdAt = createdAt;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "When the record was first created. Use ISO 8601 datetime format")
   @JsonProperty("created_at")
-  public Date getCreatedAt() {
+  public DateTime getCreatedAt() {
     return createdAt;
   }
-  public void setCreatedAt(Date createdAt) {
+  public void setCreatedAt(DateTime createdAt) {
     this.createdAt = createdAt;
   }
 
-  
+
   /**
-   * updated_at
+   * When the record in the database was last updated. Use ISO 8601 datetime format
    **/
-  @ApiModelProperty(value = "updated_at")
+  public UserVariable updatedAt(DateTime updatedAt) {
+    this.updatedAt = updatedAt;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "When the record in the database was last updated. Use ISO 8601 datetime format")
   @JsonProperty("updated_at")
-  public Date getUpdatedAt() {
+  public DateTime getUpdatedAt() {
     return updatedAt;
   }
-  public void setUpdatedAt(Date updatedAt) {
+  public void setUpdatedAt(DateTime updatedAt) {
     this.updatedAt = updatedAt;
   }
 
-  
+
   /**
    * Outcome variables (those with `outcome` == 1) are variables for which a human would generally want to identify the influencing factors.  These include symptoms of illness, physique, mood, cognitive performance, etc.  Generally correlation calculations are only performed on outcome variables
    **/
-  @ApiModelProperty(value = "Outcome variables (those with `outcome` == 1) are variables for which a human would generally want to identify the influencing factors.  These include symptoms of illness, physique, mood, cognitive performance, etc.  Generally correlation calculations are only performed on outcome variables")
+  public UserVariable outcome(Boolean outcome) {
+    this.outcome = outcome;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "Outcome variables (those with `outcome` == 1) are variables for which a human would generally want to identify the influencing factors.  These include symptoms of illness, physique, mood, cognitive performance, etc.  Generally correlation calculations are only performed on outcome variables")
   @JsonProperty("outcome")
   public Boolean getOutcome() {
     return outcome;
@@ -651,11 +934,16 @@ public class UserVariable   {
     this.outcome = outcome;
   }
 
-  
+
   /**
    * Comma-separated list of source names to limit variables to those sources
    **/
-  @ApiModelProperty(value = "Comma-separated list of source names to limit variables to those sources")
+  public UserVariable sources(String sources) {
+    this.sources = sources;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "Comma-separated list of source names to limit variables to those sources")
   @JsonProperty("sources")
   public String getSources() {
     return sources;
@@ -664,11 +952,16 @@ public class UserVariable   {
     this.sources = sources;
   }
 
-  
+
   /**
    * Earliest source time
    **/
-  @ApiModelProperty(value = "Earliest source time")
+  public UserVariable earliestSourceTime(Integer earliestSourceTime) {
+    this.earliestSourceTime = earliestSourceTime;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "Earliest source time")
   @JsonProperty("earliest_source_time")
   public Integer getEarliestSourceTime() {
     return earliestSourceTime;
@@ -677,11 +970,16 @@ public class UserVariable   {
     this.earliestSourceTime = earliestSourceTime;
   }
 
-  
+
   /**
    * Latest source time
    **/
-  @ApiModelProperty(value = "Latest source time")
+  public UserVariable latestSourceTime(Integer latestSourceTime) {
+    this.latestSourceTime = latestSourceTime;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "Latest source time")
   @JsonProperty("latest_source_time")
   public Integer getLatestSourceTime() {
     return latestSourceTime;
@@ -690,11 +988,16 @@ public class UserVariable   {
     this.latestSourceTime = latestSourceTime;
   }
 
-  
+
   /**
    * Earliest measurement time
    **/
-  @ApiModelProperty(value = "Earliest measurement time")
+  public UserVariable earliestMeasurementTime(Integer earliestMeasurementTime) {
+    this.earliestMeasurementTime = earliestMeasurementTime;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "Earliest measurement time")
   @JsonProperty("earliest_measurement_time")
   public Integer getEarliestMeasurementTime() {
     return earliestMeasurementTime;
@@ -703,11 +1006,16 @@ public class UserVariable   {
     this.earliestMeasurementTime = earliestMeasurementTime;
   }
 
-  
+
   /**
    * Latest measurement time
    **/
-  @ApiModelProperty(value = "Latest measurement time")
+  public UserVariable latestMeasurementTime(Integer latestMeasurementTime) {
+    this.latestMeasurementTime = latestMeasurementTime;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "Latest measurement time")
   @JsonProperty("latest_measurement_time")
   public Integer getLatestMeasurementTime() {
     return latestMeasurementTime;
@@ -716,11 +1024,16 @@ public class UserVariable   {
     this.latestMeasurementTime = latestMeasurementTime;
   }
 
-  
+
   /**
    * Earliest filling time
    **/
-  @ApiModelProperty(value = "Earliest filling time")
+  public UserVariable earliestFillingTime(Integer earliestFillingTime) {
+    this.earliestFillingTime = earliestFillingTime;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "Earliest filling time")
   @JsonProperty("earliest_filling_time")
   public Integer getEarliestFillingTime() {
     return earliestFillingTime;
@@ -729,11 +1042,16 @@ public class UserVariable   {
     this.earliestFillingTime = earliestFillingTime;
   }
 
-  
+
   /**
    * Latest filling time
    **/
-  @ApiModelProperty(value = "Latest filling time")
+  public UserVariable latestFillingTime(Integer latestFillingTime) {
+    this.latestFillingTime = latestFillingTime;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "Latest filling time")
   @JsonProperty("latest_filling_time")
   public Integer getLatestFillingTime() {
     return latestFillingTime;
@@ -742,66 +1060,151 @@ public class UserVariable   {
     this.latestFillingTime = latestFillingTime;
   }
 
-  
 
   @Override
-  public String toString()  {
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    UserVariable userVariable = (UserVariable) o;
+    return Objects.equals(this.parentId, userVariable.parentId) &&
+        Objects.equals(this.userId, userVariable.userId) &&
+        Objects.equals(this.clientId, userVariable.clientId) &&
+        Objects.equals(this.variableId, userVariable.variableId) &&
+        Objects.equals(this.defaultUnitId, userVariable.defaultUnitId) &&
+        Objects.equals(this.minimumAllowedValue, userVariable.minimumAllowedValue) &&
+        Objects.equals(this.maximumAllowedValue, userVariable.maximumAllowedValue) &&
+        Objects.equals(this.fillingValue, userVariable.fillingValue) &&
+        Objects.equals(this.joinWith, userVariable.joinWith) &&
+        Objects.equals(this.onsetDelay, userVariable.onsetDelay) &&
+        Objects.equals(this.durationOfAction, userVariable.durationOfAction) &&
+        Objects.equals(this.variableCategoryId, userVariable.variableCategoryId) &&
+        Objects.equals(this.updated, userVariable.updated) &&
+        Objects.equals(this._public, userVariable._public) &&
+        Objects.equals(this.causeOnly, userVariable.causeOnly) &&
+        Objects.equals(this.fillingType, userVariable.fillingType) &&
+        Objects.equals(this.numberOfMeasurements, userVariable.numberOfMeasurements) &&
+        Objects.equals(this.numberOfProcessedMeasurements, userVariable.numberOfProcessedMeasurements) &&
+        Objects.equals(this.measurementsAtLastAnalysis, userVariable.measurementsAtLastAnalysis) &&
+        Objects.equals(this.lastUnitId, userVariable.lastUnitId) &&
+        Objects.equals(this.lastOriginalUnitId, userVariable.lastOriginalUnitId) &&
+        Objects.equals(this.lastValue, userVariable.lastValue) &&
+        Objects.equals(this.lastOriginalValue, userVariable.lastOriginalValue) &&
+        Objects.equals(this.lastSourceId, userVariable.lastSourceId) &&
+        Objects.equals(this.numberOfCorrelations, userVariable.numberOfCorrelations) &&
+        Objects.equals(this.status, userVariable.status) &&
+        Objects.equals(this.errorMessage, userVariable.errorMessage) &&
+        Objects.equals(this.lastSuccessfulUpdateTime, userVariable.lastSuccessfulUpdateTime) &&
+        Objects.equals(this.standardDeviation, userVariable.standardDeviation) &&
+        Objects.equals(this.variance, userVariable.variance) &&
+        Objects.equals(this.minimumRecordedValue, userVariable.minimumRecordedValue) &&
+        Objects.equals(this.maximumRecordedDailyValue, userVariable.maximumRecordedDailyValue) &&
+        Objects.equals(this.mean, userVariable.mean) &&
+        Objects.equals(this.median, userVariable.median) &&
+        Objects.equals(this.mostCommonUnitId, userVariable.mostCommonUnitId) &&
+        Objects.equals(this.mostCommonValue, userVariable.mostCommonValue) &&
+        Objects.equals(this.numberOfUniqueDailyValues, userVariable.numberOfUniqueDailyValues) &&
+        Objects.equals(this.numberOfChanges, userVariable.numberOfChanges) &&
+        Objects.equals(this.skewness, userVariable.skewness) &&
+        Objects.equals(this.kurtosis, userVariable.kurtosis) &&
+        Objects.equals(this.latitude, userVariable.latitude) &&
+        Objects.equals(this.longitude, userVariable.longitude) &&
+        Objects.equals(this.location, userVariable.location) &&
+        Objects.equals(this.experimentStartTime, userVariable.experimentStartTime) &&
+        Objects.equals(this.experimentEndTime, userVariable.experimentEndTime) &&
+        Objects.equals(this.createdAt, userVariable.createdAt) &&
+        Objects.equals(this.updatedAt, userVariable.updatedAt) &&
+        Objects.equals(this.outcome, userVariable.outcome) &&
+        Objects.equals(this.sources, userVariable.sources) &&
+        Objects.equals(this.earliestSourceTime, userVariable.earliestSourceTime) &&
+        Objects.equals(this.latestSourceTime, userVariable.latestSourceTime) &&
+        Objects.equals(this.earliestMeasurementTime, userVariable.earliestMeasurementTime) &&
+        Objects.equals(this.latestMeasurementTime, userVariable.latestMeasurementTime) &&
+        Objects.equals(this.earliestFillingTime, userVariable.earliestFillingTime) &&
+        Objects.equals(this.latestFillingTime, userVariable.latestFillingTime);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(parentId, userId, clientId, variableId, defaultUnitId, minimumAllowedValue, maximumAllowedValue, fillingValue, joinWith, onsetDelay, durationOfAction, variableCategoryId, updated, _public, causeOnly, fillingType, numberOfMeasurements, numberOfProcessedMeasurements, measurementsAtLastAnalysis, lastUnitId, lastOriginalUnitId, lastValue, lastOriginalValue, lastSourceId, numberOfCorrelations, status, errorMessage, lastSuccessfulUpdateTime, standardDeviation, variance, minimumRecordedValue, maximumRecordedDailyValue, mean, median, mostCommonUnitId, mostCommonValue, numberOfUniqueDailyValues, numberOfChanges, skewness, kurtosis, latitude, longitude, location, experimentStartTime, experimentEndTime, createdAt, updatedAt, outcome, sources, earliestSourceTime, latestSourceTime, earliestMeasurementTime, latestMeasurementTime, earliestFillingTime, latestFillingTime);
+  }
+
+  @Override
+  public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserVariable {\n");
     
-    sb.append("    parentId: ").append(StringUtil.toIndentedString(parentId)).append("\n");
-    sb.append("    clientId: ").append(StringUtil.toIndentedString(clientId)).append("\n");
-    sb.append("    variableId: ").append(StringUtil.toIndentedString(variableId)).append("\n");
-    sb.append("    defaultUnitId: ").append(StringUtil.toIndentedString(defaultUnitId)).append("\n");
-    sb.append("    minimumAllowedValue: ").append(StringUtil.toIndentedString(minimumAllowedValue)).append("\n");
-    sb.append("    maximumAllowedValue: ").append(StringUtil.toIndentedString(maximumAllowedValue)).append("\n");
-    sb.append("    fillingValue: ").append(StringUtil.toIndentedString(fillingValue)).append("\n");
-    sb.append("    joinWith: ").append(StringUtil.toIndentedString(joinWith)).append("\n");
-    sb.append("    onsetDelay: ").append(StringUtil.toIndentedString(onsetDelay)).append("\n");
-    sb.append("    durationOfAction: ").append(StringUtil.toIndentedString(durationOfAction)).append("\n");
-    sb.append("    variableCategoryId: ").append(StringUtil.toIndentedString(variableCategoryId)).append("\n");
-    sb.append("    updated: ").append(StringUtil.toIndentedString(updated)).append("\n");
-    sb.append("    _public: ").append(StringUtil.toIndentedString(_public)).append("\n");
-    sb.append("    causeOnly: ").append(StringUtil.toIndentedString(causeOnly)).append("\n");
-    sb.append("    fillingType: ").append(StringUtil.toIndentedString(fillingType)).append("\n");
-    sb.append("    numberOfMeasurements: ").append(StringUtil.toIndentedString(numberOfMeasurements)).append("\n");
-    sb.append("    numberOfProcessedMeasurements: ").append(StringUtil.toIndentedString(numberOfProcessedMeasurements)).append("\n");
-    sb.append("    measurementsAtLastAnalysis: ").append(StringUtil.toIndentedString(measurementsAtLastAnalysis)).append("\n");
-    sb.append("    lastUnitId: ").append(StringUtil.toIndentedString(lastUnitId)).append("\n");
-    sb.append("    lastOriginalUnitId: ").append(StringUtil.toIndentedString(lastOriginalUnitId)).append("\n");
-    sb.append("    lastValue: ").append(StringUtil.toIndentedString(lastValue)).append("\n");
-    sb.append("    lastOriginalValue: ").append(StringUtil.toIndentedString(lastOriginalValue)).append("\n");
-    sb.append("    lastSourceId: ").append(StringUtil.toIndentedString(lastSourceId)).append("\n");
-    sb.append("    numberOfCorrelations: ").append(StringUtil.toIndentedString(numberOfCorrelations)).append("\n");
-    sb.append("    status: ").append(StringUtil.toIndentedString(status)).append("\n");
-    sb.append("    errorMessage: ").append(StringUtil.toIndentedString(errorMessage)).append("\n");
-    sb.append("    lastSuccessfulUpdateTime: ").append(StringUtil.toIndentedString(lastSuccessfulUpdateTime)).append("\n");
-    sb.append("    standardDeviation: ").append(StringUtil.toIndentedString(standardDeviation)).append("\n");
-    sb.append("    variance: ").append(StringUtil.toIndentedString(variance)).append("\n");
-    sb.append("    minimumRecordedDailyValue: ").append(StringUtil.toIndentedString(minimumRecordedDailyValue)).append("\n");
-    sb.append("    maximumRecordedDailyValue: ").append(StringUtil.toIndentedString(maximumRecordedDailyValue)).append("\n");
-    sb.append("    mean: ").append(StringUtil.toIndentedString(mean)).append("\n");
-    sb.append("    median: ").append(StringUtil.toIndentedString(median)).append("\n");
-    sb.append("    mostCommonUnitId: ").append(StringUtil.toIndentedString(mostCommonUnitId)).append("\n");
-    sb.append("    mostCommonValue: ").append(StringUtil.toIndentedString(mostCommonValue)).append("\n");
-    sb.append("    numberOfUniqueDailyValues: ").append(StringUtil.toIndentedString(numberOfUniqueDailyValues)).append("\n");
-    sb.append("    numberOfChanges: ").append(StringUtil.toIndentedString(numberOfChanges)).append("\n");
-    sb.append("    skewness: ").append(StringUtil.toIndentedString(skewness)).append("\n");
-    sb.append("    kurtosis: ").append(StringUtil.toIndentedString(kurtosis)).append("\n");
-    sb.append("    latitude: ").append(StringUtil.toIndentedString(latitude)).append("\n");
-    sb.append("    longitude: ").append(StringUtil.toIndentedString(longitude)).append("\n");
-    sb.append("    location: ").append(StringUtil.toIndentedString(location)).append("\n");
-    sb.append("    createdAt: ").append(StringUtil.toIndentedString(createdAt)).append("\n");
-    sb.append("    updatedAt: ").append(StringUtil.toIndentedString(updatedAt)).append("\n");
-    sb.append("    outcome: ").append(StringUtil.toIndentedString(outcome)).append("\n");
-    sb.append("    sources: ").append(StringUtil.toIndentedString(sources)).append("\n");
-    sb.append("    earliestSourceTime: ").append(StringUtil.toIndentedString(earliestSourceTime)).append("\n");
-    sb.append("    latestSourceTime: ").append(StringUtil.toIndentedString(latestSourceTime)).append("\n");
-    sb.append("    earliestMeasurementTime: ").append(StringUtil.toIndentedString(earliestMeasurementTime)).append("\n");
-    sb.append("    latestMeasurementTime: ").append(StringUtil.toIndentedString(latestMeasurementTime)).append("\n");
-    sb.append("    earliestFillingTime: ").append(StringUtil.toIndentedString(earliestFillingTime)).append("\n");
-    sb.append("    latestFillingTime: ").append(StringUtil.toIndentedString(latestFillingTime)).append("\n");
+    sb.append("    parentId: ").append(toIndentedString(parentId)).append("\n");
+    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+    sb.append("    clientId: ").append(toIndentedString(clientId)).append("\n");
+    sb.append("    variableId: ").append(toIndentedString(variableId)).append("\n");
+    sb.append("    defaultUnitId: ").append(toIndentedString(defaultUnitId)).append("\n");
+    sb.append("    minimumAllowedValue: ").append(toIndentedString(minimumAllowedValue)).append("\n");
+    sb.append("    maximumAllowedValue: ").append(toIndentedString(maximumAllowedValue)).append("\n");
+    sb.append("    fillingValue: ").append(toIndentedString(fillingValue)).append("\n");
+    sb.append("    joinWith: ").append(toIndentedString(joinWith)).append("\n");
+    sb.append("    onsetDelay: ").append(toIndentedString(onsetDelay)).append("\n");
+    sb.append("    durationOfAction: ").append(toIndentedString(durationOfAction)).append("\n");
+    sb.append("    variableCategoryId: ").append(toIndentedString(variableCategoryId)).append("\n");
+    sb.append("    updated: ").append(toIndentedString(updated)).append("\n");
+    sb.append("    _public: ").append(toIndentedString(_public)).append("\n");
+    sb.append("    causeOnly: ").append(toIndentedString(causeOnly)).append("\n");
+    sb.append("    fillingType: ").append(toIndentedString(fillingType)).append("\n");
+    sb.append("    numberOfMeasurements: ").append(toIndentedString(numberOfMeasurements)).append("\n");
+    sb.append("    numberOfProcessedMeasurements: ").append(toIndentedString(numberOfProcessedMeasurements)).append("\n");
+    sb.append("    measurementsAtLastAnalysis: ").append(toIndentedString(measurementsAtLastAnalysis)).append("\n");
+    sb.append("    lastUnitId: ").append(toIndentedString(lastUnitId)).append("\n");
+    sb.append("    lastOriginalUnitId: ").append(toIndentedString(lastOriginalUnitId)).append("\n");
+    sb.append("    lastValue: ").append(toIndentedString(lastValue)).append("\n");
+    sb.append("    lastOriginalValue: ").append(toIndentedString(lastOriginalValue)).append("\n");
+    sb.append("    lastSourceId: ").append(toIndentedString(lastSourceId)).append("\n");
+    sb.append("    numberOfCorrelations: ").append(toIndentedString(numberOfCorrelations)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    errorMessage: ").append(toIndentedString(errorMessage)).append("\n");
+    sb.append("    lastSuccessfulUpdateTime: ").append(toIndentedString(lastSuccessfulUpdateTime)).append("\n");
+    sb.append("    standardDeviation: ").append(toIndentedString(standardDeviation)).append("\n");
+    sb.append("    variance: ").append(toIndentedString(variance)).append("\n");
+    sb.append("    minimumRecordedValue: ").append(toIndentedString(minimumRecordedValue)).append("\n");
+    sb.append("    maximumRecordedDailyValue: ").append(toIndentedString(maximumRecordedDailyValue)).append("\n");
+    sb.append("    mean: ").append(toIndentedString(mean)).append("\n");
+    sb.append("    median: ").append(toIndentedString(median)).append("\n");
+    sb.append("    mostCommonUnitId: ").append(toIndentedString(mostCommonUnitId)).append("\n");
+    sb.append("    mostCommonValue: ").append(toIndentedString(mostCommonValue)).append("\n");
+    sb.append("    numberOfUniqueDailyValues: ").append(toIndentedString(numberOfUniqueDailyValues)).append("\n");
+    sb.append("    numberOfChanges: ").append(toIndentedString(numberOfChanges)).append("\n");
+    sb.append("    skewness: ").append(toIndentedString(skewness)).append("\n");
+    sb.append("    kurtosis: ").append(toIndentedString(kurtosis)).append("\n");
+    sb.append("    latitude: ").append(toIndentedString(latitude)).append("\n");
+    sb.append("    longitude: ").append(toIndentedString(longitude)).append("\n");
+    sb.append("    location: ").append(toIndentedString(location)).append("\n");
+    sb.append("    experimentStartTime: ").append(toIndentedString(experimentStartTime)).append("\n");
+    sb.append("    experimentEndTime: ").append(toIndentedString(experimentEndTime)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
+    sb.append("    outcome: ").append(toIndentedString(outcome)).append("\n");
+    sb.append("    sources: ").append(toIndentedString(sources)).append("\n");
+    sb.append("    earliestSourceTime: ").append(toIndentedString(earliestSourceTime)).append("\n");
+    sb.append("    latestSourceTime: ").append(toIndentedString(latestSourceTime)).append("\n");
+    sb.append("    earliestMeasurementTime: ").append(toIndentedString(earliestMeasurementTime)).append("\n");
+    sb.append("    latestMeasurementTime: ").append(toIndentedString(latestMeasurementTime)).append("\n");
+    sb.append("    earliestFillingTime: ").append(toIndentedString(earliestFillingTime)).append("\n");
+    sb.append("    latestFillingTime: ").append(toIndentedString(latestFillingTime)).append("\n");
     sb.append("}");
     return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }
+

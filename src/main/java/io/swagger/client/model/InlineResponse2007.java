@@ -1,38 +1,33 @@
 package io.swagger.client.model;
 
-import io.swagger.client.StringUtil;
-import io.swagger.client.model.Correlation;
-import java.util.*;
-
-
-
-import io.swagger.annotations.*;
+import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import io.swagger.client.model.UserVariableRelationship;
+import java.util.ArrayList;
+import java.util.List;
 
 
-@ApiModel(description = "")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-11-05T03:15:54.261Z")
+/**
+ * InlineResponse2007
+ */
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-06-24T22:10:22.059Z")
 public class InlineResponse2007   {
   
-  private List<Correlation> data = new ArrayList<Correlation>();
   private Boolean success = null;
+  private List<UserVariableRelationship> data = new ArrayList<UserVariableRelationship>();
 
   
   /**
    **/
-  @ApiModelProperty(value = "")
-  @JsonProperty("data")
-  public List<Correlation> getData() {
-    return data;
+  public InlineResponse2007 success(Boolean success) {
+    this.success = success;
+    return this;
   }
-  public void setData(List<Correlation> data) {
-    this.data = data;
-  }
-
   
-  /**
-   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(example = "null", value = "")
   @JsonProperty("success")
   public Boolean getSuccess() {
     return success;
@@ -41,16 +36,62 @@ public class InlineResponse2007   {
     this.success = success;
   }
 
+
+  /**
+   **/
+  public InlineResponse2007 data(List<UserVariableRelationship> data) {
+    this.data = data;
+    return this;
+  }
   
+  @ApiModelProperty(example = "null", value = "")
+  @JsonProperty("data")
+  public List<UserVariableRelationship> getData() {
+    return data;
+  }
+  public void setData(List<UserVariableRelationship> data) {
+    this.data = data;
+  }
+
 
   @Override
-  public String toString()  {
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    InlineResponse2007 inlineResponse2007 = (InlineResponse2007) o;
+    return Objects.equals(this.success, inlineResponse2007.success) &&
+        Objects.equals(this.data, inlineResponse2007.data);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(success, data);
+  }
+
+  @Override
+  public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse2007 {\n");
     
-    sb.append("    data: ").append(StringUtil.toIndentedString(data)).append("\n");
-    sb.append("    success: ").append(StringUtil.toIndentedString(success)).append("\n");
+    sb.append("    success: ").append(toIndentedString(success)).append("\n");
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }
+

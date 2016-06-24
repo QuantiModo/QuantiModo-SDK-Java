@@ -1,63 +1,69 @@
 package io.swagger.client.model;
 
-import io.swagger.client.StringUtil;
-import java.util.Date;
-
-
-
-import io.swagger.annotations.*;
+import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import io.swagger.client.model.ConversionStep;
+import java.util.ArrayList;
+import java.util.List;
 
 
-@ApiModel(description = "")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-11-05T03:15:54.261Z")
+/**
+ * Unit
+ */
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-06-24T22:10:22.059Z")
 public class Unit   {
   
-  private Integer id = null;
-  private String clientId = null;
   private String name = null;
   private String abbreviatedName = null;
-  private Integer categoryId = null;
-  private Float minimumValue = null;
-  private Float maximumValue = null;
-  private Integer updated = null;
-  private Integer defaultUnitId = null;
-  private Float multiply = null;
-  private Float add = null;
-  private Date createdAt = null;
-  private Date updatedAt = null;
 
-  
   /**
-   * id
-   **/
-  @ApiModelProperty(value = "id")
-  @JsonProperty("id")
-  public Integer getId() {
-    return id;
-  }
-  public void setId(Integer id) {
-    this.id = id;
+   * Unit category
+   */
+  public enum CategoryEnum {
+    DISTANCE("Distance"),
+    DURATION("Duration"),
+    ENERGY("Energy"),
+    FREQUENCY("Frequency"),
+    MISCELLANY("Miscellany"),
+    PRESSURE("Pressure"),
+    PROPORTION("Proportion"),
+    RATING("Rating"),
+    TEMPERATURE("Temperature"),
+    VOLUME("Volume"),
+    WEIGHT("Weight");
+
+    private String value;
+
+    CategoryEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
   }
 
-  
-  /**
-   * client_id
-   **/
-  @ApiModelProperty(value = "client_id")
-  @JsonProperty("client_id")
-  public String getClientId() {
-    return clientId;
-  }
-  public void setClientId(String clientId) {
-    this.clientId = clientId;
-  }
+  private CategoryEnum category = null;
+  private Double minimumValue = null;
+  private Double maximumValue = null;
+  private List<ConversionStep> conversionSteps = new ArrayList<ConversionStep>();
 
   
   /**
    * Unit name
    **/
-  @ApiModelProperty(required = true, value = "Unit name")
+  public Unit name(String name) {
+    this.name = name;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", required = true, value = "Unit name")
   @JsonProperty("name")
   public String getName() {
     return name;
@@ -66,12 +72,17 @@ public class Unit   {
     this.name = name;
   }
 
-  
+
   /**
    * Unit abbreviation
    **/
-  @ApiModelProperty(required = true, value = "Unit abbreviation")
-  @JsonProperty("abbreviated_name")
+  public Unit abbreviatedName(String abbreviatedName) {
+    this.abbreviatedName = abbreviatedName;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", required = true, value = "Unit abbreviation")
+  @JsonProperty("abbreviatedName")
   public String getAbbreviatedName() {
     return abbreviatedName;
   }
@@ -79,144 +90,125 @@ public class Unit   {
     this.abbreviatedName = abbreviatedName;
   }
 
-  
+
   /**
-   * Unit category ID
+   * Unit category
    **/
-  @ApiModelProperty(required = true, value = "Unit category ID")
-  @JsonProperty("category_id")
-  public Integer getCategoryId() {
-    return categoryId;
+  public Unit category(CategoryEnum category) {
+    this.category = category;
+    return this;
   }
-  public void setCategoryId(Integer categoryId) {
-    this.categoryId = categoryId;
+  
+  @ApiModelProperty(example = "null", required = true, value = "Unit category")
+  @JsonProperty("category")
+  public CategoryEnum getCategory() {
+    return category;
+  }
+  public void setCategory(CategoryEnum category) {
+    this.category = category;
   }
 
-  
+
   /**
-   * Unit minimum value
+   * The smallest acceptable value for measurements using this unit
    **/
-  @ApiModelProperty(value = "Unit minimum value")
-  @JsonProperty("minimum_value")
-  public Float getMinimumValue() {
+  public Unit minimumValue(Double minimumValue) {
+    this.minimumValue = minimumValue;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "The smallest acceptable value for measurements using this unit")
+  @JsonProperty("minimumValue")
+  public Double getMinimumValue() {
     return minimumValue;
   }
-  public void setMinimumValue(Float minimumValue) {
+  public void setMinimumValue(Double minimumValue) {
     this.minimumValue = minimumValue;
   }
 
-  
+
   /**
-   * Unit maximum value
+   * The largest acceptable value for measurements using this unit
    **/
-  @ApiModelProperty(value = "Unit maximum value")
-  @JsonProperty("maximum_value")
-  public Float getMaximumValue() {
+  public Unit maximumValue(Double maximumValue) {
+    this.maximumValue = maximumValue;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "The largest acceptable value for measurements using this unit")
+  @JsonProperty("maximumValue")
+  public Double getMaximumValue() {
     return maximumValue;
   }
-  public void setMaximumValue(Float maximumValue) {
+  public void setMaximumValue(Double maximumValue) {
     this.maximumValue = maximumValue;
   }
 
-  
+
   /**
-   * updated
+   * Conversion steps list
    **/
-  @ApiModelProperty(value = "updated")
-  @JsonProperty("updated")
-  public Integer getUpdated() {
-    return updated;
+  public Unit conversionSteps(List<ConversionStep> conversionSteps) {
+    this.conversionSteps = conversionSteps;
+    return this;
   }
-  public void setUpdated(Integer updated) {
-    this.updated = updated;
+  
+  @ApiModelProperty(example = "null", required = true, value = "Conversion steps list")
+  @JsonProperty("conversionSteps")
+  public List<ConversionStep> getConversionSteps() {
+    return conversionSteps;
+  }
+  public void setConversionSteps(List<ConversionStep> conversionSteps) {
+    this.conversionSteps = conversionSteps;
   }
 
-  
-  /**
-   * ID of default unit
-   **/
-  @ApiModelProperty(value = "ID of default unit")
-  @JsonProperty("default_unit_id")
-  public Integer getDefaultUnitId() {
-    return defaultUnitId;
-  }
-  public void setDefaultUnitId(Integer defaultUnitId) {
-    this.defaultUnitId = defaultUnitId;
-  }
-
-  
-  /**
-   * Value multiplied to
-   **/
-  @ApiModelProperty(value = "Value multiplied to")
-  @JsonProperty("multiply")
-  public Float getMultiply() {
-    return multiply;
-  }
-  public void setMultiply(Float multiply) {
-    this.multiply = multiply;
-  }
-
-  
-  /**
-   * Value which should be added to convert to default unit
-   **/
-  @ApiModelProperty(value = "Value which should be added to convert to default unit")
-  @JsonProperty("add")
-  public Float getAdd() {
-    return add;
-  }
-  public void setAdd(Float add) {
-    this.add = add;
-  }
-
-  
-  /**
-   * created_at
-   **/
-  @ApiModelProperty(value = "created_at")
-  @JsonProperty("created_at")
-  public Date getCreatedAt() {
-    return createdAt;
-  }
-  public void setCreatedAt(Date createdAt) {
-    this.createdAt = createdAt;
-  }
-
-  
-  /**
-   * updated_at
-   **/
-  @ApiModelProperty(value = "updated_at")
-  @JsonProperty("updated_at")
-  public Date getUpdatedAt() {
-    return updatedAt;
-  }
-  public void setUpdatedAt(Date updatedAt) {
-    this.updatedAt = updatedAt;
-  }
-
-  
 
   @Override
-  public String toString()  {
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Unit unit = (Unit) o;
+    return Objects.equals(this.name, unit.name) &&
+        Objects.equals(this.abbreviatedName, unit.abbreviatedName) &&
+        Objects.equals(this.category, unit.category) &&
+        Objects.equals(this.minimumValue, unit.minimumValue) &&
+        Objects.equals(this.maximumValue, unit.maximumValue) &&
+        Objects.equals(this.conversionSteps, unit.conversionSteps);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(name, abbreviatedName, category, minimumValue, maximumValue, conversionSteps);
+  }
+
+  @Override
+  public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Unit {\n");
     
-    sb.append("    id: ").append(StringUtil.toIndentedString(id)).append("\n");
-    sb.append("    clientId: ").append(StringUtil.toIndentedString(clientId)).append("\n");
-    sb.append("    name: ").append(StringUtil.toIndentedString(name)).append("\n");
-    sb.append("    abbreviatedName: ").append(StringUtil.toIndentedString(abbreviatedName)).append("\n");
-    sb.append("    categoryId: ").append(StringUtil.toIndentedString(categoryId)).append("\n");
-    sb.append("    minimumValue: ").append(StringUtil.toIndentedString(minimumValue)).append("\n");
-    sb.append("    maximumValue: ").append(StringUtil.toIndentedString(maximumValue)).append("\n");
-    sb.append("    updated: ").append(StringUtil.toIndentedString(updated)).append("\n");
-    sb.append("    defaultUnitId: ").append(StringUtil.toIndentedString(defaultUnitId)).append("\n");
-    sb.append("    multiply: ").append(StringUtil.toIndentedString(multiply)).append("\n");
-    sb.append("    add: ").append(StringUtil.toIndentedString(add)).append("\n");
-    sb.append("    createdAt: ").append(StringUtil.toIndentedString(createdAt)).append("\n");
-    sb.append("    updatedAt: ").append(StringUtil.toIndentedString(updatedAt)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    abbreviatedName: ").append(toIndentedString(abbreviatedName)).append("\n");
+    sb.append("    category: ").append(toIndentedString(category)).append("\n");
+    sb.append("    minimumValue: ").append(toIndentedString(minimumValue)).append("\n");
+    sb.append("    maximumValue: ").append(toIndentedString(maximumValue)).append("\n");
+    sb.append("    conversionSteps: ").append(toIndentedString(conversionSteps)).append("\n");
     sb.append("}");
     return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }
+

@@ -1,16 +1,17 @@
 package io.swagger.client.model;
 
-import io.swagger.client.StringUtil;
-import java.util.Date;
-
-
-
-import io.swagger.annotations.*;
+import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import org.joda.time.DateTime;
 
 
-@ApiModel(description = "")
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-11-05T03:15:54.261Z")
+/**
+ * VariableUserSource
+ */
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-06-24T22:10:22.059Z")
 public class VariableUserSource   {
   
   private Integer userId = null;
@@ -19,14 +20,19 @@ public class VariableUserSource   {
   private Integer timestamp = null;
   private Integer earliestMeasurementTime = null;
   private Integer latestMeasurementTime = null;
-  private Date createdAt = null;
-  private Date updatedAt = null;
+  private DateTime createdAt = null;
+  private DateTime updatedAt = null;
 
   
   /**
    * ID of User
    **/
-  @ApiModelProperty(value = "ID of User")
+  public VariableUserSource userId(Integer userId) {
+    this.userId = userId;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "ID of User")
   @JsonProperty("user_id")
   public Integer getUserId() {
     return userId;
@@ -35,11 +41,16 @@ public class VariableUserSource   {
     this.userId = userId;
   }
 
-  
+
   /**
    * ID of variable
    **/
-  @ApiModelProperty(required = true, value = "ID of variable")
+  public VariableUserSource variableId(Integer variableId) {
+    this.variableId = variableId;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", required = true, value = "ID of variable")
   @JsonProperty("variable_id")
   public Integer getVariableId() {
     return variableId;
@@ -48,11 +59,16 @@ public class VariableUserSource   {
     this.variableId = variableId;
   }
 
-  
+
   /**
    * ID of source
    **/
-  @ApiModelProperty(required = true, value = "ID of source")
+  public VariableUserSource sourceId(Integer sourceId) {
+    this.sourceId = sourceId;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", required = true, value = "ID of source")
   @JsonProperty("source_id")
   public Integer getSourceId() {
     return sourceId;
@@ -61,11 +77,16 @@ public class VariableUserSource   {
     this.sourceId = sourceId;
   }
 
-  
+
   /**
    * Time that this measurement occurred Uses epoch minute (epoch time divided by 60)
    **/
-  @ApiModelProperty(required = true, value = "Time that this measurement occurred Uses epoch minute (epoch time divided by 60)")
+  public VariableUserSource timestamp(Integer timestamp) {
+    this.timestamp = timestamp;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", required = true, value = "Time that this measurement occurred Uses epoch minute (epoch time divided by 60)")
   @JsonProperty("timestamp")
   public Integer getTimestamp() {
     return timestamp;
@@ -74,11 +95,16 @@ public class VariableUserSource   {
     this.timestamp = timestamp;
   }
 
-  
+
   /**
    * Earliest measurement time
    **/
-  @ApiModelProperty(required = true, value = "Earliest measurement time")
+  public VariableUserSource earliestMeasurementTime(Integer earliestMeasurementTime) {
+    this.earliestMeasurementTime = earliestMeasurementTime;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", required = true, value = "Earliest measurement time")
   @JsonProperty("earliest_measurement_time")
   public Integer getEarliestMeasurementTime() {
     return earliestMeasurementTime;
@@ -87,11 +113,16 @@ public class VariableUserSource   {
     this.earliestMeasurementTime = earliestMeasurementTime;
   }
 
-  
+
   /**
    * Latest measurement time
    **/
-  @ApiModelProperty(required = true, value = "Latest measurement time")
+  public VariableUserSource latestMeasurementTime(Integer latestMeasurementTime) {
+    this.latestMeasurementTime = latestMeasurementTime;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", required = true, value = "Latest measurement time")
   @JsonProperty("latest_measurement_time")
   public Integer getLatestMeasurementTime() {
     return latestMeasurementTime;
@@ -100,48 +131,93 @@ public class VariableUserSource   {
     this.latestMeasurementTime = latestMeasurementTime;
   }
 
-  
+
   /**
-   * created_at
+   * When the record was first created. Use ISO 8601 datetime format
    **/
-  @ApiModelProperty(value = "created_at")
+  public VariableUserSource createdAt(DateTime createdAt) {
+    this.createdAt = createdAt;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "When the record was first created. Use ISO 8601 datetime format")
   @JsonProperty("created_at")
-  public Date getCreatedAt() {
+  public DateTime getCreatedAt() {
     return createdAt;
   }
-  public void setCreatedAt(Date createdAt) {
+  public void setCreatedAt(DateTime createdAt) {
     this.createdAt = createdAt;
   }
 
-  
+
   /**
-   * updated_at
+   * When the record in the database was last updated. Use ISO 8601 datetime format
    **/
-  @ApiModelProperty(value = "updated_at")
+  public VariableUserSource updatedAt(DateTime updatedAt) {
+    this.updatedAt = updatedAt;
+    return this;
+  }
+  
+  @ApiModelProperty(example = "null", value = "When the record in the database was last updated. Use ISO 8601 datetime format")
   @JsonProperty("updated_at")
-  public Date getUpdatedAt() {
+  public DateTime getUpdatedAt() {
     return updatedAt;
   }
-  public void setUpdatedAt(Date updatedAt) {
+  public void setUpdatedAt(DateTime updatedAt) {
     this.updatedAt = updatedAt;
   }
 
-  
 
   @Override
-  public String toString()  {
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    VariableUserSource variableUserSource = (VariableUserSource) o;
+    return Objects.equals(this.userId, variableUserSource.userId) &&
+        Objects.equals(this.variableId, variableUserSource.variableId) &&
+        Objects.equals(this.sourceId, variableUserSource.sourceId) &&
+        Objects.equals(this.timestamp, variableUserSource.timestamp) &&
+        Objects.equals(this.earliestMeasurementTime, variableUserSource.earliestMeasurementTime) &&
+        Objects.equals(this.latestMeasurementTime, variableUserSource.latestMeasurementTime) &&
+        Objects.equals(this.createdAt, variableUserSource.createdAt) &&
+        Objects.equals(this.updatedAt, variableUserSource.updatedAt);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(userId, variableId, sourceId, timestamp, earliestMeasurementTime, latestMeasurementTime, createdAt, updatedAt);
+  }
+
+  @Override
+  public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class VariableUserSource {\n");
     
-    sb.append("    userId: ").append(StringUtil.toIndentedString(userId)).append("\n");
-    sb.append("    variableId: ").append(StringUtil.toIndentedString(variableId)).append("\n");
-    sb.append("    sourceId: ").append(StringUtil.toIndentedString(sourceId)).append("\n");
-    sb.append("    timestamp: ").append(StringUtil.toIndentedString(timestamp)).append("\n");
-    sb.append("    earliestMeasurementTime: ").append(StringUtil.toIndentedString(earliestMeasurementTime)).append("\n");
-    sb.append("    latestMeasurementTime: ").append(StringUtil.toIndentedString(latestMeasurementTime)).append("\n");
-    sb.append("    createdAt: ").append(StringUtil.toIndentedString(createdAt)).append("\n");
-    sb.append("    updatedAt: ").append(StringUtil.toIndentedString(updatedAt)).append("\n");
+    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+    sb.append("    variableId: ").append(toIndentedString(variableId)).append("\n");
+    sb.append("    sourceId: ").append(toIndentedString(sourceId)).append("\n");
+    sb.append("    timestamp: ").append(toIndentedString(timestamp)).append("\n");
+    sb.append("    earliestMeasurementTime: ").append(toIndentedString(earliestMeasurementTime)).append("\n");
+    sb.append("    latestMeasurementTime: ").append(toIndentedString(latestMeasurementTime)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }
+

@@ -1,25 +1,30 @@
 package io.swagger.client.api;
 
+import com.sun.jersey.api.client.GenericType;
+
 import io.swagger.client.ApiException;
 import io.swagger.client.ApiClient;
 import io.swagger.client.Configuration;
-import io.swagger.client.Pair;
-import io.swagger.client.TypeRef;
-
 import io.swagger.client.model.*;
-
-import java.util.*;
+import io.swagger.client.Pair;
 
 import io.swagger.client.model.MeasurementSource;
 import io.swagger.client.model.Measurement;
+import io.swagger.client.model.MeasurementDelete;
+import io.swagger.client.model.CommonResponse;
 import io.swagger.client.model.MeasurementSet;
 import io.swagger.client.model.MeasurementRange;
-
 import java.io.File;
-import java.util.Map;
-import java.util.HashMap;
+import io.swagger.client.model.InlineResponse20012;
+import io.swagger.client.model.InlineResponse20011;
 
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2015-09-02T06:04:40.138Z")
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-06-24T22:10:22.059Z")
 public class MeasurementsApi {
   private ApiClient apiClient;
 
@@ -39,301 +44,611 @@ public class MeasurementsApi {
     this.apiClient = apiClient;
   }
 
-  
   /**
    * Get measurement sources
    * Returns a list of all the apps from which measurement data is obtained.
    * @return MeasurementSource
+   * @throws ApiException if fails to make API call
    */
-  public MeasurementSource measurementSourcesGet () throws ApiException {
-    Object postBody = null;
-    byte[] postBinaryBody = null;
+  public MeasurementSource v1MeasurementSourcesGet() throws ApiException {
+    Object localVarPostBody = null;
     
     // create path and map variables
-    String path = "/measurementSources".replaceAll("\\{format\\}","json");
+    String localVarPath = "/v1/measurementSources".replaceAll("\\{format\\}","json");
 
     // query params
-    List<Pair> queryParams = new ArrayList<Pair>();
-    Map<String, String> headerParams = new HashMap<String, String>();
-    Map<String, Object> formParams = new HashMap<String, Object>();
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
 
     
-
     
-
-    
-
-    final String[] accepts = {
+    final String[] localVarAccepts = {
       "application/json"
     };
-    final String accept = apiClient.selectHeaderAccept(accepts);
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-    final String[] contentTypes = {
-      
+    final String[] localVarContentTypes = {
+      "application/json"
     };
-    final String contentType = apiClient.selectHeaderContentType(contentTypes);
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] authNames = new String[] { "oauth2" };
-    
-    
+    String[] localVarAuthNames = new String[] { "oauth2" };
 
-    
-
-    
-    
-    TypeRef returnType = new TypeRef<MeasurementSource>() {};
-    return apiClient.invokeAPI(path, "GET", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    
-    
-
-    
-    
-    
-    
-  }
-  
+    GenericType<MeasurementSource> localVarReturnType = new GenericType<MeasurementSource>() {};
+    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
   /**
    * Add a data source
    * Add a life-tracking app or device to the QuantiModo list of data sources.
-   * @param name An array of names of data sources you want to add.
-   * @return void
+   * @param body An array of names of data sources you want to add. (required)
+   * @param accessToken User&#39;s OAuth2 access token (optional)
+   * @throws ApiException if fails to make API call
    */
-  public void measurementSourcesPost (MeasurementSource name) throws ApiException {
-    Object postBody = name;
-    byte[] postBinaryBody = null;
+  public void v1MeasurementSourcesPost(MeasurementSource body, String accessToken) throws ApiException {
+    Object localVarPostBody = body;
     
-     // verify the required parameter 'name' is set
-     if (name == null) {
-        throw new ApiException(400, "Missing the required parameter 'name' when calling measurementSourcesPost");
-     }
-     
+    // verify the required parameter 'body' is set
+    if (body == null) {
+      throw new ApiException(400, "Missing the required parameter 'body' when calling v1MeasurementSourcesPost");
+    }
+    
     // create path and map variables
-    String path = "/measurementSources".replaceAll("\\{format\\}","json");
+    String localVarPath = "/v1/measurementSources".replaceAll("\\{format\\}","json");
 
     // query params
-    List<Pair> queryParams = new ArrayList<Pair>();
-    Map<String, String> headerParams = new HashMap<String, String>();
-    Map<String, Object> formParams = new HashMap<String, Object>();
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
 
     
-
     
-
-    
-
-    final String[] accepts = {
+    final String[] localVarAccepts = {
       "application/json"
     };
-    final String accept = apiClient.selectHeaderAccept(accepts);
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-    final String[] contentTypes = {
-      
+    final String[] localVarContentTypes = {
+      "application/json"
     };
-    final String contentType = apiClient.selectHeaderContentType(contentTypes);
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] authNames = new String[] { "oauth2" };
-    
-    
-    
+    String[] localVarAuthNames = new String[] { "oauth2" };
+
+
+    apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, null);
   }
-  
+  /**
+   * Get daily measurements for this user
+   * Measurements are any value that can be recorded like daily steps, a mood rating, or apples eaten. &lt;br&gt;Supported filter parameters:&lt;br&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;value&lt;/b&gt; - Value of measurement&lt;/li&gt;&lt;li&gt;&lt;b&gt;lastUpdated&lt;/b&gt; - The time that this measurement was created or last updated in the UTC format \&quot;YYYY-MM-DDThh:mm:ss\&quot;&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;
+   * @param variableName Name of the variable you want measurements for (required)
+   * @param accessToken User&#39;s OAuth2 access token (optional)
+   * @param abbreviatedUnitName The unit your want the measurements in (optional)
+   * @param startTime The lower limit of measurements returned (Iso8601) (optional)
+   * @param endTime The upper limit of measurements returned (Iso8601) (optional)
+   * @param groupingWidth The time (in seconds) over which measurements are grouped together (optional)
+   * @param groupingTimezone The time (in seconds) over which measurements are grouped together (optional)
+   * @param limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. (optional)
+   * @param offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
+   * @param sort Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. (optional)
+   * @return Measurement
+   * @throws ApiException if fails to make API call
+   */
+  public Measurement v1MeasurementsDailyGet(String variableName, String accessToken, String abbreviatedUnitName, String startTime, String endTime, Integer groupingWidth, String groupingTimezone, Integer limit, Integer offset, Integer sort) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'variableName' is set
+    if (variableName == null) {
+      throw new ApiException(400, "Missing the required parameter 'variableName' when calling v1MeasurementsDailyGet");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/v1/measurements/daily".replaceAll("\\{format\\}","json");
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "variableName", variableName));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "abbreviatedUnitName", abbreviatedUnitName));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "startTime", startTime));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "endTime", endTime));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "groupingWidth", groupingWidth));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "groupingTimezone", groupingTimezone));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "offset", offset));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "sort", sort));
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "oauth2" };
+
+    GenericType<Measurement> localVarReturnType = new GenericType<Measurement>() {};
+    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
+  /**
+   * Delete a measurement
+   * Delete a previously submitted measurement
+   * @param body The startTime and variableId of the measurement to be deleted. (required)
+   * @return CommonResponse
+   * @throws ApiException if fails to make API call
+   */
+  public CommonResponse v1MeasurementsDeletePost(MeasurementDelete body) throws ApiException {
+    Object localVarPostBody = body;
+    
+    // verify the required parameter 'body' is set
+    if (body == null) {
+      throw new ApiException(400, "Missing the required parameter 'body' when calling v1MeasurementsDeletePost");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/v1/measurements/delete".replaceAll("\\{format\\}","json");
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "oauth2" };
+
+    GenericType<CommonResponse> localVarReturnType = new GenericType<CommonResponse>() {};
+    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
   /**
    * Get measurements for this user
    * Measurements are any value that can be recorded like daily steps, a mood rating, or apples eaten. &lt;br&gt;Supported filter parameters:&lt;br&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;value&lt;/b&gt; - Value of measurement&lt;/li&gt;&lt;li&gt;&lt;b&gt;lastUpdated&lt;/b&gt; - The time that this measurement was created or last updated in the UTC format \&quot;YYYY-MM-DDThh:mm:ss\&quot;&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;
-   * @param variableName Name of the variable you want measurements for
-   * @param unit The unit your want the measurements in
-   * @param startTime The lower limit of measurements returned (Epoch)
-   * @param endTime The upper limit of measurements returned (Epoch)
-   * @param groupingWidth The time (in seconds) over which measurements are grouped together
-   * @param groupingTimezone The time (in seconds) over which measurements are grouped together
-   * @param limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0.
-   * @param offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10.
-   * @param sort Sort by given field. If the field is prefixed with `-, it will sort in descending order.
+   * @param accessToken User&#39;s OAuth2 access token (optional)
+   * @param variableName Name of the variable you want measurements for (optional)
+   * @param variableCategoryName Name of the variable category you want measurements for (optional)
+   * @param source Name of the source you want measurements for (supports exact name match only) (optional)
+   * @param value Value of measurement (optional)
+   * @param lastUpdated The time that this measurement was created or last updated in the format \&quot;YYYY-MM-DDThh:mm:ss\&quot; (optional)
+   * @param unit The unit you want the measurements returned in (optional)
+   * @param startTime The lower limit of measurements returned (Epoch) (optional)
+   * @param createdAt The time the measurement record was first created in the format YYYY-MM-DDThh:mm:ss. Time zone should be UTC and not local. (optional)
+   * @param updatedAt The time the measurement record was last changed in the format YYYY-MM-DDThh:mm:ss. Time zone should be UTC and not local. (optional)
+   * @param endTime The upper limit of measurements returned (Epoch) (optional)
+   * @param groupingWidth The time (in seconds) over which measurements are grouped together (optional)
+   * @param groupingTimezone The time (in seconds) over which measurements are grouped together (optional)
+   * @param limit The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. (optional)
+   * @param offset Now suppose you wanted to show results 11-20. You&#39;d set the offset to 10 and the limit to 10. (optional)
+   * @param sort Sort by given field. If the field is prefixed with &#x60;-, it will sort in descending order. (optional)
    * @return Measurement
+   * @throws ApiException if fails to make API call
    */
-  public Measurement measurementsGet (String variableName, String unit, String startTime, String endTime, Integer groupingWidth, String groupingTimezone, Integer limit, Integer offset, Integer sort) throws ApiException {
-    Object postBody = null;
-    byte[] postBinaryBody = null;
+  public Measurement v1MeasurementsGet(String accessToken, String variableName, String variableCategoryName, String source, String value, String lastUpdated, String unit, String startTime, String createdAt, String updatedAt, String endTime, Integer groupingWidth, String groupingTimezone, Integer limit, Integer offset, Integer sort) throws ApiException {
+    Object localVarPostBody = null;
     
-     // verify the required parameter 'variableName' is set
-     if (variableName == null) {
-        throw new ApiException(400, "Missing the required parameter 'variableName' when calling measurementsGet");
-     }
-     
     // create path and map variables
-    String path = "/measurements".replaceAll("\\{format\\}","json");
+    String localVarPath = "/v1/measurements".replaceAll("\\{format\\}","json");
 
     // query params
-    List<Pair> queryParams = new ArrayList<Pair>();
-    Map<String, String> headerParams = new HashMap<String, String>();
-    Map<String, Object> formParams = new HashMap<String, Object>();
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "variableName", variableName));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "variableCategoryName", variableCategoryName));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "source", source));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "value", value));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "lastUpdated", lastUpdated));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "unit", unit));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "startTime", startTime));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "createdAt", createdAt));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "updatedAt", updatedAt));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "endTime", endTime));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "groupingWidth", groupingWidth));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "groupingTimezone", groupingTimezone));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "offset", offset));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "sort", sort));
 
     
-    queryParams.addAll(apiClient.parameterToPairs("", "variableName", variableName));
     
-    queryParams.addAll(apiClient.parameterToPairs("", "unit", unit));
-    
-    queryParams.addAll(apiClient.parameterToPairs("", "startTime", startTime));
-    
-    queryParams.addAll(apiClient.parameterToPairs("", "endTime", endTime));
-    
-    queryParams.addAll(apiClient.parameterToPairs("", "groupingWidth", groupingWidth));
-    
-    queryParams.addAll(apiClient.parameterToPairs("", "groupingTimezone", groupingTimezone));
-    
-    queryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
-    
-    queryParams.addAll(apiClient.parameterToPairs("", "offset", offset));
-    
-    queryParams.addAll(apiClient.parameterToPairs("", "sort", sort));
-    
-
-    
-
-    
-
-    final String[] accepts = {
+    final String[] localVarAccepts = {
       "application/json"
     };
-    final String accept = apiClient.selectHeaderAccept(accepts);
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-    final String[] contentTypes = {
-      
+    final String[] localVarContentTypes = {
+      "application/json"
     };
-    final String contentType = apiClient.selectHeaderContentType(contentTypes);
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] authNames = new String[] { "oauth2" };
-    
-    
+    String[] localVarAuthNames = new String[] { "oauth2" };
 
-    
-
-    
-    
-    TypeRef returnType = new TypeRef<Measurement>() {};
-    return apiClient.invokeAPI(path, "GET", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, returnType);
-    
-    
-
-    
-    
-    
-    
-  }
-  
+    GenericType<Measurement> localVarReturnType = new GenericType<Measurement>() {};
+    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
   /**
    * Post a new set or update existing measurements to the database
-   * You can submit or update multiple measurements in a \&quot;measurements\&quot; sub-array.  If the variable these measurements correspond to does not already exist in the database, it will be automatically added.  The request body should look something like [{\&quot;measurements\&quot;:[{\&quot;timestamp\&quot;:1406419860,\&quot;value\&quot;:\&quot;1\&quot;,\&quot;note\&quot;:\&quot;I am a note about back pain.\&quot;},{\&quot;timestamp\&quot;:1406519865,\&quot;value\&quot;:\&quot;3\&quot;,\&quot;note\&quot;:\&quot;I am another note about back pain.\&quot;}],\&quot;name\&quot;:\&quot;Back Pain\&quot;,\&quot;source\&quot;:\&quot;QuantiModo\&quot;,\&quot;category\&quot;:\&quot;Symptoms\&quot;,\&quot;combinationOperation\&quot;:\&quot;MEAN\&quot;,\&quot;unit\&quot;:\&quot;/5\&quot;}]
-   * @param measurements An array of measurements you want to insert.
-   * @return void
+   * You can submit or update multiple measurements in a \&quot;measurements\&quot; sub-array.  If the variable these measurements correspond to does not already exist in the database, it will be automatically added.  The request body should look something like [{\&quot;measurements\&quot;:[{\&quot;startTime\&quot;:1439389320,\&quot;value\&quot;:\&quot;3\&quot;}, {\&quot;startTime\&quot;:1439389319,\&quot;value\&quot;:\&quot;2\&quot;}],\&quot;name\&quot;:\&quot;Acne (out of 5)\&quot;,\&quot;source\&quot;:\&quot;QuantiModo\&quot;,\&quot;category\&quot;:\&quot;Symptoms\&quot;,\&quot;combinationOperation\&quot;:\&quot;MEAN\&quot;,\&quot;unit\&quot;:\&quot;/5\&quot;}]
+   * @param body An array of measurements you want to insert. (required)
+   * @param accessToken User&#39;s OAuth2 access token (optional)
+   * @throws ApiException if fails to make API call
    */
-  public void measurementsV2Post (MeasurementSet measurements) throws ApiException {
-    Object postBody = measurements;
-    byte[] postBinaryBody = null;
+  public void v1MeasurementsPost(MeasurementSet body, String accessToken) throws ApiException {
+    Object localVarPostBody = body;
     
-     // verify the required parameter 'measurements' is set
-     if (measurements == null) {
-        throw new ApiException(400, "Missing the required parameter 'measurements' when calling measurementsV2Post");
-     }
-     
+    // verify the required parameter 'body' is set
+    if (body == null) {
+      throw new ApiException(400, "Missing the required parameter 'body' when calling v1MeasurementsPost");
+    }
+    
     // create path and map variables
-    String path = "/measurements/v2".replaceAll("\\{format\\}","json");
+    String localVarPath = "/v1/measurements".replaceAll("\\{format\\}","json");
 
     // query params
-    List<Pair> queryParams = new ArrayList<Pair>();
-    Map<String, String> headerParams = new HashMap<String, String>();
-    Map<String, Object> formParams = new HashMap<String, Object>();
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
 
     
-
     
-
-    
-
-    final String[] accepts = {
+    final String[] localVarAccepts = {
       "application/json"
     };
-    final String accept = apiClient.selectHeaderAccept(accepts);
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-    final String[] contentTypes = {
-      
+    final String[] localVarContentTypes = {
+      "application/json"
     };
-    final String contentType = apiClient.selectHeaderContentType(contentTypes);
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] authNames = new String[] { "oauth2" };
-    
-    
+    String[] localVarAuthNames = new String[] { "oauth2" };
 
-    
 
-    
-    
-    apiClient.invokeAPI(path, "POST", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, null);
-    
-    
-
-    
-    
-    
-    
+    apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, null);
   }
-  
   /**
    * Get measurements range for this user
    * Get Unix time-stamp (epoch time) of the user&#39;s first and last measurements taken.
-   * @param sources Enter source name to limit to specific source (varchar)
-   * @param user If not specified, uses currently logged in user (bigint)
+   * @param sources Enter source name to limit to specific source (varchar) (optional)
+   * @param user If not specified, uses currently logged in user (bigint) (optional)
    * @return MeasurementRange
+   * @throws ApiException if fails to make API call
    */
-  public MeasurementRange measurementsRangeGet (String sources, Integer user) throws ApiException {
-    Object postBody = null;
-    byte[] postBinaryBody = null;
+  public MeasurementRange v1MeasurementsRangeGet(String sources, Integer user) throws ApiException {
+    Object localVarPostBody = null;
     
     // create path and map variables
-    String path = "/measurementsRange".replaceAll("\\{format\\}","json");
+    String localVarPath = "/v1/measurementsRange".replaceAll("\\{format\\}","json");
 
     // query params
-    List<Pair> queryParams = new ArrayList<Pair>();
-    Map<String, String> headerParams = new HashMap<String, String>();
-    Map<String, Object> formParams = new HashMap<String, Object>();
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "sources", sources));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "user", user));
 
     
-    queryParams.addAll(apiClient.parameterToPairs("", "sources", sources));
     
-    queryParams.addAll(apiClient.parameterToPairs("", "user", user));
-    
-
-    
-
-    
-
-    final String[] accepts = {
+    final String[] localVarAccepts = {
       "application/json"
     };
-    final String accept = apiClient.selectHeaderAccept(accepts);
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-    final String[] contentTypes = {
-      
+    final String[] localVarContentTypes = {
+      "application/json"
     };
-    final String contentType = apiClient.selectHeaderContentType(contentTypes);
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] authNames = new String[] { "oauth2" };
+    String[] localVarAuthNames = new String[] { "oauth2" };
+
+    GenericType<MeasurementRange> localVarReturnType = new GenericType<MeasurementRange>() {};
+    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
+  /**
+   * Get Measurements CSV
+   * Download a CSV containing all user measurements
+   * @param accessToken User&#39;s OAuth2 access token (optional)
+   * @return File
+   * @throws ApiException if fails to make API call
+   */
+  public File v2MeasurementsCsvGet(String accessToken) throws ApiException {
+    Object localVarPostBody = null;
     
-    
+    // create path and map variables
+    String localVarPath = "/v2/measurements/csv".replaceAll("\\{format\\}","json");
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
 
     
+    
+    final String[] localVarAccepts = {
+      "text/csv"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "quantimodo_oauth2" };
+
+    GenericType<File> localVarReturnType = new GenericType<File>() {};
+    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
+  /**
+   * Delete Measurement
+   * Delete Measurement
+   * @param id id of Measurement (required)
+   * @param accessToken User&#39;s OAuth2 access token (optional)
+   * @return InlineResponse20012
+   * @throws ApiException if fails to make API call
+   */
+  public InlineResponse20012 v2MeasurementsIdDelete(Integer id, String accessToken) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'id' is set
+    if (id == null) {
+      throw new ApiException(400, "Missing the required parameter 'id' when calling v2MeasurementsIdDelete");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/v2/measurements/{id}".replaceAll("\\{format\\}","json")
+      .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
 
     
     
-    TypeRef returnType = new TypeRef<MeasurementRange>() {};
-    return apiClient.invokeAPI(path, "GET", queryParams, postBody, postBinaryBody, headerParams, formParams, accept, contentType, authNames, returnType);
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "quantimodo_oauth2" };
+
+    GenericType<InlineResponse20012> localVarReturnType = new GenericType<InlineResponse20012>() {};
+    return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
+  /**
+   * Get Measurement
+   * Get Measurement
+   * @param id id of Measurement (required)
+   * @param accessToken User&#39;s OAuth2 access token (optional)
+   * @return InlineResponse20011
+   * @throws ApiException if fails to make API call
+   */
+  public InlineResponse20011 v2MeasurementsIdGet(Integer id, String accessToken) throws ApiException {
+    Object localVarPostBody = null;
     
+    // verify the required parameter 'id' is set
+    if (id == null) {
+      throw new ApiException(400, "Missing the required parameter 'id' when calling v2MeasurementsIdGet");
+    }
     
+    // create path and map variables
+    String localVarPath = "/v2/measurements/{id}".replaceAll("\\{format\\}","json")
+      .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
 
     
     
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "quantimodo_oauth2" };
+
+    GenericType<InlineResponse20011> localVarReturnType = new GenericType<InlineResponse20011>() {};
+    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
+  /**
+   * Update Measurement
+   * Update Measurement
+   * @param id id of Measurement (required)
+   * @param accessToken User&#39;s OAuth2 access token (optional)
+   * @param body Measurement that should be updated (optional)
+   * @return InlineResponse20012
+   * @throws ApiException if fails to make API call
+   */
+  public InlineResponse20012 v2MeasurementsIdPut(Integer id, String accessToken, Measurement body) throws ApiException {
+    Object localVarPostBody = body;
+    
+    // verify the required parameter 'id' is set
+    if (id == null) {
+      throw new ApiException(400, "Missing the required parameter 'id' when calling v2MeasurementsIdPut");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/v2/measurements/{id}".replaceAll("\\{format\\}","json")
+      .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
+
     
     
-  }
-  
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "quantimodo_oauth2" };
+
+    GenericType<InlineResponse20012> localVarReturnType = new GenericType<InlineResponse20012>() {};
+    return apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
+  /**
+   * Post Request for Measurements CSV
+   * Use this endpoint to schedule a CSV export containing all user measurements to be emailed to the user within 24 hours.
+   * @param accessToken User&#39;s OAuth2 access token (optional)
+   * @return Integer
+   * @throws ApiException if fails to make API call
+   */
+  public Integer v2MeasurementsRequestCsvPost(String accessToken) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // create path and map variables
+    String localVarPath = "/v2/measurements/request_csv".replaceAll("\\{format\\}","json");
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "quantimodo_oauth2" };
+
+    GenericType<Integer> localVarReturnType = new GenericType<Integer>() {};
+    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
+  /**
+   * Post Request for Measurements PDF
+   * Use this endpoint to schedule a PDF export containing all user measurements to be emailed to the user within 24 hours.
+   * @param accessToken User&#39;s OAuth2 access token (optional)
+   * @return Integer
+   * @throws ApiException if fails to make API call
+   */
+  public Integer v2MeasurementsRequestPdfPost(String accessToken) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // create path and map variables
+    String localVarPath = "/v2/measurements/request_pdf".replaceAll("\\{format\\}","json");
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "quantimodo_oauth2" };
+
+    GenericType<Integer> localVarReturnType = new GenericType<Integer>() {};
+    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
+  /**
+   * Post Request for Measurements XLS
+   * Use this endpoint to schedule a XLS export containing all user measurements to be emailed to the user within 24 hours.
+   * @param accessToken User&#39;s OAuth2 access token (optional)
+   * @return Integer
+   * @throws ApiException if fails to make API call
+   */
+  public Integer v2MeasurementsRequestXlsPost(String accessToken) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // create path and map variables
+    String localVarPath = "/v2/measurements/request_xls".replaceAll("\\{format\\}","json");
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "quantimodo_oauth2" };
+
+    GenericType<Integer> localVarReturnType = new GenericType<Integer>() {};
+    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
 }
